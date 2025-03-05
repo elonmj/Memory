@@ -1,3 +1,4 @@
+% !TEX root = ../memoire.tex
 \chapter{Schémas Numériques pour la Modélisation du Trafic}
 \label{chap:schemas_numeriques}
 
@@ -229,6 +230,13 @@ où $\mathcal{T}_i$ est un terme additionnel dû aux fonctions de modulation:
 Cette expression s'obtient en calculant explicitement les dérivées partielles $\frac{\partial v_i}{\partial \rho_i}$ et $\frac{\partial v_i}{\partial \rho_M}$ à partir des expressions \eqref{eq:vitesse_complete}, \eqref{eq:fonction_gap_filling} et \eqref{eq:fonction_interweaving} du chapitre \ref{chap:extension_modele}.
 \end{proof}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{simulations/ANALYSIS/performance_comparison}
+\caption{Comparaison des performances pour différentes stratégies d'optimisation sur un cas test multiclasse à deux classes, montrant l'accélération relative par rapport à l'implémentation de base.}
+\label{fig:performance}
+\end{figure}
+
 \section{Étude de Convergence et Validation}
 \label{sec:convergence_validation}
 
@@ -243,7 +251,7 @@ E_2(\Delta x) &= \sqrt{\frac{1}{N_x} \sum_{j=1}^{N_x} |\rho_j^{\Delta x} - \rho(
 E_{\infty}(\Delta x) &= \max_{j} |\rho_j^{\Delta x} - \rho(x_j)|
 \end{align}
 
-où $\rho_j^{\Delta x}$ est la solution numérique obtenue avec un pas d'espace $\Delta x$, et $\rho(x_j)$ est la solution de référence au point $x_j$.
+où $\rho_j^{\Delta x}$ est la solution numérique obtenue avec un pas d'espace $\Delta x, et \rho(x_j)$ est la solution de référence au point $x_j$.
 
 L'ordre de convergence $p$ se définit alors comme:
 \begin{equation}
@@ -393,6 +401,13 @@ Pour valider rigoureusement notre implémentation numérique, nous avons dévelo
 \end{algorithmic}
 \label{alg:convergence_study}
 \end{algorithm}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{simulations/ANALYSIS/conservation_error}
+\caption{Erreur relative de conservation de la masse en fonction du temps pour différentes résolutions spatiales, en l'absence de termes sources. L'erreur reste dans l'ordre de grandeur de la précision machine.}
+\label{fig:conservation}
+\end{figure}
 
 \section{Traitement des Discontinuités Spatiales}
 \label{sec:traitement_discontinuites}
@@ -631,7 +646,7 @@ Pour le problème de Riemann simple à une seule classe, notre schéma capture c
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{images/schemas_numeriques/onde_choc_simple}
+\includegraphics[width=0.8\textwidth]{simulations/LWR/comparisons/onde_choc_simple}
 \caption{Comparaison entre la solution numérique (points) et la solution exacte (ligne continue) pour un problème de Riemann simple, montrant la capture précise de l'onde de choc.}
 \label{fig:onde_choc_simple}
 \end{figure}
@@ -643,7 +658,7 @@ Pour le cas multiclasse avec interaction entre motos et voitures, notre schéma 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{images/schemas_numeriques/interaction_multiclasse}
+\includegraphics[width=0.9\textwidth]{simulations/MULTICLASS/interactions/interaction_multiclasse}
 \caption{Évolution spatio-temporelle des densités pour un problème d'interaction entre motos et voitures. (a) Densité des motos; (b) Densité des voitures; (c) Densité totale.}
 \label{fig:interaction_multiclasse}
 \end{figure}
@@ -655,7 +670,7 @@ La Figure \ref{fig:discontinuite_revetement} illustre le comportement de notre s
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{images/schemas_numeriques/discontinuite_revetement}
+\includegraphics[width=0.8\textwidth]{simulations/LWR/transitions/discontinuite_revetement}
 \caption{Formation d'une onde de choc stationnaire à une interface de transition de revêtement ($\lambda_i(x)$ passe de 1 à 0.6 à $x=10$ km). Les profils de densité sont montrés à différents temps.}
 \label{fig:discontinuite_revetement}
 \end{figure}
@@ -667,7 +682,7 @@ La Figure \ref{fig:intersection} montre la capacité de notre schéma à traiter
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{images/schemas_numeriques/intersection}
+\includegraphics[width=0.8\textwidth]{simulations/LWR/redlight/intersection}
 \caption{Évolution de la densité à proximité d'une intersection régulée par feux tricolores. La formation et la dissipation des files d'attente sont correctement capturées par le schéma numérique.}
 \label{fig:intersection}
 \end{figure}
@@ -692,7 +707,7 @@ La Figure \ref{fig:carrefour_stade} montre une comparaison entre les données me
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{images/schemas_numeriques/carrefour_stade}
+\includegraphics[width=0.9\textwidth]{simulations/CASE_STUDIES/carrefour_stade}
 \caption{(a) Cartographie du carrefour du Stade de l'Amitié; (b) Comparaison entre les flux mesurés (points) et simulés (ligne continue) pour les motos et les voitures à différentes heures de la journée.}
 \label{fig:carrefour_stade}
 \end{figure}
@@ -745,3 +760,8 @@ Malgré ses avantages, notre approche numérique présente certaines limitations
 \end{itemize}
 
 Ces perspectives ouvrent la voie à des applications encore plus réalistes et à grande échelle pour la modélisation du trafic routier au Bénin.
+
+\section{Illustration Numérique du Modèle LWR}
+\label{sec:illustration_numerique}
+
+Pour compléter notre étude théorique et visualiser concrètement les phénomènes décrits précédemment (ondes de choc, raréfactions), nous avons implémenté une résolution numérique du modèle LWR. Les simulations présentées ci-dessous utilisent le schéma de Godunov, choisi pour sa capacité à préserver la nature conservative de l'équation et sa robustesse face aux discontinuités inhérentes aux problèmes de trafic. Contrairement à d'autres méthodes numériques, ce schéma évite l'apparition d'oscillations non physiques au voisinage des chocs tout en maintenant une précision satisfaisante. Les fondements mathématiques et détails d'implémentation de cette méthode sont présentés dans l'Annexe \ref{annexe:schemas_numeriques}.

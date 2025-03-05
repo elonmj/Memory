@@ -257,6 +257,16 @@ def visualize_results(results, args):
             results['grid_t'],
             title=f"{results['name']} - Flow Evolution"
         )
+        
+        # Create a combined evolution plot
+        plotter.plot_combined_evolution(
+            results['density'],
+            results['velocity'],
+            results['flow'],
+            results['grid_x'],
+            results['grid_t'],
+            title=f"{results['name']}"
+        )
     
     # For multiclass model, generate class-specific plots
     if args.model == "multiclass" and args.plot in ["all", "interactive"]:

@@ -1,0 +1,25 @@
+% Configuration de polices utilisant uniquement ce qui est intégré à MiKTeX
+
+% Utiliser Latin Modern (intégré à MiKTeX) comme police principale
+\setmainfont{Latin Modern Roman}[
+  Ligatures=TeX,
+  Numbers=OldStyle
+]
+
+% Utiliser Latin Modern Sans comme police sans-serif
+\setsansfont{Latin Modern Sans}[
+  Scale=0.9,
+  Ligatures=TeX
+]
+
+% Utiliser Latin Modern Mono comme police à chasse fixe
+\setmonofont{Latin Modern Mono}[
+  Scale=0.9
+]
+
+% Police mathématique compatible
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Informer l'utilisateur
+\typeout{INFO: Utilisation des polices Latin Modern intégrées à MiKTeX}

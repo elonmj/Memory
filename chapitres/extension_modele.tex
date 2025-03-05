@@ -1,3 +1,4 @@
+% !TEX root = ../memoire.tex
 \chapter{Extension du Modèle LWR et Modélisation Spécifique des Motos}
 \label{chap:extension_modele}
 
@@ -255,7 +256,7 @@ Les observations sur le terrain montrent que les motos adoptent des comportement
 \item Trajectoires non conventionnelles (diagonales, contournements)
 \end{itemize}
 
-Pour modéliser ces comportements, nous introduisons un paramètre d'anticipation $\tau_M \in [0,1] qui décale temporellement la fonction $\alpha_M(t)$:
+Pour modéliser ces comportements, nous introduisons un paramètre d'anticipation $\tau_M \in [0,1]$ qui décale temporellement la fonction $\alpha_M(t)$:
 
 \begin{empheq}[box=\colorbox{lightblue!15}]{align}
 \alpha_M(t) = \alpha_M^0(t + \tau_M \cdot T)
@@ -313,6 +314,13 @@ Ce système intègre:
 \item Le traitement des intersections via les termes sources $S_i(x,t)$
 \end{itemize}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{simulations/MULTICLASS/diagrams/diagrammes_multiclasses}
+\caption{Diagrammes fondamentaux pour différentes proportions de motos (0\%, 25\%, 50\%, 75\%). L'augmentation de la proportion de motos élève le flux maximal et déplace le point critique vers des densités plus élevées.}
+\label{fig:diagramme_multiclasse}
+\end{figure}
+
 \subsection{Propriétés Mathématiques}
 \label{subsec:proprietes_mathematiques}
 
@@ -321,229 +329,6 @@ Le système d'équations \eqref{eq:modele_complet} forme un système hyperboliqu
 \begin{theorem}[Hyperbolicité du système]
 Le système \eqref{eq:modele_complet} est hyperbolique: la matrice jacobienne du flux possède $N$ valeurs propres réelles et un ensemble complet de vecteurs propres.
 \end{theorem}
-
-\begin{proof}
-La démonstration complète est donnée dans l'Annexe \ref{annexe:demonstrations}, Section \ref{sec:proprietes_systeme}.
-\end{proof}
-
-Cette propriété garantit que les ondes de trafic se propagent à vitesse finie, ce qui est physiquement cohérent avec le phénomène modélisé.
-
-Pour les solutions discontinues (ondes de choc), nous adoptons la condition d'entropie de Lax \cite{lax1973hyperbolic}:
-
-\begin{equation}
-\lambda_i(\boldsymbol{\rho}_L) > s_i > \lambda_i(\boldsymbol{\rho}_R)
-\label{eq:condition_entropie}
-\end{equation}
-
-où $s_i$ est la vitesse de propagation de l'onde de choc pour la classe $i$.
-
-\subsection{Modification du Diagramme Fondamental}
-\label{subsec:modification_diagramme}
-
-Une conséquence remarquable de notre modèle est la transformation du diagramme fondamental classique. Le flux total s'exprime désormais par:
-
-\begin{equation}
-q_{\text{total}}(\boldsymbol{\rho}, x) = \sum_{i=1}^N \rho_i \cdot v_i(\boldsymbol{\rho}, x)
-\label{eq:flux_total}
-\end{equation}
-
-Cette relation n'est plus une simple fonction parabolique de la densité totale comme dans le modèle de Greenshields, mais dépend de la composition du trafic et particulièrement de la proportion de motos.
-
-\begin{proposition}[Augmentation de la capacité routière]
-Pour une composition de trafic avec une proportion $\alpha_M = \rho_M/\rho$ de motos, la capacité routière (flux maximal) augmente avec $\alpha_M$ si le coefficient de gap-filling $\gamma$ est strictement positif.
-\end{proposition}
-
-\begin{proof}
-Pour une composition $\boldsymbol{\alpha} = (\alpha_1, \ldots, \alpha_N)$ fixée avec $\sum_{i=1}^N \alpha_i = 1, le flux total peut s'écrire:
-\begin{align}
-q_{\text{total}}(\rho, \boldsymbol{\alpha}, x) = \rho \cdot \sum_{i=1}^N \alpha_i \cdot \lambda_i(x) \cdot v_{i,0} \cdot \left(1 - \frac{\rho}{\rho_{\max}}\right) \cdot f_i(\alpha_M \rho)
-\end{align}
-
-En dérivant par rapport à $\rho$ et en posant cette dérivée égale à zéro, on obtient la densité critique $\rho_c(\boldsymbol{\alpha}). L'analyse montre que pour $\gamma > 0, \rho_c$ et le flux maximal correspondant augmentent avec $\alpha_M$.
-\end{proof}
-
-Cette propriété explique pourquoi les routes avec une forte proportion de motos peuvent supporter des flux de véhicules plus élevés, phénomène observé empiriquement dans les villes béninoises.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{images/model_extension/diagrammes_multiclasses}
-\caption{Diagrammes fondamentaux pour différentes proportions de motos (0\%, 25\%, 50\%, 75\%). L'augmentation de la proportion de motos élève le flux maximal et déplace le point critique vers des densités plus élevées.}
-\label{fig:diagramme_multiclasse}
-\end{figure}
-
-\section{Validation du Modèle pour le Trafic Béninois}
-\label{sec:validation_benin}
-
-\subsection{Implémentation Numérique du Modèle Multiclasse}
-\label{subsec:implementation_numerique}
-
-La résolution numérique du système d'équations \eqref{eq:modele_complet} pose plusieurs défis spécifiques par rapport au modèle LWR standard. Pour traiter efficacement les interactions entre classes de véhicules, la variation spatiale du coefficient de ralentissement et les fonctions de modulation, nous avons développé une extension du schéma de Godunov.
-
-\subsubsection{Extension du Schéma de Godunov pour le Système Multiclasse}
-\label{subsubsec:extension_godunov}
-
-Le schéma numérique s'appuie sur une discrétisation du domaine spatial en cellules de longueur $\Delta x$ et du temps en pas $\Delta t$. Pour chaque classe de véhicule $i$, la densité est mise à jour selon:
-
-\begin{empheq}[box=\colorbox{lightblue!15}]{align}
-\rho_i^{n+1}_j = \rho_i^{n}_j - \frac{\Delta t}{\Delta x} \left(F_{i,j+\frac{1}{2}}^n - F_{i,j-\frac{1}{2}}^n\right) + \Delta t \cdot S_i(x_j, t^n)
-\label{eq:schema_godunov_multiclasse}
-\end{empheq}
-
-où $\rho_i^{n}_j$ est la densité moyenne de la classe $i$ dans la cellule $j$ au temps $t^n$, et $F_{i,j\pm\frac{1}{2}}^n$ sont les flux numériques aux interfaces.
-
-Le calcul du flux numérique nécessite la résolution d'un problème de Riemann local à chaque interface:
-
-\begin{equation}
-F_{i,j+\frac{1}{2}}^n = \mathcal{F}_i\left(\boldsymbol{\rho}^n_j, \boldsymbol{\rho}^n_{j+1}, x_{j+\frac{1}{2}}\right)
-\end{equation}
-
-où $\boldsymbol{\rho}^n_j = (\rho_{1,j}^n, \ldots, \rho_{N,j}^n)^T$ est le vecteur des densités de toutes les classes dans la cellule $j$.
-
-\subsubsection{Traitement des Interactions entre Classes}
-\label{subsubsec:traitement_interactions}
-
-La difficulté principale réside dans le couplage entre les classes via la densité totale $\rho$ et les fonctions de modulation $f_i(\rho_M)$. Le flux numérique est calculé en deux étapes:
-
-1. \textbf{Calcul des vitesses intermédiaires} pour chaque classe en utilisant la densité totale et la densité des motos:
-\begin{equation}
-v_{i,j}^n = \lambda_i(x_j) \cdot v_{i,0} \cdot \left(1 - \frac{\rho_j^n}{\rho_{\max}}\right) \cdot f_i\left(\rho_{M,j}^n\right)
-\end{equation}
-où $\rho_j^n = \sum_{i=1}^N \rho_{i,j}^n$ est la densité totale dans la cellule $j$.
-
-2. \textbf{Application du solveur de Riemann} pour chaque classe, en tenant compte de la dépendance entre les classes:
-\begin{equation}
-\mathcal{F}_i\left(\boldsymbol{\rho}^n_j, \boldsymbol{\rho}^n_{j+1}, x_{j+\frac{1}{2}}\right) = 
-\begin{cases}
-\min\{q_i(\boldsymbol{\rho}^n_j), q_i(\boldsymbol{\rho}^n_{j+1})\} & \text{si } v_i(\boldsymbol{\rho}^n_j) \geq 0 \text{ et } v_i(\boldsymbol{\rho}^n_{j+1}) \leq 0 \\
-q_i(\boldsymbol{\rho}^n_j) & \text{si } v_i(\boldsymbol{\rho}^n_j) \geq 0 \text{ et } v_i(\boldsymbol{\rho}^n_{j+1}) \geq 0 \\
-q_i(\boldsymbol{\rho}^n_{j+1}) & \text{si } v_i(\boldsymbol{\rho}^n_j) \leq 0 \text{ et } v_i(\boldsymbol{\rho}^n_{j+1}) \leq 0 \\
-0 & \text{si } v_i(\boldsymbol{\rho}^n_j) \leq 0 \text{ et } v_i(\boldsymbol{\rho}^n_{j+1}) \geq 0
-\end{cases}
-\end{equation}
-
-Cette formulation assure la conservation de la masse pour chaque classe tout en capturant correctement les interactions entre classes.
-
-\subsubsection{Traitement des Variations Spatiales du Revêtement}
-\label{subsubsec:traitement_revetement}
-
-Pour gérer les variations spatiales du coefficient de ralentissement $\lambda_i(x)$, nous utilisons une approche de type volumes finis avec reconstruction d'état:
-
-1. Aux points de discontinuité du coefficient $\lambda_i(x)$, nous appliquons la condition de conservation du flux \eqref{eq:conservation_flux_transition}.
-
-2. Pour des variations continues de $\lambda_i(x)$, nous utilisons une discrétisation suffisamment fine pour capturer l'évolution du coefficient, tout en préservant la stabilité numérique.
-
-\subsubsection{Condition de Stabilité CFL Adaptée}
-\label{subsubsec:condition_cfl}
-
-La condition de stabilité de Courant-Friedrichs-Lewy (CFL) pour notre schéma multiclasse s'écrit:
-
-\begin{equation}
-\Delta t \leq \frac{\Delta x}{\max_{i,j} |v_i(\boldsymbol{\rho}^n_j)| + \rho_{i,j}^n\left|\frac{\partial v_i}{\partial \rho_i}(\boldsymbol{\rho}^n_j)\right|}
-\end{equation}
-
-Cette condition est plus restrictive que pour le modèle LWR standard en raison des interactions entre classes et des fonctions de modulation.
-
-\subsubsection{Implémentation Algorithmique}
-\label{subsubsec:implementation_algorithmique}
-
-L'algorithme 1 présente le pseudo-code de notre implémentation du schéma numérique pour le modèle multiclasse.
-
-\begin{algorithm}
-\caption{Schéma de Godunov pour le modèle LWR multiclasse étendu}
-\begin{algorithmic}[1]
-\State \textbf{Entrée:} Conditions initiales $\boldsymbol{\rho}^0$, temps final $T$
-\State \textbf{Initialisation:} $t \gets 0$, $n \gets 0$
-\While{$t < T$}
-    \State Calculer $\Delta t$ selon la condition CFL
-    \State $t \gets t + \Delta t$, $n \gets n + 1$
-    \For{chaque classe $i \in \{1,\ldots,N\}$}
-        \For{chaque cellule $j$}
-            \State Calculer la densité totale $\rho_j^n = \sum_{k=1}^N \rho_{k,j}^n$
-            \State Calculer la vitesse $v_{i,j}^n$ selon \eqref{eq:vitesse_complete}
-            \State Calculer les flux numériques $F_{i,j-\frac{1}{2}}^n$ et $F_{i,j+\frac{1}{2}}^n$
-            \State Mettre à jour $\rho_{i,j}^{n+1}$ selon \eqref{eq:schema_godunov_multiclasse}
-        \EndFor
-    \EndFor
-\EndWhile
-\State \textbf{Retourner:} Solution numérique $\boldsymbol{\rho}^n$ pour $t = T$
-\end{algorithmic}
-\end{algorithm}
-
-Cette implémentation a été réalisée en Python, en utilisant NumPy pour les opérations vectorielles efficaces. Le code complet est disponible dans le module \texttt{src/models/multiclass\_lwr.py} du projet.
-
-\subsubsection{Validation Numérique}
-\label{subsubsec:validation_numerique}
-
-Pour valider notre implémentation, nous avons effectué plusieurs tests:
-
-1. \textbf{Tests de convergence} avec différentes résolutions spatiales et temporelles, confirmant un ordre de convergence de 1, conforme à la théorie pour un schéma d'ordre 1 comme Godunov.
-
-2. \textbf{Conservation de la masse} pour chaque classe de véhicule, vérifiée numériquement.
-
-3. \textbf{Reproduction de cas test standards} pour lesquels des solutions analytiques ou semi-analytiques sont connues.
-
-4. \textbf{Comparaison avec une implémentation du modèle LWR standard} pour des cas particuliers où les deux modèles devraient coïncider.
-
-Les résultats de ces validations confirment la robustesse et la précision de notre implémentation numérique pour le système multiclasse.
-
-\subsubsection{Carrefour du Stade de l'Amitié (Cotonou)}
-\label{subsubsec:carrefour_stade}
-
-Ce carrefour urbain majeur présente une forte proportion de motos (≈75\%) et un revêtement variable. Les simulations montrent que notre modèle reproduit fidèlement:
-\begin{itemize}
-\item L'accumulation des motos en front de file aux feux rouges
-\item L'anticipation du démarrage au feu vert
-\item Le maintien d'un flux minimal même en conditions congestionnées
-\end{itemize}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{images/model_extension/application_cotonou}
-\caption{Comparaison entre les données de terrain (points) et les prédictions de notre modèle (ligne continue) pour le carrefour du Stade de l'Amitié. La ligne pointillée représente les prédictions du modèle LWR standard.}
-\label{fig:application_cotonou}
-\end{figure}
-
-L'erreur quadratique moyenne (RMSE) de notre modèle est inférieure de 42\% à celle du modèle LWR standard.
-
-\subsubsection{Axe Godomey-Calavi}
-\label{subsubsec:axe_godomey}
-
-Sur cet axe périurbain avec des variations importantes de revêtement, notre modèle capture correctement:
-\begin{itemize}
-\item La formation de congestions localisées aux transitions de revêtement
-\item Les différences de comportement entre heures de pointe du matin et du soir
-\item L'impact des variations spatiales du coefficient de ralentissement $\lambda_i(x)$
-\end{itemize}
-
-\section{Récapitulatif et Extensions Futures}
-\label{sec:recapitulatif}
-
-\subsection{Contributions Principales}
-\label{subsec:contributions}
-
-Notre extension du modèle LWR apporte plusieurs innovations significatives:
-\begin{itemize}
-\item Un cadre multiclasse adapté spécifiquement au contexte béninois
-\item Une modélisation explicite des comportements caractéristiques des motos
-\item L'intégration de l'hétérogénéité du revêtement routier
-\item Une modélisation des intersections tenant compte des particularités du trafic béninois
-\end{itemize}
-
-Ces innovations permettent de capturer fidèlement la dynamique du trafic au Bénin, où les motos jouent un rôle prépondérant.
-
-Des travaux futurs pourraient étendre cette approche pour inclure:
-\begin{itemize}
-\item Des aspects stochastiques traduisant la variabilité comportementale \cite{marbach2009stochastic}
-\item Des modèles spécifiques pour les intersections non régulées \cite{ceylan2014traffic}
-\item Une généralisation aux réseaux bidimensionnels \cite{zhang2003non}
-\end{itemize}
-
-Dans le chapitre suivant, nous détaillerons les méthodes de calibration et validation du modèle à partir de données empiriques collectées sur le terrain.
-
-\section{Analyse Mathématique Approfondie}
-\label{sec:analyse_mathematique}
-
-Dans cette section, nous explorons plus en détail les propriétés mathématiques du système d'équations différentielles partielles que constitue notre modèle multiclasse étendu.
 
 \subsection{Structure du Système d'EDP}
 \label{subsec:structure_edp}
@@ -555,7 +340,7 @@ Le système d'équations \eqref{eq:modele_complet} peut être réécrit sous for
 \label{eq:forme_quasilineaire}
 \end{empheq}
 
-où $\boldsymbol{\rho} = (\rho_1, \ldots, \rho_N)^T$ est le vecteur des densités, $\mathbf{S}(x,t) = (S_1(x,t), \ldots, S_N(x,t))^T$ est le vecteur des termes sources, et $\mathbf{A}(\boldsymbol{\rho}, x)$ est la matrice jacobienne du flux:
+où $\boldsymbol{\rho} = (\rho_1, \rho_2, \ldots, \rho_N)^T$ est le vecteur des densités, $\mathbf{S}(x,t) = (S_1(x,t), \ldots, S_N(x,t))^T$ est le vecteur des termes sources, et $\mathbf{A}(\boldsymbol{\rho}, x)$ est la matrice jacobienne du flux:
 
 \begin{equation}
 \mathbf{A}(\boldsymbol{\rho}, x) = \frac{\partial \mathbf{F}}{\partial \boldsymbol{\rho}}
@@ -707,7 +492,236 @@ Pour $\alpha_M \approx 1$, le flux total peut être approximé par:
 q_{total}(\rho, \alpha_M \approx 1) &\approx \rho \cdot \lambda_M(x) \cdot v_{M,0} \cdot \left(1 - \frac{\rho}{\rho_{\max}}\right) \cdot \left(1 + \gamma \cdot \frac{\alpha_M \rho}{\rho_{M,\max}}\right)
 \end{align}
 
-En supposant $\rho_{M,\max} \approx \rho_{\max}$ pour simplifier, et en maximisant cette expression par rapport à $\rho$, nous obtenons que le flux maximal est atteint pour $\rho \approx \rho_{\max}/2 et vaut approximativement $\lambda_M(x) \cdot v_{M,0} \cdot \frac{\rho_{\max}}{4} \cdot (1 + \gamma)$.
+En supposant $\rho_{M,\max} \approx \rho_{\max}$ pour simplifier, et en maximisant cette expression par rapport à $\rho$, nous obtenons que le flux maximal est atteint pour $\rho \approx \rho_{\max}/2$ et vaut approximativement $\lambda_M(x) \cdot v_{M,0} \cdot \frac{\rho_{\max}}{4} \cdot (1 + \gamma)$.
 \end{proof}
 
 Ce résultat théorique corrobore les observations empiriques montrant que les routes dominées par les motos peuvent supporter des flux significativement plus élevés que ceux prédits par les modèles de trafic standards.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{simulations/MULTICLASS/mathematical/stability_analysis}
+\caption{Analyse de stabilité du modèle étendu montrant les régions de stabilité (vert) et d'instabilité (rouge) en fonction de la proportion de motos et de la densité totale. Les courbes de niveau représentent le taux de croissance des perturbations.}
+\label{fig:stability_analysis}
+\end{figure}
+
+\section{Validation du Modèle pour le Trafic Béninois}
+\label{sec:validation_benin}
+
+\subsection{Implémentation Numérique du Modèle Multiclasse}
+\label{subsec:implementation_numerique}
+
+La résolution numérique du système d'équations \eqref{eq:modele_complet} pose plusieurs défis spécifiques par rapport au modèle LWR standard. Pour traiter efficacement les interactions entre classes de véhicules, la variation spatiale du coefficient de ralentissement et les fonctions de modulation, nous avons développé une extension du schéma de Godunov.
+
+\subsubsection{Extension du Schéma de Godunov pour le Système Multiclasse}
+\label{subsubsec:extension_godunov}
+
+Le schéma numérique s'appuie sur une discrétisation du domaine spatial en cellules de longueur $\Delta x$ et du temps en pas $\Delta t$. Pour chaque classe de véhicule $i$, la densité est mise à jour selon:
+
+\begin{empheq}[box=\colorbox{lightblue!15}]{align}
+\rho_i^{n+1}_j = \rho_i^{n}_j - \frac{\Delta t}{\Delta x} \left(F_{i,j+\frac{1}{2}}^n - F_{i,j-\frac{1}{2}}^n\right) + \Delta t \cdot S_i(x_j, t^n)
+\label{eq:schema_godunov_multiclasse}
+\end{empheq}
+
+où $\rho_i^{n}_j$ est la densité moyenne de la classe $i$ dans la cellule $j$ au temps $t^n$, et $F_{i,j\pm\frac{1}{2}}^n$ sont les flux numériques aux interfaces.
+
+Le calcul du flux numérique nécessite la résolution d'un problème de Riemann local à chaque interface:
+
+\begin{equation}
+F_{i,j+\frac{1}{2}}^n = \mathcal{F}_i\left(\boldsymbol{\rho}^n_j, \boldsymbol{\rho}^n_{j+1}, x_{j+\frac{1}{2}}\right)
+\end{equation}
+
+où $\boldsymbol{\rho}^n_j = (\rho_{1,j}^n, \ldots, \rho_{N,j}^n)^T$ est le vecteur des densités de toutes les classes dans la cellule $j$.
+
+\subsubsection{Traitement des Interactions entre Classes}
+\label{subsubsec:traitement_interactions}
+
+La difficulté principale réside dans le couplage entre les classes via la densité totale $\rho$ et les fonctions de modulation $f_i(\rho_M)$. Le flux numérique est calculé en deux étapes:
+
+1. \textbf{Calcul des vitesses intermédiaires} pour chaque classe en utilisant la densité totale et la densité des motos:
+\begin{equation}
+v_{i,j}^n = \lambda_i(x_j) \cdot v_{i,0} \cdot \left(1 - \frac{\rho_j^n}{\rho_{\max}}\right) \cdot f_i\left(\rho_{M,j}^n\right)
+\end{equation}
+où $\rho_j^n = \sum_{i=1}^N \rho_{i,j}^n$ est la densité totale dans la cellule $j$.
+
+2. \textbf{Application du solveur de Riemann} pour chaque classe, en tenant compte de la dépendance entre les classes:
+\begin{equation}
+\mathcal{F}_i\left(\boldsymbol{\rho}^n_j, \boldsymbol{\rho}^n_{j+1}, x_{j+\frac{1}{2}}\right) = 
+\begin{cases}
+\min\{q_i(\boldsymbol{\rho}^n_j), q_i(\boldsymbol{\rho}^n_{j+1})\} & \text{si } v_i(\boldsymbol{\rho}^n_j) \geq 0 \text{ et } v_i(\boldsymbol{\rho}^n_{j+1}) \leq 0 \\
+q_i(\boldsymbol{\rho}^n_j) & \text{si } v_i(\boldsymbol{\rho}^n_j) \geq 0 \text{ et } v_i(\boldsymbol{\rho}^n_{j+1}) \geq 0 \\
+q_i(\boldsymbol{\rho}^n_{j+1}) & \text{si } v_i(\boldsymbol{\rho}^n_j) \leq 0 \text{ et } v_i(\boldsymbol{\rho}^n_{j+1}) \leq 0 \\
+0 & \text{si } v_i(\boldsymbol{\rho}^n_j) \leq 0 \text{ et } v_i(\boldsymbol{\rho}^n_{j+1}) \geq 0
+\end{cases}
+\end{equation}
+
+Cette formulation assure la conservation de la masse pour chaque classe tout en capturant correctement les interactions entre classes.
+
+\subsubsection{Traitement des Variations Spatiales du Revêtement}
+\label{subsubsec:traitement_revetement}
+
+Pour gérer les variations spatiales du coefficient de ralentissement $\lambda_i(x)$, nous utilisons une approche de type volumes finis avec reconstruction d'état:
+
+1. Aux points de discontinuité du coefficient $\lambda_i(x)$, nous appliquons la condition de conservation du flux \eqref{eq:conservation_flux_transition}.
+
+2. Pour des variations continues de $\lambda_i(x)$, nous utilisons une discrétisation suffisamment fine pour capturer l'évolution du coefficient, tout en préservant la stabilité numérique.
+
+\subsubsection{Condition de Stabilité CFL Adaptée}
+\label{subsubsec:condition_cfl}
+
+La condition de stabilité de Courant-Friedrichs-Lewy (CFL) pour notre schéma multiclasse s'écrit:
+
+\begin{equation}
+\Delta t \leq \frac{\Delta x}{\max_{i,j} |v_i(\boldsymbol{\rho}^n_j)| + \rho_{i,j}^n\left|\frac{\partial v_i}{\partial \rho_i}(\boldsymbol{\rho}^n_j)\right|}
+\end{equation}
+
+Cette condition est plus restrictive que pour le modèle LWR standard en raison des interactions entre classes et des fonctions de modulation.
+
+\subsubsection{Implémentation Algorithmique}
+\label{subsubsec:implementation_algorithmique}
+
+L'algorithme 1 présente le pseudo-code de notre implémentation du schéma numérique pour le modèle multiclasse.
+
+\begin{algorithm}
+\caption{Schéma de Godunov pour le modèle LWR multiclasse étendu}
+\begin{algorithmic}[1]
+\State \textbf{Entrée:} Conditions initiales $\boldsymbol{\rho}^0$, temps final $T$
+\State \textbf{Initialisation:} $t \gets 0$, $n \gets 0$
+\While{$t < T$}
+    \State Calculer $\Delta t$ selon la condition CFL
+    \State $t \gets t + \Delta t$, $n \gets n + 1$
+    \For{chaque classe $i \in \{1,\ldots,N\}$}
+        \For{chaque cellule $j$}
+            \State Calculer la densité totale $\rho_j^n = \sum_{k=1}^N \rho_{k,j}^n$
+            \State Calculer la vitesse $v_{i,j}^n$ selon \eqref{eq:vitesse_complete}
+            \State Calculer les flux numériques $F_{i,j-\frac{1}{2}}^n$ et $F_{i,j+\frac{1}{2}}^n$
+            \State Mettre à jour $\rho_{i,j}^{n+1}$ selon \eqref{eq:schema_godunov_multiclasse}
+        \EndFor
+    \EndFor
+\EndWhile
+\State \textbf{Retourner:} Solution numérique $\boldsymbol{\rho}^n$ pour $t = T$
+\end{algorithmic}
+\end{algorithm}
+
+Cette implémentation a été réalisée en Python, en utilisant NumPy pour les opérations vectorielles efficaces. Le code complet est disponible dans le module \texttt{src/models/multiclass\_lwr.py} du projet.
+
+\subsubsection{Validation Numérique}
+\label{subsubsec:validation_numerique}
+
+Pour valider notre implémentation, nous avons effectué plusieurs tests:
+
+1. \textbf{Tests de convergence} avec différentes résolutions spatiales et temporelles, confirmant un ordre de convergence de 1, conforme à la théorie pour un schéma d'ordre 1 comme Godunov.
+
+2. \textbf{Conservation de la masse} pour chaque classe de véhicule, vérifiée numériquement.
+
+3. \textbf{Reproduction de cas test standards} pour lesquels des solutions analytiques ou semi-analytiques sont connues.
+
+4. \textbf{Comparaison avec une implémentation du modèle LWR standard} pour des cas particuliers où les deux modèles devraient coïncider.
+
+Les résultats de ces validations confirment la robustesse et la précision de notre implémentation numérique pour le système multiclasse.
+
+\subsubsection{Carrefour du Stade de l'Amitié (Cotonou)}
+\label{subsubsec:carrefour_stade}
+
+Ce carrefour urbain majeur présente une forte proportion de motos (≈75\%) et un revêtement variable. Les simulations montrent que notre modèle reproduit fidèlement:
+\begin{itemize}
+\item L'accumulation des motos en front de file aux feux rouges
+\item L'anticipation du démarrage au feu vert
+\item Le maintien d'un flux minimal même en conditions congestionnées
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{simulations/CASE_STUDIES/application_cotonou}
+\caption{Comparaison entre les données de terrain (points) et les prédictions de notre modèle (ligne continue) pour le carrefour du Stade de l'Amitié. La ligne pointillée représente les prédictions du modèle LWR standard.}
+\label{fig:application_cotonou}
+\end{figure}
+
+L'erreur quadratique moyenne (RMSE) de notre modèle est inférieure de 42\% à celle du modèle LWR standard.
+
+\subsubsection{Axe Godomey-Calavi}
+\label{subsubsec:axe_godomey}
+
+Sur cet axe périurbain avec des variations importantes de revêtement, notre modèle capture correctement:
+\begin{itemize}
+\item La formation de congestions localisées aux transitions de revêtement
+\item Les différences de comportement entre heures de pointe du matin et du soir
+\item L'impact des variations spatiales du coefficient de ralentissement $\lambda_i(x)$
+\end{itemize}
+
+\section{Récapitulatif et Extensions Futures}
+\label{sec:recapitulatif}
+
+\subsection{Contributions Principales}
+\label{subsec:contributions}
+
+Notre extension du modèle LWR apporte plusieurs innovations significatives:
+\begin{itemize}
+\item Un cadre multiclasse adapté spécifiquement au contexte béninois
+\item Une modélisation explicite des comportements caractéristiques des motos
+\item L'intégration de l'hétérogénéité du revêtement routier
+\item Une modélisation des intersections tenant compte des particularités du trafic béninois
+\end{itemize}
+
+Ces innovations permettent de capturer fidèlement la dynamique du trafic au Bénin, où les motos jouent un rôle prépondérant.
+
+Des travaux futurs pourraient étendre cette approche pour inclure:
+\begin{itemize}
+\item Des aspects stochastiques traduisant la variabilité comportementale \cite{marbach2009stochastic}
+\item Des modèles spécifiques pour les intersections non régulées \cite{ceylan2014traffic}
+\item Une généralisation aux réseaux bidimensionnels \cite{zhang2003non}
+\end{itemize}
+
+Dans le chapitre suivant, nous détaillerons les méthodes de calibration et validation du modèle à partir de données empiriques collectées sur le terrain.
+
+\section{Analyse Mathématique Approfondie}
+\label{sec:analyse_mathematique}
+
+Dans cette section, nous explorons plus en détail les propriétés mathématiques du système d'équations différentielles partielles que constitue notre modèle multiclasse étendu.
+
+\subsection{Structure du Système d'EDP}
+\label{subsec:structure_edp}
+
+Le système d'équations \eqref{eq:modele_complet} peut être réécrit sous forme quasi-linéaire:
+
+\begin{empheq}[box=\colorbox{lightblue!15}]{align}
+\frac{\partial \boldsymbol{\rho}}{\partial t} + \mathbf{A}(\boldsymbol{\rho}, x) \frac{\partial \boldsymbol{\rho}}{\partial x} = \mathbf{S}(x,t)
+\label{eq:forme_quasilineaire}
+\end{empheq}
+
+où $\boldsymbol{\rho} = (\rho_1, \rho_2, \ldots, \rho_N)^T$ est le vecteur des densités, $\mathbf{S}(x,t) = (S_1(x,t), \ldots, S_N(x,t))^T$ est le vecteur des termes sources, et $\mathbf{A}(\boldsymbol{\rho}, x)$ est la matrice jacobienne du flux:
+
+\begin{equation}
+\mathbf{A}(\boldsymbol{\rho}, x) = \frac{\partial \mathbf{F}}{\partial \boldsymbol{\rho}}
+\end{equation}
+
+où $\mathbf{F}(\boldsymbol{\rho}, x) = (\rho_1 v_1, \ldots, \rho_N v_N)^T$ est le vecteur des flux. Les éléments de cette matrice sont:
+
+\begin{equation}
+A_{ij}(\boldsymbol{\rho}, x) = \frac{\partial F_i}{\partial \rho_j} = \frac{\partial (\rho_i v_i)}{\partial \rho_j}
+\end{equation}
+
+En développant ces expressions:
+
+\begin{equation}
+\begin{equation}
+\lim_{\alpha_M \to 1} C_{eff}(\alpha_M) = \lambda_M(x) \cdot v_{M,0} \cdot \frac{\rho_{\max}}{4} \cdot (1 + \gamma)
+\end{equation}
+soit $(1 + \gamma)$ fois la capacité du modèle standard.
+\end{theorem}
+
+\begin{proof}
+Pour $\alpha_M \approx 1$, le flux total peut être approximé par:
+\begin{align}
+q_{total}(\rho, \alpha_M \approx 1) &\approx \rho \cdot \lambda_M(x) \cdot v_{M,0} \cdot \left(1 - \frac{\rho}{\rho_{\max}}\right) \cdot \left(1 + \gamma \cdot \frac{\alpha_M \rho}{\rho_{M,\max}}\right)
+\end{align}
+
+En supposant $\rho_{M,\max} \approx \rho_{\max}$ pour simplifier, et en maximisant cette expression par rapport à $\rho$, nous obtenons que le flux maximal est atteint pour $\rho \approx \rho_{\max}/2 et vaut approximativement $\lambda_M(x) \cdot v_{M,0} \cdot \frac{\rho_{\max}}{4} \cdot (1 + \gamma)$.
+\end{proof}
+Ce résultat théorique corrobore les observations empiriques montrant que les routes dominées par les motos peuvent supporter des flux significativement plus élevés que ceux prédits par les modèles de trafic standards.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{simulations/MULTICLASS/mathematical/stability_analysis}
+\caption{Analyse de stabilité du modèle étendu montrant les régions de stabilité (vert) et d'instabilité (rouge) en fonction de la proportion de motos et de la densité totale. Les courbes de niveau représentent le taux de croissance des perturbations.}
+\label{fig:stability_analysis}
+\end{figure}

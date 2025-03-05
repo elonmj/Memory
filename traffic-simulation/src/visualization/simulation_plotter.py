@@ -321,3 +321,73 @@ class SimulationPlotter:
             plt.close()
             
         return fig
+
+    def plot_combined_evolution(self, density, velocity, flow, grid_x, grid_t, title=None, show=False, save=True):
+        """
+        Generate a combined space-time plot with density, velocity, and flow evolution.
+        
+        Args:
+            density: 2D array of density values [time, space]
+            velocity: 2D array of velocity values [time, space]
+            flow: 2D array of flow values [time, space]
+            grid_x: Spatial grid points
+            grid_t: Time grid points
+            title: Base title for the plot
+            show: Whether to display the plot
+            save: Whether to save the plot to file
+            
+        Returns:
+            Matplotlib figure object
+        """
+        # Create figure with 3 subplots arranged vertically
+        fig, axes = plt.subplots(3, 1, figsize=(12, 15))
+        
+        # Convert grids to meshgrid for pcolormesh
+        X, T = np.meshgrid(grid_x, grid_t)
+        
+        # Plot density evolution
+        im1 = axes[0].pcolormesh(X, T, density, cmap='viridis', shading='auto')
+        cbar1 = fig.colorbar(im1, ax=axes[0])
+        cbar1.set_label('Densité (véh/km)')
+        axes[0].set_xlabel('Position (km)')
+        axes[0].set_ylabel('Temps (h)')
+        if title:
+            axes[0].set_title(f"(a) {title} - Évolution de la densité")
+        else:
+            axes[0].set_title(f"(a) {self.model_name} - Évolution de la densité")
+        
+        # Plot velocity evolution
+        im2 = axes[1].pcolormesh(X, T, velocity, cmap='coolwarm', shading='auto')
+        cbar2 = fig.colorbar(im2, ax=axes[1])
+        cbar2.set_label('Vitesse (km/h)')
+        axes[1].set_xlabel('Position (km)')
+        axes[1].set_ylabel('Temps (h)')
+        if title:
+            axes[1].set_title(f"(b) {title} - Évolution de la vitesse")
+        else:
+            axes[1].set_title(f"(b) {self.model_name} - Évolution de la vitesse")
+        
+        # Plot flow evolution
+        im3 = axes[2].pcolormesh(X, T, flow, cmap='plasma', shading='auto')
+        cbar3 = fig.colorbar(im3, ax=axes[2])
+        cbar3.set_label('Flux (véh/h)')
+        axes[2].set_xlabel('Position (km)')
+        axes[2].set_ylabel('Temps (h)')
+        if title:
+            axes[2].set_title(f"(c) {title} - Évolution du flux")
+        else:
+            axes[2].set_title(f"(c) {self.model_name} - Évolution du flux")
+        
+        plt.tight_layout()
+        
+        # Save figure if requested
+        if save:
+            filename = title.replace(" ", "_").lower() if title else "combined_evolution"
+            plt.savefig(f'{self.output_dir}/{filename}_combined.png', bbox_inches='tight', dpi=300)
+        
+        if show:
+            plt.show()
+        else:
+            plt.close()
+            
+        return fig

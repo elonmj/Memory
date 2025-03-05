@@ -1,0 +1,39 @@
+% Font configuration with fallbacks for XeLaTeX
+
+% First try with the original fonts
+\IfFontExistsTF{TeX Gyre Pagella}{%
+  \setmainfont{TeX Gyre Pagella}[
+    Numbers=OldStyle,
+    Ligatures=TeX
+  ]
+}{%
+  % If TeX Gyre Pagella is not available, try Times New Roman
+  \IfFontExistsTF{Times New Roman}{%
+    \setmainfont{Times New Roman}[
+      Numbers=OldStyle,
+      Ligatures=TeX
+    ]
+    \typeout{WARNING: Using Times New Roman instead of TeX Gyre Pagella}
+  }{%
+    % Last resort: use default serif font
+    \setmainfont{serif}
+    \typeout{WARNING: Using default serif font instead of TeX Gyre Pagella}
+  }%
+}
+
+% Sans-serif font with fallbacks
+\IfFontExistsTF{TeX Gyre Heros}{%
+  \setsansfont{TeX Gyre Heros}[Scale=0.9]
+}{%
+  % If TeX Gyre Heros is not available, try Arial
+  \IfFontExistsTF{Arial}{%
+    \setsansfont{Arial}[Scale=0.9]
+    \typeout{WARNING: Using Arial instead of TeX Gyre Heros}
+  }{%
+    % Last resort: use default sans-serif font
+    \setsansfont{sans-serif}[Scale=0.9]
+    \typeout{WARNING: Using default sans-serif font instead of TeX Gyre Heros}
+  }%
+}
+
+% Monospace font with

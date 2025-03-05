@@ -1,3 +1,4 @@
+% !TEX root = ../memoire.tex
 \chapter{Fondements Théoriques : Le Modèle LWR de Base}
 \label{chap:fondements_theoriques}
 
@@ -60,6 +61,13 @@ L'équation de conservation est une équation aux dérivées partielles (EDP) du
 Pour résoudre l'équation de conservation du modèle LWR, il est nécessaire de spécifier la relation entre le flux $\flow$ (ou la vitesse $\vel$) et la densité $\dens$, connue sous le nom de \textit{relation fondamentale du trafic} ou \textit{diagramme fondamental}.
 
 Le diagramme fondamental établit la relation entre la densité et le flux (ou la vitesse) du trafic. Cette relation est essentielle pour fermer le système d'équations et rendre l'équation de conservation soluble. **Il représente une simplification de la réalité, car il suppose une relation statique et déterministe entre ces variables macroscopiques** [1].
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{simulations/LWR/diagrams/diagramme_fondamental}
+\caption{Diagrammes fondamentaux du modèle LWR selon Greenshields : (a) relation vitesse-densité montrant la décroissance linéaire de la vitesse avec la densité, (b) relation flux-densité montrant la forme parabolique caractéristique avec le point critique à $\rho_c = \rho_{\max}/2$, et (c) relation flux-vitesse.}
+\label{fig:diagramme_fondamental}
+\end{figure}
 
 \subsection{Le Modèle de Greenshields}
 \label{subsec:greenshields}
@@ -244,7 +252,7 @@ Le modèle de transmission cellulaire de Daganzo \cite{daganzo1995cell} est une 
 \section{Illustration Numérique du Modèle LWR}
 \label{sec:illustration_numerique}
 
-Pour compléter notre étude théorique et visualiser concrètement les phénomènes décrits précédemment (ondes de choc, raréfactions), nous avons implémenté une résolution numérique du modèle LWR. Les simulations présentées ci-dessous utilisent le schéma de Godunov, choisi pour sa capacité à préserver la nature conservative de l'équation et sa robustesse face aux discontinuités inhérentes aux problèmes de trafic. Contrairement à d'autres méthodes numériques, ce schéma évite l'apparition d'oscillations non physiques au voisinage des chocs tout en maintenant une précision satisfaisante. Les fondements mathématiques et détails d'implémentation de cette méthode sont présentés dans l'Annexe \ref{annex:schemas_numeriques}.
+Pour compléter notre étude théorique et visualiser concrètement les phénomènes décrits précédemment (ondes de choc, raréfactions), nous avons implémenté une résolution numérique du modèle LWR. Les simulations présentées ci-dessous utilisent le schéma de Godunov, choisi pour sa capacité à préserver la nature conservative de l'équation et sa robustesse face aux discontinuités inhérentes aux problèmes de trafic. Contrairement à d'autres méthodes numériques, ce schéma évite l'apparition d'oscillations non physiques au voisinage des chocs tout en maintenant une précision satisfaisante. Les fondements mathématiques et détails d'implémentation de cette méthode sont présentés dans l'Annexe \ref{annexe:schemas_numeriques}.
 
 \subsection{Schéma Numérique de Godunov}
 \label{subsec:godunov}
@@ -255,7 +263,7 @@ Pour résoudre numériquement l'équation de conservation \eqref{eq:conservation
 \rho_i^{n+1} = \rho_i^n - \frac{\Delta t}{\Delta x}(F_{i+\frac{1}{2}} - F_{i-\frac{1}{2}})
 \end{equation}
 
-où $\rho_i^n$ représente la densité moyenne dans la cellule $i$ au temps $n\Delta t$, et $F_{i\pm\frac{1}{2}}$ sont les flux numériques aux interfaces entre les cellules. Ces flux sont déterminés en résolvant localement un problème de Riemann :
+où $\rho_i^n$ représente la densité moyenne dans la cellule $i$ au temps $n\Delta t$, et $F_{i\pm\frac{1}{2}} sont les flux numériques aux interfaces entre les cellules. Ces flux sont déterminés en résolvant localement un problème de Riemann :
 
 \begin{equation}
     F_{i+\frac{1}{2}} = \mathcal{F}(\rho_i^n, \rho_{i+1}^n)
@@ -281,7 +289,7 @@ Considérons une route de 10 km où le trafic circule initialement à densité m
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{images/fondements_theoriques/simulation_feu_rouge}
+\includegraphics[width=1.0\textwidth]{simulations/LWR/redlight/RedLight_combined}
 \caption{Simulation de la dissipation d'un embouteillage après le passage d'un feu au vert. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux.}
 \label{fig:feu_rouge}
 \end{figure}
@@ -295,7 +303,7 @@ Dans ce scénario, nous simulons une route de 20 km avec un trafic fluide ($\rho
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{images/fondements_theoriques/simulation_onde_choc}
+\includegraphics[width=1.0\textwidth]{simulations/LWR/shock/ShockWave_combined}
 \caption{Simulation de la formation et propagation d'une onde de choc. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux.}
 \label{fig:sim_onde_choc}
 \end{figure}
@@ -309,7 +317,7 @@ Ce scénario illustre la dissipation progressive d'un embouteillage, représent�
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{images/fondements_theoriques/simulation_onde_rarefaction}
+\includegraphics[width=1.0\textwidth]{simulations/LWR/rarefaction/RarefactionWave_combined}
 \caption{Simulation d'une onde de raréfaction. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux.}
 \label{fig:sim_rarefaction}
 \end{figure}
@@ -333,7 +341,7 @@ Ces limitations, mises en évidence par la confrontation des simulations avec le
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{images/fondements_theoriques/comparaison_flux_reel_simule}
+\includegraphics[width=0.8\textwidth]{simulations/LWR/comparisons/flux_reel_vs_simule}
 \caption{Comparaison entre le flux simulé par le modèle LWR standard et des observations réelles dans une rue typique de Cotonou. Les différences significatives soulignent la nécessité d'adapter le modèle au contexte béninois.}
 \label{fig:comparaison_flux}
 \end{figure}
