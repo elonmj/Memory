@@ -1,0 +1,116 @@
+\begin{thebibliography}{KSAM19}
+
+\bibitem[{Afr}19]{aerc2019taxi}
+{African Economic Research Consortium}.
+\newblock The economics of motorcycle taxi services in benin.
+\newblock {\em AERC Research Papers}, 142:1--33, 2019.
+
+\bibitem[Akc03]{akcelik2003relationship}
+Rahmi Akcelik.
+\newblock Relationship between capacity and driver behaviour.
+\newblock {\em Transportation Research Board National Roundabout Conference},
+  pages 1--11, 2003.
+
+\bibitem[CB14]{ceylan2014traffic}
+Halim Ceylan and Michael~GH Bell.
+\newblock Traffic signal timing optimisation based on genetic algorithm
+  approach, including drivers' routing.
+\newblock {\em Transportation Research Part B: Methodological}, 68:141--162,
+  2014.
+
+\bibitem[Cha05]{chanut2005modeles}
+Stéphane Chanut.
+\newblock {\em Modèles macroscopiques de trafic hétérogène}.
+\newblock PhD thesis, École Nationale des Ponts et Chaussées, 2005.
+
+\bibitem[Dag95]{daganzo1995cell}
+Carlos~F Daganzo.
+\newblock A cell transmission model, part ii: network traffic.
+\newblock {\em Transportation Research Part B: Methodological}, 29(2):79--93,
+  1995.
+
+\bibitem[FHF13]{fan2013heterogeneous}
+Shiqi Fan, Xiaokun Hao, and Jinxing Feng.
+\newblock Heterogeneous traffic modeling and mixed traffic flow simulation
+  based on cellular automaton.
+\newblock {\em Computer-Aided Civil and Infrastructure Engineering},
+  28(8):616--628, 2013.
+
+\bibitem[God59]{godunov1959finite}
+Sergei~Konstantinovich Godunov.
+\newblock A finite difference method for the numerical computation of
+  discontinuous solutions of the equations of fluid dynamics.
+\newblock {\em Matematicheskii Sbornik}, 47(3):357--393, 1959.
+
+\bibitem[Gre35]{greenshields1935study}
+Bruce~D Greenshields.
+\newblock A study of traffic capacity.
+\newblock {\em Highway Research Board Proceedings}, 14:448--477, 1935.
+
+\bibitem[KKS18]{kumar2018motorcycle}
+Ravindra Kumar, Vijay Kanagaraj, and Saurav Sinha.
+\newblock Motorcycle-dominated mixed traffic flow modelling.
+\newblock {\em Transportation Research Part B: Methodological}, 108:196--216,
+  2018.
+
+\bibitem[KSAM19]{karthik2019estimation}
+KS~Karthik, Ashuthosh Satish, HR~Adarsh, and B~Madhu.
+\newblock Estimation of space-mean speed from location-based services data.
+\newblock {\em Transportation Research Part B: Methodological}, 126:523--539,
+  2019.
+
+\bibitem[LeV92]{leveque1992numerical}
+Randall~J LeVeque.
+\newblock {\em Numerical Methods for Conservation Laws}.
+\newblock Springer, 1992.
+
+\bibitem[Log19]{loggoh2019traffic}
+L~Taofiki Loggoh.
+\newblock Traffic flow characteristics in benin-city, nigeria.
+\newblock {\em Journal of Sustainable Development in Africa}, 21(1):193--207,
+  2019.
+
+\bibitem[LW55]{lighthill1955kinematic}
+Michael~James Lighthill and Gerald~Beresford Whitham.
+\newblock On kinematic waves {II}. {A} theory of traffic flow on long crowded
+  roads.
+\newblock {\em Proceedings of the Royal Society of London. Series A.
+  Mathematical and Physical Sciences}, 229(1178):317--345, 1955.
+
+\bibitem[MPL09]{marbach2009stochastic}
+Peter Marbach, Mody Pitu, and Xiaolin Lu.
+\newblock Stochastic traffic flow modeling and its applications.
+\newblock {\em Transportation Research Part B: Methodological}, 43(2):188--207,
+  2009.
+
+\bibitem[Ric56]{richards1956shock}
+Paul~I Richards.
+\newblock Shock waves on the highway.
+\newblock {\em Operations Research}, 4(1):42--51, 1956.
+
+\bibitem[Tor13]{toro2013riemann}
+Eleuterio~F Toro.
+\newblock {\em Riemann Solvers and Numerical Methods for Fluid Dynamics: A
+  Practical Introduction}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem[{Wor}19]{worldbank2019benin}
+{World Bank}.
+\newblock Benin transport sector review: Modernizing the transport sector in
+  benin.
+\newblock {\em World Bank Reports}, 2019.
+
+\bibitem[WW02]{wong2002multi}
+G~CK Wong and SC~Wong.
+\newblock A multi-class traffic flow model: an extension of {LWR} model with
+  heterogeneous drivers.
+\newblock {\em Transportation Research Part A: Policy and Practice},
+  36(9):827--841, 2002.
+
+\bibitem[Zha03]{zhang2003non}
+H~Michael Zhang.
+\newblock On a non-equilibrium traffic flow model.
+\newblock {\em Transportation Research Part B: Methodological}, 37(3):261--275,
+  2003.
+
+\end{thebibliography}

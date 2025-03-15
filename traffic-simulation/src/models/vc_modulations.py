@@ -83,12 +83,20 @@ def road_quality_coefficient(road_type, vehicle_class):
     """
     Determine road quality coefficient for different road types and vehicle classes.
     
+    This function calculates how different vehicle types are affected by various
+    road conditions. Motorcycles are generally less affected by poor road conditions
+    compared to cars, while larger vehicles like trucks are more severely impacted.
+    
     Args:
-        road_type: String indicating road type ('bitumen', 'gravel', 'dirt', etc.)
-        vehicle_class: Vehicle class index or name
+        road_type: String indicating road type ('bitumen_good', 'bitumen_poor', 
+                 'paved', 'gravel', 'dirt', 'damaged', etc.)
+        vehicle_class: Vehicle class index (0 for motorcycles, 1 for cars, etc.)
+                      or class name
         
     Returns:
-        float: Road quality coefficient (0-1)
+        float: Road quality coefficient (0-1) where 1 means perfect conditions
+              (no speed reduction) and lower values indicate speed reductions
+              due to poor road quality
     """
     # Define baseline coefficients for each road type
     coefficients = {

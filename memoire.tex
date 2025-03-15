@@ -1,86 +1,41 @@
-\documentclass[a4paper,12pt,twoside]{report}
+% Load the preamble which handles package loading and configuration
+\input{preamble}
 
-% XeLaTeX-specific packages
-\usepackage{fontspec}
-\usepackage{unicode-math}
-\usepackage{polyglossia}
-\setmainlanguage{french}
-\setotherlanguage{english}
-
-% Font configuration
-\setmainfont{TeX Gyre Pagella}[
-  Numbers=OldStyle,
-  Ligatures=TeX
-]
-\setsansfont{TeX Gyre Heros}[Scale=0.9]
-\setmonofont{Fira Mono}[Scale=0.85]
-\setmathfont{TeX Gyre Pagella Math}
-
-% Load custom style package
-\usepackage{styles/benintraffic}
-
-% Essential packages
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{mathtools}
-\usepackage{graphicx}
-\usepackage{subcaption}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{colortbl}
-\usepackage{multirow}
-\usepackage{array}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{adjustbox}
-\usepackage{setspace}
-\usepackage{empheq}
-\usepackage{sidenotes}
-\usepackage{marginnote}
-\usepackage[toc,acronym]{glossaries}
-\usepackage{imakeidx}
-\usepackage{enumitem}
-\usepackage{etoolbox}
-\usepackage{bookmark}
-\usepackage{cleveref}
+% Load book class commands for front/main/backmatter
+\makeatletter
+\@ifundefined{@mainmatter}{%
+  \newif\if@mainmatter \@mainmattertrue
+}{}
+\@ifundefined{frontmatter}{%
+  \newcommand\frontmatter{%
+    \cleardoublepage
+    \@mainmatterfalse
+    \pagenumbering{roman}}%
+}{}
+\@ifundefined{mainmatter}{%
+  \newcommand\mainmatter{%
+    \cleardoublepage
+    \@mainmattertrue
+    \pagenumbering{arabic}}%
+}{}
+\@ifundefined{backmatter}{%
+  \newcommand\backmatter{%
+    \if@openright\cleardoublepage\else\clearpage\fi
+    \@mainmatterfalse}%
+}{}
+\makeatother
 
 % Graphics path
-\graphicspath{{images/}}
+\graphicspath{{images/}{simulations/}}
 
-% Setup page geometry - if not already defined in benintraffic.sty
-\usepackage{geometry}
-\geometry{
-  top=2.5cm,
-  bottom=2.5cm,
-  left=2.5cm,
-  right=2.5cm,
-  marginparwidth=1.8cm,
-  marginparsep=0.3cm,
-  headsep=0.7cm,
-  footskip=1.2cm
-}
-
-% Hyperref configuration
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=midblue,
-    filecolor=midblue,      
-    urlcolor=midblue,
-    citecolor=midblue,
-    pdftitle={Modélisation du Trafic Routier au Bénin},
-    pdfauthor={Votre Nom},
-    pdfkeywords={trafic routier, Bénin, modèle LWR, motos, multiclasses},
-}
-
-% Create index and glossary
-\makeindex[columns=2,title=Index alphabétique]
-\makeglossaries
-\input{glossaire}
-
-% Set line spacing
-\setstretch{1.15}
+% Custom styles
+\usepackage{styles/benintraffic}
+\usepackage{imakeidx}
+\makeindex
 
 \begin{document}
+
+\maketitle
 
 % Front matter
 \frontmatter
@@ -105,10 +60,6 @@
 \include{chapitres/fondements_theoriques}
 \include{chapitres/specificites_benin}
 \include{chapitres/extension_modele}
-\include{chapitres/calibrage_validation}
-\include{chapitres/analyse_sensibilite}
-\include{chapitres/intersections}
-\include{chapitres/aspects_stochastiques}
 \include{chapitres/discussion}
 \include{chapitres/conclusion}
 
@@ -120,10 +71,7 @@
 \bibliography{bibliographie}
 
 % Appendices
-\appendix
-\include{annexes/demonstrations_math}
-\include{annexes/schemas_numeriques}
-\include{annexes/resultats_calibration}
+
 
 % Print index
 \printindex

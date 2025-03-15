@@ -14,9 +14,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-# Add the project root to the Python path
+# Add the project root and src directory to the Python path
 current_dir = Path(__file__).resolve().parent
-sys.path.insert(0, str(current_dir))
+project_root = current_dir.parent
+sys.path.insert(0, str(project_root))  # Add project root first
+sys.path.insert(0, str(current_dir))   # Then add traffic-simulation dir
 
 # Import models
 from src.models.lwr_model import LWRModel
@@ -223,10 +225,10 @@ def create_scenario(args, model):
 
 def visualize_results(results, args):
     """Generate visualizations based on simulation results."""
-    # Create output directory
+    # Create output directory using absolute paths from project root
     model_name = args.model.upper()
     scenario_name = args.scenario
-    output_dir = os.path.join(args.output, model_name, scenario_name)
+    output_dir = os.path.join(str(project_root), args.output, model_name, scenario_name)
     os.makedirs(output_dir, exist_ok=True)
     
     # Create simulation plotter
@@ -330,7 +332,7 @@ def main():
     
     # Generate fundamental diagram if requested
     if args.plot in ["all", "interactive"]:
-        fd_plotter = FundamentalDiagramPlotter(args.model, args.output)
+        fd_plotter = FundamentalDiagramPlotter(args.model, os.path.join(str(project_root), args.output))
         fd_plotter.plot_fundamental_diagrams(model, show=(args.plot == "interactive"))
     
     # Visualize results

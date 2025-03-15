@@ -1,98 +1,229 @@
 """
-Utility script to combine density, velocity, and flow figures into a single image
+Combine Figures Utility
+
+This module provides functions to combine multiple figures from different simulations
+into comparison panels or summary dashboards.
 """
 
 import os
-import sys
+import glob
+import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.gridspec import GridSpec
-import matplotlib.image as mpimg
-from pathlib import Path
+import matplotlib.gridspec as gridspec
+from PIL import Image
 
-def combine_simulation_figures(model, scenario, output_dir=None):
+
+def find_similar_figures(base_dir, pattern, models=None, scenarios=None):
     """
-    Combine density, velocity, and flow evolution figures into one composite image
+    Find similar figures across different model and scenario directories.
     
     Args:
-        model: Model name (LWR, MULTICLASS)
-        scenario: Scenario name (rarefaction, shock, redlight, etc.)
-        output_dir: Output directory (default is the same as input)
+        base_dir: Base directory to search
+        pattern: Figure filename pattern to search for (e.g., "*_density.png")
+        models: List of models to include (if None, include all)
+        scenarios: List of scenarios to include (if None, include all)
+        
+    Returns:
+        dict: Dictionary mapping {model: {scenario: filepath}}
     """
-    # Base directory for simulations
-    base_dir = Path("simulations") / model / scenario
+    result = {}
     
-    # Output directory
+    # If models/scenarios not specified, detect them from directory structure
+    if models is None:
+        models = [d for d in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, d))]
+    
+    for model in models:
+        model_dir = os.path.join(base_dir, model)
+        if not os.path.isdir(model_dir):
+            continue
+            
+        result[model] = {}
+        
+        if scenarios is None:
+            model_scenarios = [d for d in os.listdir(model_dir) if os.path.isdir(os.path.join(model_dir, d))]
+        else:
+            model_scenarios = scenarios
+        
+        for scenario in model_scenarios:
+            scenario_dir = os.path.join(model_dir, scenario)
+            if not os.path.isdir(scenario_dir):
+                continue
+                
+            # Find matching files
+            matches = glob.glob(os.path.join(scenario_dir, pattern))
+            if matches:
+                result[model][scenario] = matches[0]  # Take the first match
+    
+    return result
+
+
+def combine_figures(file_dict, output_path=None, title=None, figsize=(15, 10)):
+    """
+    Combine figures from different models and scenarios into a grid layout.
+    
+    Args:
+        file_dict: Dictionary mapping {model: {scenario: filepath}}
+        output_path: Path to save the combined figure (if None, display only)
+        title: Main title for the combined figure
+        figsize: Size of the output figure
+        
+    Returns:
+        matplotlib.figure.Figure: The combined figure
+    """
+    # Count models and scenarios
+    models = list(file_dict.keys())
+    all_scenarios = set()
+    for model_scenarios in file_dict.values():
+        all_scenarios.update(model_scenarios.keys())
+    scenarios = sorted(all_scenarios)
+    
+    n_models = len(models)
+    n_scenarios = len(scenarios)
+    
+    if n_models == 0 or n_scenarios == 0:
+        raise ValueError("No figures found to combine")
+    
+    # Create figure with grid
+    fig = plt.figure(figsize=figsize)
+    gs = gridspec.GridSpec(n_models, n_scenarios)
+    
+    # Add title if provided
+    if title:
+        fig.suptitle(title, fontsize=16)
+    
+    # Plot each figure in the grid
+    for i, model in enumerate(models):
+        for j, scenario in enumerate(scenarios):
+            if scenario in file_dict[model]:
+                # Create subplot
+                ax = fig.add_subplot(gs[i, j])
+                
+                # Load and display image
+                img_path = file_dict[model][scenario]
+                img = plt.imread(img_path)
+                ax.imshow(img)
+                
+                # Set labels
+                if i == 0:
+                    ax.set_title(scenario.capitalize())
+                if j == 0:
+                    ax.set_ylabel(model)
+                
+                # Remove ticks
+                ax.set_xticks([])
+                ax.set_yticks([])
+    
+    plt.tight_layout()
+    
+    # Save if output path provided
+    if output_path:
+        plt.savefig(output_path, dpi=300, bbox_inches="tight")
+        print(f"Combined figure saved to: {output_path}")
+    
+    return fig
+
+
+def create_comparative_dashboard(simulation_dir, output_dir=None, models=None, scenarios=None):
+    """
+    Create comparative dashboards across models and scenarios.
+    
+    Args:
+        simulation_dir: Base directory containing simulation results
+        output_dir: Directory to save comparison figures (default: simulation_dir/comparisons)
+        models: List of models to include (if None, include all)
+        scenarios: List of scenarios to include (if None, include all)
+        
+    Returns:
+        list: Paths to created dashboard images
+    """
     if output_dir is None:
-        output_dir = base_dir
-    else:
-        output_dir = Path(output_dir)
+        output_dir = os.path.join(simulation_dir, "comparisons")
     
-    # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
     
-    # Find the scenario name from file naming pattern
-    file_pattern = None
-    for file in os.listdir(base_dir):
-        if "_Density_Evolution.png" in file:
-            file_pattern = file.replace("_Density_Evolution.png", "")
-            break
+    # Find and combine density evolution figures
+    density_figures = find_similar_figures(
+        simulation_dir, "*_density_evolution.png", models, scenarios)
     
-    if file_pattern is None:
-        print(f"No matching files found in {base_dir}")
-        return False
+    density_comparison = combine_figures(
+        density_figures, 
+        os.path.join(output_dir, "density_comparison.png"),
+        "Density Evolution Comparison"
+    )
     
-    # Load the three images
-    try:
-        density_img = mpimg.imread(base_dir / f"{file_pattern}_Density_Evolution.png")
-        velocity_img = mpimg.imread(base_dir / f"{file_pattern}_Velocity_Evolution.png")
-        flow_img = mpimg.imread(base_dir / f"{file_pattern}_Flow_Evolution.png")
-    except FileNotFoundError as e:
-        print(f"Error loading images: {e}")
-        return False
+    # Find and combine velocity evolution figures
+    velocity_figures = find_similar_figures(
+        simulation_dir, "*_velocity_evolution.png", models, scenarios)
     
-    # Create a combined figure
-    fig = plt.figure(figsize=(12, 15))
-    gs = GridSpec(3, 1, height_ratios=[1, 1, 1], hspace=0.3)
+    velocity_comparison = combine_figures(
+        velocity_figures, 
+        os.path.join(output_dir, "velocity_comparison.png"),
+        "Velocity Evolution Comparison"
+    )
     
-    # Add the three images
-    ax1 = fig.add_subplot(gs[0])
-    ax1.imshow(density_img)
-    ax1.set_title("(a) Density Evolution", fontsize=14)
-    ax1.axis('off')
+    # Find and combine flow evolution figures
+    flow_figures = find_similar_figures(
+        simulation_dir, "*_flow_evolution.png", models, scenarios)
     
-    ax2 = fig.add_subplot(gs[1])
-    ax2.imshow(velocity_img)
-    ax2.set_title("(b) Velocity Evolution", fontsize=14)
-    ax2.axis('off')
+    flow_comparison = combine_figures(
+        flow_figures, 
+        os.path.join(output_dir, "flow_comparison.png"),
+        "Flow Evolution Comparison"
+    )
     
-    ax3 = fig.add_subplot(gs[2])
-    ax3.imshow(flow_img)
-    ax3.set_title("(c) Flow Evolution", fontsize=14)
-    ax3.axis('off')
+    # Create combined dashboard if requested
+    combined_dashboard_path = os.path.join(output_dir, "combined_dashboard.png")
     
-    # Save combined figure
-    output_file = output_dir / f"{file_pattern}_combined.png"
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
-    plt.close()
+    fig = plt.figure(figsize=(18, 15))
+    gs = gridspec.GridSpec(3, 1)
     
-    print(f"Combined figure saved to {output_file}")
-    return True
+    # Add the three comparison images to the dashboard
+    for i, (title, path) in enumerate([
+        ("Density Comparison", os.path.join(output_dir, "density_comparison.png")),
+        ("Velocity Comparison", os.path.join(output_dir, "velocity_comparison.png")),
+        ("Flow Comparison", os.path.join(output_dir, "flow_comparison.png"))
+    ]):
+        ax = fig.add_subplot(gs[i, 0])
+        if os.path.exists(path):
+            img = plt.imread(path)
+            ax.imshow(img)
+        else:
+            ax.text(0.5, 0.5, f"{title} not available", ha="center", va="center")
+        
+        ax.set_title(title)
+        ax.set_xticks([])
+        ax.set_yticks([])
+    
+    plt.tight_layout()
+    plt.savefig(combined_dashboard_path, dpi=300, bbox_inches="tight")
+    
+    return [
+        os.path.join(output_dir, "density_comparison.png"),
+        os.path.join(output_dir, "velocity_comparison.png"),
+        os.path.join(output_dir, "flow_comparison.png"),
+        combined_dashboard_path
+    ]
 
-def main():
-    """Main entry point"""
-    if len(sys.argv) < 3:
-        print("Usage: python combine_figures.py MODEL SCENARIO [OUTPUT_DIR]")
-        return
-    
-    model = sys.argv[1]
-    scenario = sys.argv[2]
-    output_dir = sys.argv[3] if len(sys.argv) > 3 else None
-    
-    success = combine_simulation_figures(model, scenario, output_dir)
-    if success:
-        print("Successfully combined figures")
-    else:
-        print("Failed to combine figures")
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Combine simulation figures into comparison dashboards")
+    parser.add_argument("--input-dir", type=str, default="simulations", 
+                        help="Base directory containing simulation results")
+    parser.add_argument("--output-dir", type=str, default=None, 
+                        help="Directory to save comparison figures")
+    parser.add_argument("--models", type=str, nargs="+", default=None, 
+                        help="Models to include")
+    parser.add_argument("--scenarios", type=str, nargs="+", default=None, 
+                        help="Scenarios to include")
+    
+    args = parser.parse_args()
+    
+    print("Creating comparative dashboards...")
+    result_paths = create_comparative_dashboard(
+        args.input_dir, args.output_dir, args.models, args.scenarios)
+    
+    print("Generated comparative dashboards:")
+    for path in result_paths:
+        print(f"- {path}")

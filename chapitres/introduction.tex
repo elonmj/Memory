@@ -35,10 +35,10 @@ Le réseau routier béninois présente des particularités qui rendent inadéqua
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{images/introduction/trafic_cotonou}
-\caption{Trafic typique à Cotonou montrant la prédominance des motos (Zémidjans) et leur comportement spécifique dans la circulation.}
-\label{fig:trafic_cotonou}
+\includegraphics[width=0.8\textwidth]{images/introduction/traffic_cotonou.jpg}
+\caption{Trafic typique à Cotonou montrant la prédominance des motos (Zémidjans) et leur comportement spécifique dans la circulation.}\label{fig:trafic_cotonou}
 \end{figure}
+
 
 \subsection{Limites des Modèles Classiques}
 \label{subsec:limites_modeles}
@@ -65,8 +65,8 @@ Cette recherche vise à développer un modèle macroscopique de trafic routier a
 \item \textbf{Intégrer la diversité des classes de véhicules}, avec une attention particulière aux motos et à leur comportement spécifique;
 \item \textbf{Prendre en compte l'impact des infrastructures routières} sur la dynamique du trafic, notamment la qualité variable du revêtement;
 \item \textbf{Modéliser efficacement les intersections} et autres singularités du réseau routier béninois;
-\item \textbf{Développer un outil opérationnel} pour la planification et la gestion du trafic routier au Bénin;
-\item \textbf{Valider le modèle avec des données locales} collectées sur le terrain.
+% \item \textbf{Développer un outil opérationnel} pour la planification et la gestion du trafic routier au Bénin;
+% \item \textbf{Valider le modèle avec des données locales} collectées sur le terrain.
 \end{enumerate}
 
 Ces objectifs s'inscrivent dans une démarche plus large visant à améliorer la compréhension et la gestion des systèmes de transport dans les pays en développement, en tenant compte de leurs spécificités.
@@ -82,7 +82,7 @@ Cette étude apporte plusieurs contributions significatives à la modélisation 
 \begin{itemize}
 \item \textbf{Extension multiclasses du modèle LWR} intégrant des équations de conservation couplées pour chaque type de véhicule;
 \item \textbf{Introduction d'un coefficient de ralentissement} $\lambda_{\text{mat},i}$ lié au revêtement routier pour chaque classe de véhicule;
-\item \textbf{Développement de fonctions de modulation} $f_{M,i}(\rho_M)$ pour représenter l'influence des motos sur les autres classes de véhicules;
+\item \textbf{Développement de fonctions de modulation} $f_{M,i}($\rho$_M)$ pour représenter l'influence des motos sur les autres classes de véhicules;
 \item \textbf{Formalisation mathématique} des phénomènes de gap-filling et d'interweaving observés dans le trafic béninois.
 \end{itemize}
 
@@ -90,8 +90,8 @@ Cette étude apporte plusieurs contributions significatives à la modélisation 
 \label{subsec:contrib_pratiques}
 
 \begin{itemize}
-\item \textbf{Méthodes de calibration spécifiques} pour les paramètres du modèle à partir de données réelles du Bénin;
-\item \textbf{Techniques de validation adaptées} au contexte des pays en développement, où les données peuvent être parcellaires;
+% \item \textbf{Méthodes de calibration spécifiques} pour les paramètres du modèle à partir de données réelles du Bénin;
+% \item \textbf{Techniques de validation adaptées} au contexte des pays en développement, où les données peuvent être parcellaires;
 \item \textbf{Analyses de sensibilité quantitatives} permettant d'identifier les paramètres les plus influents du modèle;
 \item \textbf{Cadre d'application opérationnel} pour l'utilisation du modèle dans la planification des infrastructures au Bénin.
 \end{itemize}
@@ -110,13 +110,13 @@ Pour présenter notre travail de manière claire et structurée, ce document est
 
 \item Le \textbf{Chapitre \ref{chap:extension_modele}} développe notre extension du modèle LWR, avec l'approche multiclasses, les fonctions de modulation pour les motos, et le coefficient de ralentissement lié au revêtement.
 
-\item Le \textbf{Chapitre \ref{chap:calibrage_validation}} présente les méthodes et résultats de calibration et de validation du modèle à partir de données collectées sur le terrain au Bénin.
+% \item Le \textbf{Chapitre \ref{chap:calibrage_validation}} présente les méthodes et résultats de calibration et de validation du modèle à partir de données collectées sur le terrain au Bénin.
 
 \item Le \textbf{Chapitre \ref{chap:analyse_sensibilite}} propose une analyse de sensibilité des paramètres du modèle pour évaluer leur impact relatif sur les prédictions.
 
 \item Le \textbf{Chapitre \ref{chap:intersections}} approfondit la modélisation des intersections et des changements de voie, points critiques du réseau béninois.
 
-\item Le \textbf{Chapitre \ref{chap:aspects_stochastiques}} intègre des aspects stochastiques et comportementaux pour améliorer la précision du modèle.
+% \item Le \textbf{Chapitre \ref{chap:aspects_stochastiques}} intègre des aspects stochastiques et comportementaux pour améliorer la précision du modèle.
 
 \item Le \textbf{Chapitre \ref{chap:discussion}} discute les forces et limites du modèle proposé et envisage des perspectives d'amélioration.
 

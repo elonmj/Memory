@@ -1,0 +1,24 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces \xpg@aux {}{french}Trafic typique à Cotonou montrant la prédominance des motos (Zémidjans) et leur comportement spécifique dans la circulation.}}{2}{figure.caption.9}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces \xpg@aux {}{french}Diagrammes fondamentaux du modèle LWR selon Greenshields : (a) relation vitesse-densité montrant la décroissance linéaire de la vitesse avec la densité, (b) relation flux-densité montrant la forme parabolique caractéristique avec le point critique à $\mitrho _c = \mitrho _{\text {max}}/2$, et (c) relation flux-vitesse.}}{9}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces \xpg@aux {}{french}Propagation d'une onde de choc : (a) représentation dans le plan $(x,t)$; (b) représentation sur le diagramme fondamental.}}{11}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces \xpg@aux {}{french}Simulation de la dissipation d'un embouteillage après le passage d'un feu au vert. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux.}}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces \xpg@aux {}{french}Simulation de la formation et propagation d'une onde de choc. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux.}}{16}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces \xpg@aux {}{french}Simulation d'une onde de raréfaction. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux.}}{18}{figure.caption.19}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \xpg@aux {}{french}Les différents types de routes au Bénin : (a) route bitumée à Cotonou; (b) route en terre en zone périurbaine; (c) route pavée; (d) piste accessible uniquement aux motos.}}{21}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces \xpg@aux {}{french}Gestion des intersections au Bénin : (a) carrefour sans feux avec agent de circulation; (b) rond-point congestionné; (c) intersection non régulée avec motos prédominantes.}}{22}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces \xpg@aux {}{french}Comportements spécifiques des motos dans le trafic béninois : (a) gap-filling entre voitures; (b) regroupement aux intersections; (c) trajectoires flexibles contournant les obstacles.}}{26}{figure.caption.23}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \xpg@aux {}{french}Comparaison de la composition du parc automobile entre le Bénin et des pays européens. La proportion de motos au Bénin est nettement plus élevée.}}{29}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \xpg@aux {}{french}Exemples des quatre catégories principales de routes au Bénin : (a) route bitumée en bon état, (b) route bitumée dégradée, (c) route en terre, (d) route pavée.}}{30}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \xpg@aux {}{french}Illustration du phénomène de gap-filling : (a) vue aérienne d'une route à deux voies avec formation de files virtuelles de motos ; (b) représentation schématique de l'utilisation de l'espace.}}{31}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \xpg@aux {}{french}Phénomène de front-loading à un feu rouge à Cotonou : (a) photographie montrant l'accumulation des motos à l'avant ; (b) évolution de la proportion de motos en fonction de la distance à la ligne d'arrêt.}}{32}{figure.caption.31}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces \xpg@aux {}{french}Diagrammes fondamentaux pour différentes proportions de motos (0\%, 25\%, 50\%, 75\%). L'augmentation de la proportion de motos élève le flux maximal et déplace le point critique vers des densités plus élevées.}}{43}{figure.caption.44}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces \xpg@aux {}{french}Analyse de stabilité du modèle étendu montrant les régions de stabilité (vert) et d'instabilité (rouge) en fonction de la proportion de motos et de la densité totale. Les courbes de niveau représentent le taux de croissance des perturbations.}}{47}{figure.caption.47}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces \xpg@aux {}{french}Structure générale du code d'implémentation du modèle}}{51}{figure.caption.56}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces \xpg@aux {}{french}Analyse de stabilité du modèle étendu montrant les régions de stabilité (vert) et d'instabilité (rouge) en fonction de la proportion de motos et de la densité totale. Les courbes de niveau représentent le taux de croissance des perturbations.}}{57}{figure.caption.63}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }

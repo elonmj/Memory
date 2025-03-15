@@ -23,7 +23,7 @@ Après avoir rappelé les fondements théoriques essentiels, nous présenterons 
 
 Rappelons que notre modèle multiclasse est décrit par le système d'équations:
 \begin{equation}
-\frac{\partial \rho_i}{\partial t} + \frac{\partial(\rho_i v_i)}{\partial x} = S_i(x,t), \quad i \in \{1,...,N\}
+\frac{\partial $\rho$_i}{\partial t} + \frac{\partial ($\rho$_i v_i)}{\partial x} = S_i(x,t), \quad i \in \{1,...,N\}
 \end{equation}
 
 Il s'agit d'un système de lois de conservation hyperboliques avec termes sources. Sa résolution numérique doit respecter plusieurs propriétés fondamentales:
@@ -41,7 +41,7 @@ Il s'agit d'un système de lois de conservation hyperboliques avec termes source
 \begin{definition}[Schéma conservatif]
 Un schéma numérique pour une loi de conservation est dit conservatif s'il peut s'écrire sous la forme:
 \begin{equation}
-\rho_i^{n+1} = \rho_i^n - \frac{\Delta t}{\Delta x}\left(F_{i+\frac{1}{2}} - F_{i-\frac{1}{2}}\right)
+$\rho$_i^{n+1} = $\rho$_i^n - \frac{$\Delta$ t}{$\Delta$ x}\left(F_{i+\frac{1}{2}} - F_{i-\frac{1}{2}}\right)
 \end{equation}
 où $F_{i+\frac{1}{2}}$ est un flux numérique à l'interface entre les cellules $i$ et $i+1$.
 \end{definition}
@@ -58,17 +58,17 @@ Ce théorème justifie l'utilisation de schémas conservatifs pour les problème
 En présence de discontinuités, les solutions faibles ne sont pas uniques. Une condition supplémentaire, la condition d'entropie, est nécessaire pour sélectionner la solution physiquement pertinente.
 
 \begin{definition}[Paire d'entropie]
-Une paire $(U, F)$ est une paire d'entropie pour la loi de conservation $\partial_t \rho + \partial_x f(\rho) = 0$ si:
+Une paire $(U, F)$ est une paire d'entropie pour la loi de conservation $\partial_t $\rho$ + \partial_x f($\rho$) = 0$ si:
 \begin{itemize}
-    \item $U(\rho)$ est convexe (entropie mathématique)
-    \item $U'(\rho) \cdot f'(\rho) = F'(\rho)$ (relation de compatibilité)
+    \item $U($\rho$)$ est convexe (entropie mathématique)
+    \item $U'($\rho$) \cdot f'($\rho$) = F'($\rho$)$ (relation de compatibilité)
 \end{itemize}
 \end{definition}
 
 \begin{theorem}[Condition d'entropie de Kruzhkov]
 La solution entropique d'une loi de conservation scalaire satisfait, pour toute paire d'entropie $(U,F)$:
 \begin{equation}
-\partial_t U(\rho) + \partial_x F(\rho) \leq 0
+\partial_t U($\rho$) + \partial_x F($\rho$) \leq 0
 \end{equation}
 au sens des distributions.
 \end{theorem}
@@ -83,16 +83,16 @@ Les schémas numériques doivent être conçus pour respecter cette condition d'
 
 Le schéma de Godunov \cite{godunov1959finite} est particulièrement adapté à la résolution des lois de conservation hyperboliques. Sa philosophie est de considérer les valeurs numériques comme des moyennes sur des cellules et de résoudre exactement des problèmes de Riemann aux interfaces entre ces cellules.
 
-Pour une équation de conservation scalaire $\partial_t \rho + \partial_x f(\rho) = 0$, le schéma s'écrit:
+Pour une équation de conservation scalaire $\partial_t $\rho$ + \partial_x f($\rho$) = 0$, le schéma s'écrit:
 
 \begin{equation}
-\rho_i^{n+1} = \rho_i^n - \frac{\Delta t}{\Delta x} \left( F_{i+\frac{1}{2}}^n - F_{i-\frac{1}{2}}^n \right)
+$\rho$_i^{n+1} = $\rho$_i^n - \frac{$\Delta$ t}{$\Delta$ x} \left( F_{i+\frac{1}{2}}^n - F_{i-\frac{1}{2}}^n \right)
 \end{equation}
 
 où le flux numérique $F_{i+\frac{1}{2}}^n$ est obtenu en résolvant exactement le problème de Riemann à l'interface:
 
 \begin{equation}
-F_{i+\frac{1}{2}}^n = f\left(\rho^*\left(\rho_i^n, \rho_{i+1}^n\right)\right)
+F_{i+\frac{1}{2}}^n = f\left($\rho$^*\left($\rho$_i^n, $\rho$_{i+1}^n\right)\right)
 \end{equation}
 
 avec $\rho^*$ la valeur de $\rho$ à l'interface au temps $t^n$, obtenue par la résolution exacte du problème de Riemann.
@@ -102,8 +102,8 @@ Pour un diagramme fondamental strictement concave (comme celui de Greenshields),
 \begin{equation}
 F_{i+\frac{1}{2}}^n = 
 \begin{cases} 
-\min_{\rho \in [\rho_i^n, \rho_{i+1}^n]} f(\rho) & \text{si } \rho_i^n \leq \rho_{i+1}^n \\
-\max_{\rho \in [\rho_{i+1}^n, \rho_i^n]} f(\rho) & \text{si } \rho_i^n > \rho_{i+1}^n
+\min_{$\rho$ \in [$\rho$_i^n, $\rho$_{i+1}^n]} f($\rho$) & \text{si } $\rho$_i^n \leq $\rho$_{i+1}^n \\
+\max_{$\rho$ \in [$\rho$_{i+1}^n, $\rho$_i^n]} f($\rho$) & \text{si } $\rho$_i^n > $\rho$_{i+1}^n
 \end{cases}
 \end{equation}
 
@@ -120,33 +120,33 @@ Le schéma de Godunov possède les propriétés suivantes:
 \subsection{Extension au Système Multiclasse}
 \label{subsec:extension_multiclasse}
 
-Pour notre système multiclasse couplé, l'extension directe du schéma de Godunov n'est pas triviale en raison du couplage entre les classes via la vitesse $v_i(\boldsymbol{\rho}, x)$. Nous avons développé une extension qui préserve les propriétés essentielles du schéma original.
+Pour notre système multiclasse couplé, l'extension directe du schéma de Godunov n'est pas triviale en raison du couplage entre les classes via la vitesse $v_i(\boldsymbol{$\rho$}, x)$. Nous avons développé une extension qui préserve les propriétés essentielles du schéma original.
 
 Pour chaque classe $i \in \{1,\ldots,N\}$, nous appliquons le schéma:
 
 \begin{empheq}[box=\colorbox{lightblue!15}]{align}
-\rho_i^{n+1}_j = \rho_i^{n}_j - \frac{\Delta t}{\Delta x} \left(F_{i,j+\frac{1}{2}}^n - F_{i,j-\frac{1}{2}}^n\right) + \Delta t \cdot S_i(x_j, t^n)
+$\rho$_{i,j}^{n+1} = $\rho$_{i,j}^{n} - \frac{$\Delta$ t}{$\Delta$ x} \left(F_{i,j+\frac{1}{2}}^n - F_{i,j-\frac{1}{2}}^n\right) + $\Delta$ t \cdot S_i(x_j, t^n)
 \label{eq:schema_godunov_multiclasse}
 \end{empheq}
 
-La difficulté réside dans le calcul du flux numérique $F_{i,j+\frac{1}{2}}^n. Nous proposons un solveur de Riemann approché qui prend en compte le couplage entre classes:
+La difficulté réside dans le calcul du flux numérique $F_{i,j+\frac{1}{2}}^n$. Nous proposons un solveur de Riemann approché qui prend en compte le couplage entre classes:
 
 \begin{align}
-F_{i,j+\frac{1}{2}}^n = \mathcal{F}_i\left(\boldsymbol{\rho}^n_j, \boldsymbol{\rho}^n_{j+1}, x_{j+\frac{1}{2}}\right)
+F_{i,j+\frac{1}{2}}^n = \mathcal{F}_i\left(\boldsymbol{$\rho$}^n_j, \boldsymbol{$\rho$}^n_{j+1}, x_{j+\frac{1}{2}}\right)
 \end{align}
 
 Ce flux est calculé en plusieurs étapes:
 
 \begin{enumerate}
-    \item Calcul des densités totales: $\rho_j^n = \sum_{k=1}^N \rho_{k,j}^n$ et $\rho_{j+1}^n = \sum_{k=1}^N \rho_{k,j+1}^n$
-    \item Calcul des vitesses: $v_{i,j}^n = v_i(\boldsymbol{\rho}_j^n, x_j)$ et $v_{i,j+1}^n = v_i(\boldsymbol{\rho}_{j+1}^n, x_{j+1})$
+    \item Calcul des densités totales: $\rho_j^n = \sum_{k=1}^N $\rho$_{k,j}^n$ et $\rho_{j+1}^n = \sum_{k=1}^N $\rho$_{k,j+1}^n$
+    \item Calcul des vitesses: $v_{i,j}^n = v_i(\boldsymbol{$\rho$}_j^n, x_j)$ et $v_{i,j+1}^n = v_i(\boldsymbol{$\rho$}_{j+1}^n, x_{j+1})$
     \item Application du solveur HLL (Harten-Lax-van Leer) adapté au système:
     \begin{equation}
     \mathcal{F}_i = 
     \begin{cases}
-    \rho_{i,j}^n v_{i,j}^n & \text{si } 0 \leq S_L \\
-    \frac{S_R \rho_{i,j}^n v_{i,j}^n - S_L \rho_{i,j+1}^n v_{i,j+1}^n + S_L S_R (\rho_{i,j+1}^n - \rho_{i,j}^n)}{S_R - S_L} & \text{si } S_L < 0 < S_R \\
-    \rho_{i,j+1}^n v_{i,j+1}^n & \text{si } S_R \leq 0
+    $\rho$_{i,j}^n v_{i,j}^n & \text{si } 0 \leq S_L \\
+    \frac{S_R $\rho$_{i,j}^n v_{i,j}^n - S_L $\rho$_{i,j+1}^n v_{i,j+1}^n + S_L S_R ($\rho$_{i,j+1}^n - $\rho$_{i,j}^n)}{S_R - S_L} & \text{si } S_L < 0 < S_R \\
+    $\rho$_{i,j+1}^n v_{i,j+1}^n & \text{si } S_R \leq 0
     \end{cases}
     \end{equation}
 \end{enumerate}
@@ -154,8 +154,8 @@ Ce flux est calculé en plusieurs étapes:
 où $S_L$ et $S_R$ sont des approximations des vitesses d'onde les plus rapides à gauche et à droite, définies par:
 
 \begin{align}
-S_L &= \min(v_{i,j}^n - \sqrt{\beta_i \rho_{i,j}^n \left|\frac{\partial v_i}{\partial \rho_i}(\boldsymbol{\rho}_j^n, x_j)\right|}, v_{i,j+1}^n - \sqrt{\beta_i \rho_{i,j+1}^n \left|\frac{\partial v_i}{\partial \rho_i}(\boldsymbol{\rho}_{j+1}^n, x_{j+1})\right|}) \\
-S_R &= \max(v_{i,j}^n + \sqrt{\beta_i \rho_{i,j}^n \left|\frac{\partial v_i}{\partial \rho_i}(\boldsymbol{\rho}_j^n, x_j)\right|}, v_{i,j+1}^n + \sqrt{\beta_i \rho_{i,j+1}^n \left|\frac{\partial v_i}{\partial \rho_i}(\boldsymbol{\rho}_{j+1}^n, x_{j+1})\right|})
+S_L &= \min(v_{i,j}^n - \sqrt{\beta_i $\rho$_{i,j}^n \left|\frac{\partial v_i}{\partial $\rho$_i}(\boldsymbol{$\rho$}_j^n, x_j)\right|}, v_{i,j+1}^n - \sqrt{\beta_i $\rho$_{i,j+1}^n \left|\frac{\partial v_i}{\partial $\rho$_i}(\boldsymbol{$\rho$}_{j+1}^n, x_{j+1})\right|}) \\
+S_R &= \max(v_{i,j}^n + \sqrt{\beta_i $\rho$_{i,j}^n \left|\frac{\partial v_i}{\partial $\rho$_i}(\boldsymbol{$\rho$}_j^n, x_j)\right|}, v_{i,j+1}^n + \sqrt{\beta_i $\rho$_{i,j+1}^n \left|\frac{\partial v_i}{\partial $\rho$_i}(\boldsymbol{$\rho$}_{j+1}^n, x_{j+1})\right|})
 \end{align}
 
 avec $\beta_i$ un paramètre de classe qui contrôle la diffusion numérique.
@@ -179,20 +179,20 @@ La conservation de la masse découle directement de la forme conservative du sch
 \subsection{Analyse de Von Neumann pour le Système Linéarisé}
 \label{subsec:analyse_von_neumann}
 
-Une analyse classique de la stabilité du schéma numérique consiste à étudier la propagation des erreurs par l'analyse de Von Neumann. En linéarisant le système autour d'un état homogène $\boldsymbol{\rho}_0$, on obtient:
+Une analyse classique de la stabilité du schéma numérique consiste à étudier la propagation des erreurs par l'analyse de Von Neumann. En linéarisant le système autour d'un état homogène $\boldsymbol{$\rho$}_0$, on obtient:
 
 \begin{equation}
-\frac{\partial \delta\boldsymbol{\rho}}{\partial t} + \mathbf{A}(\boldsymbol{\rho}_0, x) \frac{\partial \delta\boldsymbol{\rho}}{\partial x} = 0
+\frac{\partial \delta\boldsymbol{$\rho$}}{\partial t} + \mathbf{A}(\boldsymbol{$\rho$}_0, x) \frac{\partial \delta\boldsymbol{$\rho$}}{\partial x} = 0
 \end{equation}
 
-où $\delta\boldsymbol{\rho}$ représente une petite perturbation et $\mathbf{A}(\boldsymbol{\rho}_0, x)$ est la matrice jacobienne du flux.
+où $\delta\boldsymbol{$\rho$}$ représente une petite perturbation et $\mathbf{A}(\boldsymbol{$\rho$}_0, x)$ est la matrice jacobienne du flux.
 
-Pour une perturbation de la forme $\delta\rho_i(x,t) = \hat{\rho}_i e^{ikx} e^{\sigma t}$, le facteur d'amplification $G = e^{\sigma \Delta t}$ du schéma numérique doit satisfaire $|G| \leq 1$ pour assurer la stabilité.
+Pour une perturbation de la forme $\delta$\rho$_i(x,t) = \hat{$\rho$}_i e^{ikx} e^{\sigma t}$, le facteur d'amplification $G = e^{\sigma $\Delta$ t}$ du schéma numérique doit satisfaire $|G| \leq 1$ pour assurer la stabilité.
 
 \begin{theorem}[Condition de stabilité de Von Neumann]
 Pour le schéma multiclasse linéarisé, la condition de stabilité s'écrit:
 \begin{equation}
-\Delta t \leq \frac{\Delta x}{\max_i |\lambda_i(\mathbf{A}(\boldsymbol{\rho}_0, x))|}
+$\Delta$ t \leq \frac{$\Delta$ x}{\max_i |$\lambda$_i(\mathbf{A}(\boldsymbol{$\rho$}_0, x))|}
 \end{equation}
 où $\lambda_i(\mathbf{A})$ sont les valeurs propres de la matrice jacobienne $\mathbf{A}$.
 \end{theorem}
@@ -203,7 +203,7 @@ où $\lambda_i(\mathbf{A})$ sont les valeurs propres de la matrice jacobienne $\
 Pour le système non linéaire complet, la condition de Courant-Friedrichs-Lewy (CFL) garantissant la stabilité s'exprime:
 
 \begin{empheq}[box=\colorbox{lightblue!15}]{align}
-\Delta t \leq C_{CFL} \cdot \frac{\Delta x}{\max_{i,j} \left( |v_i(\boldsymbol{\rho}^n_j, x_j)| + \rho_{i,j}^n \left|\frac{\partial v_i}{\partial \rho_i}(\boldsymbol{\rho}^n_j, x_j)\right| \right)}
+$\Delta$ t \leq C_{CFL} \cdot \frac{$\Delta$ x}{\max_{i,j} \left( |v_i(\boldsymbol{$\rho$}^n_j, x_j)| + $\rho$_{i,j}^n \left|\frac{\partial v_i}{\partial $\rho$_i}(\boldsymbol{$\rho$}^n_j, x_j)\right| \right)}
 \label{eq:condition_cfl_generalisee}
 \end{empheq}
 
@@ -214,28 +214,21 @@ Cette condition garantit que les ondes les plus rapides ne traversent pas plus d
 \begin{proposition}[Expression explicite pour le modèle de motos]
 Pour notre modèle multiclasse avec fonction de modulation des motos, la condition CFL s'écrit:
 \begin{equation}
-\Delta t \leq C_{CFL} \cdot \frac{\Delta x}{\max_{i,j} \left( |v_i(\boldsymbol{\rho}^n_j, x_j)| + \frac{\lambda_i(x_j) v_{i,0}}{\rho_{\max}} \cdot f_i(\rho_{M,j}^n) \cdot \rho_{i,j}^n + |\mathcal{T}_i(\boldsymbol{\rho}^n_j, x_j)| \right)}
+$\Delta$ t \leq C_{CFL} \cdot \frac{$\Delta$ x}{\max_{i,j} \left( |v_i(\boldsymbol{$\rho$}^n_j, x_j)| + \frac{$\lambda$_i(x_j) v_{i,0}}{$\rho$_{\max}} \cdot f_i($\rho$_{M,j}^n) \cdot $\rho$_{i,j}^n + |\mathcal{T}_i(\boldsymbol{$\rho$}^n_j, x_j)| \right)}
 \end{equation}
 où $\mathcal{T}_i$ est un terme additionnel dû aux fonctions de modulation:
 \begin{equation}
-\mathcal{T}_i(\boldsymbol{\rho}, x) = 
+\mathcal{T}_i(\boldsymbol{$\rho$}, x) = 
 \begin{cases}
-\lambda_i(x) v_{i,0} \left(1 - \frac{\rho}{\rho_{\max}}\right) \cdot \gamma \cdot \frac{\rho_i}{\rho_{M,\max}} & \text{si } i = M \\
--\lambda_i(x) v_{i,0} \left(1 - \frac{\rho}{\rho_{\max}}\right) \cdot \beta_i \cdot \frac{\rho_i}{\rho_{M,\max}} & \text{si } i \neq M
+$\lambda$_i(x) v_{i,0} \left(1 - \frac{$\rho$}{$\rho$_{\max}}\right) \cdot $\gamma$ \cdot \frac{$\rho$_i}{$\rho$_{M,\max}} & \text{si } i = M \\
+-$\lambda$_i(x) v_{i,0} \left(1 - \frac{$\rho$}{$\rho$_{\max}}\right) \cdot \beta_i \cdot \frac{$\rho$_i}{$\rho$_{M,\max}} & \text{si } i \neq M
 \end{cases}
 \end{equation}
 \end{proposition}
 
 \begin{proof}
-Cette expression s'obtient en calculant explicitement les dérivées partielles $\frac{\partial v_i}{\partial \rho_i}$ et $\frac{\partial v_i}{\partial \rho_M}$ à partir des expressions \eqref{eq:vitesse_complete}, \eqref{eq:fonction_gap_filling} et \eqref{eq:fonction_interweaving} du chapitre \ref{chap:extension_modele}.
+Cette expression s'obtient en calculant explicitement les dérivées partielles $\frac{\partial v_i}{\partial $\rho$_i}$ et $\frac{\partial v_i}{\partial $\rho$_M}$ à partir des expressions \eqref{eq:vitesse_complete}, \eqref{eq:fonction_gap_filling} et \eqref{eq:fonction_interweaving} du chapitre \ref{chap:extension_modele}.
 \end{proof}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{simulations/ANALYSIS/performance_comparison}
-\caption{Comparaison des performances pour différentes stratégies d'optimisation sur un cas test multiclasse à deux classes, montrant l'accélération relative par rapport à l'implémentation de base.}
-\label{fig:performance}
-\end{figure}
 
 \section{Étude de Convergence et Validation}
 \label{sec:convergence_validation}
@@ -246,20 +239,20 @@ Cette expression s'obtient en calculant explicitement les dérivées partielles 
 Pour quantifier la convergence du schéma numérique, nous utilisons les normes d'erreur classiques en comparant la solution numérique à une solution de référence (analytique quand elle existe, ou numérique très fine sinon):
 
 \begin{align}
-E_1(\Delta x) &= \frac{1}{N_x} \sum_{j=1}^{N_x} |\rho_j^{\Delta x} - \rho(x_j)|\\
-E_2(\Delta x) &= \sqrt{\frac{1}{N_x} \sum_{j=1}^{N_x} |\rho_j^{\Delta x} - \rho(x_j)|^2}\\
-E_{\infty}(\Delta x) &= \max_{j} |\rho_j^{\Delta x} - \rho(x_j)|
+E_1($\Delta$ x) &= \frac{1}{N_x} \sum_{j=1}^{N_x} |$\rho$_j^{$\Delta$ x} - $\rho$(x_j)|\\
+E_2($\Delta$ x) &= \sqrt{\frac{1}{N_x} \sum_{j=1}^{N_x} |$\rho$_j^{$\Delta$ x} - $\rho$(x_j)|^2}\\
+E_{\infty}($\Delta$ x) &= \max_{j} |$\rho$_j^{$\Delta$ x} - $\rho$(x_j)|
 \end{align}
 
-où $\rho_j^{\Delta x}$ est la solution numérique obtenue avec un pas d'espace $\Delta x, et \rho(x_j)$ est la solution de référence au point $x_j$.
+où $\rho_j^{$\Delta$ x}$ est la solution numérique obtenue avec un pas d'espace $\Delta x$, et $\rho(x_j)$ est la solution de référence au point $x_j$.
 
 L'ordre de convergence $p$ se définit alors comme:
 \begin{equation}
-p = \lim_{\Delta x \to 0} \frac{\log(E(\Delta x_1)/E(\Delta x_2))}{\log(\Delta x_1/\Delta x_2)}
+p = \lim_{$\Delta$ x \to 0} \frac{\log(E($\Delta$ x_1)/E($\Delta$ x_2))}{\log($\Delta$ x_1/$\Delta$ x_2)}
 \end{equation}
 
 \begin{theorem}[Ordre de convergence théorique]
-Pour des solutions régulières, le schéma de Godunov et son extension multiclasse sont d'ordre 1, c'est-à-dire que $E(\Delta x) = O(\Delta x). En présence de discontinuités, l'ordre de convergence se dégrade à $O(\Delta x^{1/2})$.
+Pour des solutions régulières, le schéma de Godunov et son extension multiclasse sont d'ordre 1, c'est-à-dire que $E($\Delta$ x) = O($\Delta$ x)$. En présence de discontinuités, l'ordre de convergence se dégrade à $O($\Delta$ x^{1/2})$.
 \end{theorem}
 
 \subsection{Analyse de Convergence Numérique}
@@ -272,10 +265,10 @@ Nous avons réalisé une étude systématique de la convergence en raffinant pro
 
 Pour un problème de Riemann à une seule classe:
 \begin{align}
-\rho(x,0) = 
+$\rho$(x,0) = 
 \begin{cases}
-\rho_L & \text{si } x < x_0\\
-\rho_R & \text{si } x > x_0
+$\rho$_L & \text{si } x < x_0\\
+$\rho$_R & \text{si } x > x_0
 \end{cases}
 \end{align}
 
@@ -305,15 +298,15 @@ On observe un ordre de convergence très proche de 1, conforme à la théorie po
 Pour un problème multiclasse avec deux classes (motos et voitures) interagissant:
 
 \begin{align}
-\rho_M(x,0) &= 
+$\rho$_M(x,0) &= 
 \begin{cases}
-0.3\rho_{M,\max} & \text{si } x < x_0\\
-0.1\rho_{M,\max} & \text{si } x > x_0
+0.3$\rho$_{M,\max} & \text{si } x < x_0\\
+0.1$\rho$_{M,\max} & \text{si } x > x_0
 \end{cases}\\
-\rho_V(x,0) &= 
+$\rho$_V(x,0) &= 
 \begin{cases}
-0.2\rho_{V,\max} & \text{si } x < x_0\\
-0.4\rho_{V,\max} & \text{si } x > x_0
+0.2$\rho$_{V,\max} & \text{si } x < x_0\\
+0.4$\rho$_{V,\max} & \text{si } x > x_0
 \end{cases}
 \end{align}
 
@@ -343,7 +336,7 @@ L'ordre de convergence reste proche de 1, mais légèrement inférieur au cas si
 Pour un problème impliquant une discontinuité du coefficient de ralentissement $\lambda_i(x)$:
 
 \begin{align}
-\lambda_i(x) = 
+$\lambda$_i(x) = 
 \begin{cases}
 1 & \text{si } x < x_0\\
 0.6 & \text{si } x > x_0
@@ -419,16 +412,16 @@ Le traitement des discontinuités spatiales du coefficient de ralentissement $\l
 
 Pour une discontinuité du coefficient $\lambda_i(x)$ en $x=x_0$:
 \begin{equation}
-\lambda_i(x) = 
+$\lambda$_i(x) = 
 \begin{cases}
-\lambda_i^- & \text{si } x < x_0 \\
-\lambda_i^+ & \text{si } x > x_0
+$\lambda$_i^- & \text{si } x < x_0 \\
+$\lambda$_i^+ & \text{si } x > x_0
 \end{cases}
 \end{equation}
 
 Nous devons assurer la conservation du flux à travers cette discontinuité:
 \begin{equation}
-\lim_{x \to x_0^-} \rho_i(x,t) \cdot v_i(\boldsymbol{\rho}(x,t), x) = \lim_{x \to x_0^+} \rho_i(x,t) \cdot v_i(\boldsymbol{\rho}(x,t), x)
+\lim_{x \to x_0^-} $\rho$_i(x,t) \cdot v_i(\boldsymbol{$\rho$}(x,t), x) = \lim_{x \to x_0^+} $\rho$_i(x,t) \cdot v_i(\boldsymbol{$\rho$}(x,t), x)
 \end{equation}
 
 Cette condition peut produire des densités discontinues à l'interface, même si le flux reste continu. Pour résoudre ce problème, nous utilisons une approche basée sur un problème de Riemann stationnaire à l'interface.
@@ -436,23 +429,23 @@ Cette condition peut produire des densités discontinues à l'interface, même s
 \begin{proposition}[Solution au problème de Riemann stationnaire]
 Pour une transition de $\lambda_i^-$ à $\lambda_i^+$ en $x = x_0$, avec un état amont $\rho_i^-$, l'état aval $\rho_i^+$ satisfaisant la conservation du flux est:
 \begin{equation}
-\rho_i^+ = \rho_{\max} \cdot \left(1 - \frac{\lambda_i^-}{\lambda_i^+} \cdot \left(1 - \frac{\rho_i^-}{\rho_{\max}}\right)\right)
+$\rho$_i^+ = $\rho$_{\max} \cdot \left(1 - \frac{$\lambda$_i^-}{$\lambda$_i^+} \cdot \left(1 - \frac{$\rho$_i^-}{$\rho$_{\max}}\right)\right)
 \end{equation}
 \end{proposition}
 
 \begin{proof}
 La condition de conservation du flux s'écrit:
 \begin{align}
-\rho_i^- \cdot \lambda_i^- \cdot v_{i,0} \cdot \left(1 - \frac{\rho}{\rho_{\max}}\right) \cdot f_i(\rho_M^-) &= \rho_i^+ \cdot \lambda_i^+ \cdot v_{i,0} \cdot \left(1 - \frac{\rho}{\rho_{\max}}\right) \cdot f_i(\rho_M^+)
+$\rho$_i^- \cdot $\lambda$_i^- \cdot v_{i,0} \cdot \left(1 - \frac{$\rho$}{$\rho$_{\max}}\right) \cdot f_i($\rho$_M^-) &= $\rho$_i^+ \cdot $\lambda$_i^+ \cdot v_{i,0} \cdot \left(1 - \frac{$\rho$}{$\rho$_{\max}}\right) \cdot f_i($\rho$_M^+)
 \end{align}
 
-En supposant que $f_i(\rho_M^-) \approx f_i(\rho_M^+)$ localement à l'interface et en résolvant pour $\rho_i^+$, on obtient l'expression donnée.
+En supposant que $f_i($\rho$_M^-) \approx f_i($\rho$_M^+)$ localement à l'interface et en résolvant pour $\rho_i^+$, on obtient l'expression donnée.
 \end{proof}
 
 En pratique, nous implémentons cette condition dans notre schéma numérique en modifiant le flux à l'interface correspondant à la discontinuité de $\lambda_i(x)$:
 
 \begin{empheq}[box=\colorbox{lightblue!15}]{align}
-F_{i,j+\frac{1}{2}}^n = \min\left(q_i(\boldsymbol{\rho}_j^n, x_j), \frac{\lambda_i(x_{j+1})}{\lambda_i(x_j)} \cdot q_{i,\max}(x_{j+1})\right)
+F_{i,j+\frac{1}{2}}^n = \min\left(q_i(\boldsymbol{$\rho$}_j^n, x_j), \frac{$\lambda$_i(x_{j+1})}{$\lambda$_i(x_j)} \cdot q_{i,\max}(x_{j+1})\right)
 \label{eq:flux_interface_discontinue}
 \end{empheq}
 
@@ -466,7 +459,7 @@ Cette approche garantit la satisfaction des principes de conservation et d'entro
 Les intersections représentent des points singuliers du réseau routier où des flux entrent et sortent. Dans notre modèle, elles sont représentées par des termes sources $S_i(x,t)$ localisés en certains points $x_k$:
 
 \begin{equation}
-S_i(x,t) = \sum_k \alpha_{i,k}(t) \cdot \delta(x-x_k)
+S_i(x,t) = \sum_k $\alpha$_{i,k}(t) \cdot \delta(x-x_k)
 \end{equation}
 
 où $\delta$ est la distribution de Dirac et $\alpha_{i,k}(t)$ représente le taux d'entrée/sortie net pour la classe $i$ à l'intersection $k$.
@@ -474,9 +467,9 @@ où $\delta$ est la distribution de Dirac et $\alpha_{i,k}(t)$ représente le ta
 L'intégration numérique de ces termes sources discontinus requiert une attention particulière. Nous utilisons une approche de splitting de Strang qui sépare la résolution de l'équation de conservation homogène et l'application des termes sources:
 
 \begin{enumerate}
-\item Résolution du système homogène sur un demi-pas de temps: $\rho_i^{n+1/2} = \mathcal{L}_h(\Delta t/2) \rho_i^n$
-\item Application des termes sources sur un pas de temps complet: $\rho_i^{*} = \mathcal{L}_s(\Delta t) \rho_i^{n+1/2}$
-\item Résolution du système homogène sur un second demi-pas de temps: $\rho_i^{n+1} = \mathcal{L}_h(\Delta t/2) \rho_i^{*}$
+\item Résolution du système homogène sur un demi-pas de temps: $\rho_i^{n+1/2} = \mathcal{L}_h($\Delta$ t/2) $\rho$_i^n$
+\item Application des termes sources sur un pas de temps complet: $\rho_i^{*} = \mathcal{L}_s($\Delta$ t) $\rho$_i^{n+1/2}$
+\item Résolution du système homogène sur un second demi-pas de temps: $\rho_i^{n+1} = \mathcal{L}_h($\Delta$ t/2) $\rho$_i^{*}$
 \end{enumerate}
 
 où $\mathcal{L}_h$ et $\mathcal{L}_s$ sont les opérateurs correspondant respectivement à la résolution du système homogène et à l'application des termes sources.
@@ -484,7 +477,7 @@ où $\mathcal{L}_h$ et $\mathcal{L}_s$ sont les opérateurs correspondant respec
 Pour une cellule $j$ contenant une intersection, l'application des termes sources s'écrit simplement:
 
 \begin{equation}
-\rho_{i,j}^{*} = \rho_{i,j}^{n+1/2} + \Delta t \cdot \alpha_{i,k}(t^n) / \Delta x
+$\rho$_{i,j}^{*} = $\rho$_{i,j}^{n+1/2} + $\Delta$ t \cdot $\alpha$_{i,k}(t^n) / $\Delta$ x
 \end{equation}
 
 Cette approche préserve l'ordre de convergence du schéma tout en assurant la précision du traitement des intersections.
@@ -495,7 +488,7 @@ Cette approche préserve l'ordre de convergence du schéma tout en assurant la p
 Outre les termes sources ponctuels aux intersections, notre modèle peut inclure des termes sources distribués représentant, par exemple, des entrées et sorties continues le long d'une route:
 
 \begin{equation}
-S_i(x,t) = s_i(x,t) + \sum_k \alpha_{i,k}(t) \cdot \delta(x-x_k)
+S_i(x,t) = s_i(x,t) + \sum_k $\alpha$_{i,k}(t) \cdot \delta(x-x_k)
 \end{equation}
 
 où $s_i(x,t)$ est une fonction continue.
@@ -503,7 +496,7 @@ où $s_i(x,t)$ est une fonction continue.
 Pour ces termes, nous utilisons une approximation centrée:
 
 \begin{equation}
-\int_{x_{j-1/2}}^{x_{j+1/2}} s_i(x,t^n) \, dx \approx \Delta x \cdot s_i(x_j, t^n)
+\int_{x_{j-1/2}}^{x_{j+1/2}} s_i(x,t^n) \, dx \approx $\Delta$ x \cdot s_i(x_j, t^n)
 \end{equation}
 
 La stratégie de splitting reste valable, et l'opérateur $\mathcal{L}_s$ intègre maintenant les deux types de termes sources.
@@ -511,7 +504,7 @@ La stratégie de splitting reste valable, et l'opérateur $\mathcal{L}_s$ intèg
 Pour les termes sources qui dépendent de la solution elle-même (rétroaction), nous utilisons une approche semi-implicite pour améliorer la stabilité:
 
 \begin{equation}
-\rho_{i,j}^{*} = \rho_{i,j}^{n+1/2} + \Delta t \cdot s_i(x_j, t^n, \rho_{i,j}^{n+1/2}, \rho_{i,j}^{*})
+$\rho$_{i,j}^{*} = $\rho$_{i,j}^{n+1/2} + $\Delta$ t \cdot s_i(x_j, t^n, $\rho$_{i,j}^{n+1/2}, $\rho$_{i,j}^{*})
 \end{equation}
 
 Cette équation est résolue de manière itérative ou par une méthode de point fixe.
@@ -537,33 +530,33 @@ L'algorithme \ref{alg:global} présente la structure générale de notre implém
 \caption{Schéma global de résolution du modèle multiclasse}
 \begin{algorithmic}[1]
 \Function{SolveMulticlassSystem}{ModelParams, InitialCondition, FinalTime}
-    \State $\boldsymbol{\rho}^0 \gets$ InitialCondition
+    \State $\boldsymbol{$\rho$}^0 \gets$ InitialCondition
     \State $t \gets 0$
     \State $n \gets 0$
     \While{$t < $ FinalTime}
         \State // Calcul du pas de temps selon la condition CFL
-        \State $\Delta t \gets$ \Call{ComputeCFLTimeStep}{$\boldsymbol{\rho}^n$, ModelParams}
-        \State $\Delta t \gets \min(\Delta t, \text{FinalTime} - t)$
+        \State $\Delta t \gets$ \Call{ComputeCFLTimeStep}{$\boldsymbol{$\rho$}^n$, ModelParams}
+        \State $\Delta t \gets \min($\Delta$ t, \text{FinalTime} - t)$
         
         \State // Première étape du splitting: système homogène sur $\Delta t/2$
         \For{each class $i$}
-            \State $\boldsymbol{\rho}_i^{n+1/2} \gets$ \Call{SolveHomogeneousSystem}{$\boldsymbol{\rho}_i^n$, $\Delta t/2$, ModelParams}
+            \State $\boldsymbol{$\rho$}_i^{n+1/2} \gets$ \Call{SolveHomogeneousSystem}{$\boldsymbol{$\rho$}_i^n$, $\Delta t/2$, ModelParams}
         \EndFor
         
         \State // Deuxième étape: application des termes sources sur $\Delta t$
         \For{each class $i$}
-            \State $\boldsymbol{\rho}_i^* \gets$ \Call{ApplySourceTerms}{$\boldsymbol{\rho}_i^{n+1/2}$, $\Delta t$, $t+\Delta t/2$, ModelParams}
+            \State $\boldsymbol{$\rho$}_i^* \gets$ \Call{ApplySourceTerms}{$\boldsymbol{$\rho$}_i^{n+1/2}$, $\Delta t$, $t+$\Delta$ t/2$, ModelParams}
         \EndFor
         
         \State // Troisième étape: système homogène sur $\Delta t/2$
         \For{each class $i$}
-            \State $\boldsymbol{\rho}_i^{n+1} \gets$ \Call{SolveHomogeneousSystem}{$\boldsymbol{\rho}_i^*$, $\Delta t/2$, ModelParams}
+            \State $\boldsymbol{$\rho$}_i^{n+1} \gets$ \Call{SolveHomogeneousSystem}{$\boldsymbol{$\rho$}_i^*$, $\Delta t/2$, ModelParams}
         \EndFor
         
-        \State $t \gets t + \Delta t$
+        \State $t \gets t + $\Delta$ t$
         \State $n \gets n + 1$
     \EndWhile
-    \State \Return $\boldsymbol{\rho}^n$
+    \State \Return $\boldsymbol{$\rho$}^n$
 \EndFunction
 \end{algorithmic}
 \label{alg:global}
@@ -606,7 +599,7 @@ Le traitement des conditions aux limites est crucial pour la simulation de tron�
 Pour chaque condition limite, le flux numérique à la frontière est adapté en conséquence. Par exemple, pour une condition de Dirichlet en entrée, nous calculons:
 
 \begin{equation}
-F_{1/2}^n = \mathcal{F}(\rho_{in}^n, \rho_1^n)
+F_{1/2}^n = \mathcal{F}($\rho$_{in}^n, $\rho$_1^n)
 \end{equation}
 
 où $\rho_{in}^n$ est la densité imposée à l'entrée.

@@ -322,69 +322,85 @@ class SimulationPlotter:
             
         return fig
 
-    def plot_combined_evolution(self, density, velocity, flow, grid_x, grid_t, title=None, show=False, save=True):
+    def plot_combined_evolution(self, density, velocity, flow, x_grid, t_grid, title=None, show=True, save=True):
         """
-        Generate a combined space-time plot with density, velocity, and flow evolution.
+        Creates a combined visualization showing density, velocity, and flow evolution in a single figure.
         
-        Args:
-            density: 2D array of density values [time, space]
-            velocity: 2D array of velocity values [time, space]
-            flow: 2D array of flow values [time, space]
-            grid_x: Spatial grid points
-            grid_t: Time grid points
-            title: Base title for the plot
-            show: Whether to display the plot
-            save: Whether to save the plot to file
-            
+        Parameters:
+        -----------
+        density : numpy.ndarray
+            2D array of traffic density values (shape: time x space)
+        velocity : numpy.ndarray
+            2D array of traffic velocity values (shape: time x space)
+        flow : numpy.ndarray
+            2D array of traffic flow values (shape: time x space)
+        x_grid : numpy.ndarray
+            1D array of spatial grid points [km]
+        t_grid : numpy.ndarray
+            1D array of time grid points [h]
+        title : str, optional
+            Title for the plot. If None, a default title will be used.
+        show : bool, optional
+            If True, the plot will be displayed
+        save : bool, optional
+            If True, the plot will be saved to a file
+        
         Returns:
-            Matplotlib figure object
+        --------
+        fig : matplotlib.figure.Figure
+            The generated figure
         """
-        # Create figure with 3 subplots arranged vertically
-        fig, axes = plt.subplots(3, 1, figsize=(12, 15))
+        # Input validation
+        if not all(isinstance(arr, np.ndarray) for arr in [density, velocity, flow, x_grid, t_grid]):
+            raise TypeError("Density, velocity, flow, x_grid, and t_grid must be numpy arrays")
         
-        # Convert grids to meshgrid for pcolormesh
-        X, T = np.meshgrid(grid_x, grid_t)
+        if not (density.shape == velocity.shape == flow.shape):
+            raise ValueError("Density, velocity, and flow arrays must have the same shape")
+        
+        # Create a figure with 3 subplots (vertically stacked)
+        fig, axs = plt.subplots(3, 1, figsize=(10, 12), sharex=True)
+        
+        # Create 2D meshgrid for pcolormesh
+        X, T = np.meshgrid(x_grid, t_grid)
         
         # Plot density evolution
-        im1 = axes[0].pcolormesh(X, T, density, cmap='viridis', shading='auto')
-        cbar1 = fig.colorbar(im1, ax=axes[0])
-        cbar1.set_label('Densité (véh/km)')
-        axes[0].set_xlabel('Position (km)')
-        axes[0].set_ylabel('Temps (h)')
-        if title:
-            axes[0].set_title(f"(a) {title} - Évolution de la densité")
-        else:
-            axes[0].set_title(f"(a) {self.model_name} - Évolution de la densité")
+        im1 = axs[0].pcolormesh(X, T, density, cmap='viridis', shading='auto')
+        axs[0].set_title('Density Evolution')
+        axs[0].set_ylabel('Time (h)')
+        fig.colorbar(im1, ax=axs[0], label='Density (veh/km)')
         
         # Plot velocity evolution
-        im2 = axes[1].pcolormesh(X, T, velocity, cmap='coolwarm', shading='auto')
-        cbar2 = fig.colorbar(im2, ax=axes[1])
-        cbar2.set_label('Vitesse (km/h)')
-        axes[1].set_xlabel('Position (km)')
-        axes[1].set_ylabel('Temps (h)')
-        if title:
-            axes[1].set_title(f"(b) {title} - Évolution de la vitesse")
-        else:
-            axes[1].set_title(f"(b) {self.model_name} - Évolution de la vitesse")
+        im2 = axs[1].pcolormesh(X, T, velocity, cmap='coolwarm', shading='auto')
+        axs[1].set_title('Velocity Evolution')
+        axs[1].set_ylabel('Time (h)')
+        fig.colorbar(im2, ax=axs[1], label='Velocity (km/h)')
         
         # Plot flow evolution
-        im3 = axes[2].pcolormesh(X, T, flow, cmap='plasma', shading='auto')
-        cbar3 = fig.colorbar(im3, ax=axes[2])
-        cbar3.set_label('Flux (véh/h)')
-        axes[2].set_xlabel('Position (km)')
-        axes[2].set_ylabel('Temps (h)')
+        im3 = axs[2].pcolormesh(X, T, flow, cmap='plasma', shading='auto')
+        axs[2].set_title('Flow Evolution')
+        axs[2].set_xlabel('Position (km)')
+        axs[2].set_ylabel('Time (h)')
+        fig.colorbar(im3, ax=axs[2], label='Flow (veh/h)')
+        
+        # Set the main title if provided
         if title:
-            axes[2].set_title(f"(c) {title} - Évolution du flux")
+            fig.suptitle(title, fontsize=16)
         else:
-            axes[2].set_title(f"(c) {self.model_name} - Évolution du flux")
+            fig.suptitle(f'{self.model_name}: Combined Traffic Evolution', fontsize=16)
         
         plt.tight_layout()
         
         # Save figure if requested
         if save:
-            filename = title.replace(" ", "_").lower() if title else "combined_evolution"
-            plt.savefig(f'{self.output_dir}/{filename}_combined.png', bbox_inches='tight', dpi=300)
+            save_title = title if title else f'{self.model_name}_combined_evolution'
+            filename = f"{self.output_dir}/{save_title.replace(' ', '_').lower()}.png"
+            try:
+                plt.savefig(filename)
+                print(f"Figure saved as {filename}")
+            except Exception as e:
+                print(f"Error saving figure: {e}")
         
+        # Show figure if requested
         if show:
             plt.show()
         else:

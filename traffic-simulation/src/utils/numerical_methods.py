@@ -1,3 +1,5 @@
+import numpy as np
+
 def godunov_flux(rho_left, rho_right, model):
     """
     Calculate the numerical flux at the interface between two cells using Godunov's scheme.
@@ -67,23 +69,41 @@ def godunov_flux_multiclass(rho_left, rho_right, model):
     n_classes = len(rho_left)
     flux = np.zeros(n_classes)
     
-    # Update speeds based on the total densities
-    v_left = model.speed(rho_left)
-    v_right = model.speed(rho_right)
+    # Calculate total densities
+    total_density_left = np.sum(rho_left)
+    total_density_right = np.sum(rho_right)
     
-    # Calculate the flux for each class separately
+    # Find motorcycle densities (assumed to be class 0)
+    moto_density_left = rho_left[0]
+    moto_density_right = rho_right[0]
+    
+    # Update speeds based on the total densities and motorcycle densities
+    v_left = model.speed(rho_left, total_density_left, moto_density_left)
+    v_right = model.speed(rho_right, total_density_right, moto_density_right)
+    
+    # Calculate the flux for each class using Godunov's method
     for i in range(n_classes):
-        if v_left[i] >= 0 and v_right[i] >= 0:
-            # Both speeds positive, flux comes from left
-            flux[i] = rho_left[i] * v_left[i]
-        elif v_left[i] <= 0 and v_right[i] <= 0:
-            # Both speeds negative, flux comes from right
-            flux[i] = rho_right[i] * v_right[i]
-        elif v_left[i] > 0 and v_right[i] < 0:
-            # Speeds change sign, compare fluxes (shock)
-            flux[i] = min(rho_left[i] * v_left[i], rho_right[i] * v_right[i])
+        # Calculate fluxes
+        q_left = rho_left[i] * v_left[i]
+        q_right = rho_right[i] * v_right[i]
+        
+        # Apply Godunov's scheme
+        if rho_left[i] <= rho_right[i]:
+            # Case 1: Increasing density
+            v_c = model.critical_velocity_for_class(i)
+            rho_c = model.critical_density_for_class(i)
+            
+            if rho_left[i] >= rho_c:
+                # Left state is congested
+                flux[i] = q_left
+            elif rho_right[i] <= rho_c:
+                # Right state is free flow
+                flux[i] = q_right
+            else:
+                # Critical state in between
+                flux[i] = model.max_flux_for_class(i)
         else:
-            # Rarefaction with speeds changing from negative to positive
-            flux[i] = 0
+            # Case 2: Decreasing density - take minimum flux
+            flux[i] = min(q_left, q_right)
     
     return flux

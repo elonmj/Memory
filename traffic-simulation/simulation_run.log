@@ -1,0 +1,176 @@
+2025-03-13 23:40:17,032 - INFO - ==================================================
+2025-03-13 23:40:17,032 - INFO - ==================================================
+2025-03-13 23:40:17,032 - INFO - TRAFFIC SIMULATION BATCH RUN
+2025-03-13 23:40:17,032 - INFO - TRAFFIC SIMULATION BATCH RUN
+2025-03-13 23:40:17,032 - INFO - ==================================================
+2025-03-13 23:40:17,032 - INFO - ==================================================
+2025-03-13 23:40:17,032 - INFO - Starting batch run of 12 simulations
+2025-03-13 23:40:17,032 - INFO - Starting batch run of 12 simulations
+2025-03-13 23:40:17,032 - INFO - Models: lwr, multiclass
+2025-03-13 23:40:17,032 - INFO - Models: lwr, multiclass
+2025-03-13 23:40:17,032 - INFO - Scenarios: rarefaction, shock, redlight, degraded, gapfilling, trafficjam
+2025-03-13 23:40:17,032 - INFO - Scenarios: rarefaction, shock, redlight, degraded, gapfilling, trafficjam
+2025-03-13 23:40:17,032 - INFO - Running all scenarios for model: lwr
+2025-03-13 23:40:17,032 - INFO - Running all scenarios for model: lwr
+2025-03-13 23:40:17,032 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario rarefaction --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:40:17,032 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario rarefaction --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:40:55,580 - INFO - [lwr/rarefaction] Running lwr model with rarefaction scenario.
+2025-03-13 23:40:55,580 - INFO - [lwr/rarefaction] Running lwr model with rarefaction scenario.
+2025-03-13 23:40:55,584 - INFO - [lwr/rarefaction] Running RarefactionWave simulation...
+2025-03-13 23:40:55,584 - INFO - [lwr/rarefaction] Running RarefactionWave simulation...
+2025-03-13 23:40:55,585 - INFO - [lwr/rarefaction] Simulation completed in 12.29 seconds.
+2025-03-13 23:40:55,585 - INFO - [lwr/rarefaction] Simulation completed in 12.29 seconds.
+2025-03-13 23:40:55,585 - INFO - [lwr/rarefaction] Figure saved as simulations\LWR\rarefaction/rarefactionwave.png
+2025-03-13 23:40:55,585 - INFO - [lwr/rarefaction] Figure saved as simulations\LWR\rarefaction/rarefactionwave.png
+2025-03-13 23:40:55,585 - INFO - [lwr/rarefaction] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:40:55,585 - INFO - [lwr/rarefaction] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:40:55,717 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario shock --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:40:55,717 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario shock --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:41:27,549 - INFO - [lwr/shock] Running lwr model with shock scenario.
+2025-03-13 23:41:27,549 - INFO - [lwr/shock] Running lwr model with shock scenario.
+2025-03-13 23:41:27,549 - INFO - [lwr/shock] Running ShockWave simulation...
+2025-03-13 23:41:27,549 - INFO - [lwr/shock] Running ShockWave simulation...
+2025-03-13 23:41:27,553 - INFO - [lwr/shock] Simulation completed in 14.82 seconds.
+2025-03-13 23:41:27,553 - INFO - [lwr/shock] Simulation completed in 14.82 seconds.
+2025-03-13 23:41:27,553 - INFO - [lwr/shock] Figure saved as simulations\LWR\shock/shockwave.png
+2025-03-13 23:41:27,553 - INFO - [lwr/shock] Figure saved as simulations\LWR\shock/shockwave.png
+2025-03-13 23:41:27,554 - INFO - [lwr/shock] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:41:27,554 - INFO - [lwr/shock] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:41:27,574 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario redlight --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:41:27,574 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario redlight --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:41:51,627 - INFO - [lwr/redlight] Running lwr model with redlight scenario.
+2025-03-13 23:41:51,627 - INFO - [lwr/redlight] Running lwr model with redlight scenario.
+2025-03-13 23:41:51,627 - INFO - [lwr/redlight] Running RedLight simulation...
+2025-03-13 23:41:51,627 - INFO - [lwr/redlight] Running RedLight simulation...
+2025-03-13 23:41:51,633 - INFO - [lwr/redlight] Simulation completed in 12.11 seconds.
+2025-03-13 23:41:51,633 - INFO - [lwr/redlight] Simulation completed in 12.11 seconds.
+2025-03-13 23:41:51,633 - INFO - [lwr/redlight] Figure saved as simulations\LWR\redlight/redlight_(light_turns_green_at_t=0.05h).png
+2025-03-13 23:41:51,633 - INFO - [lwr/redlight] Figure saved as simulations\LWR\redlight/redlight_(light_turns_green_at_t=0.05h).png
+2025-03-13 23:41:51,635 - INFO - [lwr/redlight] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:41:51,635 - INFO - [lwr/redlight] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:41:51,650 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario degraded --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:41:51,650 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario degraded --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Running lwr model with degraded scenario.
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Running lwr model with degraded scenario.
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Warning: Degraded road scenario requires multiclass model.
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Warning: Degraded road scenario requires multiclass model.
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Running RarefactionWave simulation...
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Running RarefactionWave simulation...
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Simulation completed in 15.67 seconds.
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Simulation completed in 15.67 seconds.
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Figure saved as simulations\LWR\degraded/rarefactionwave.png
+2025-03-13 23:55:54,751 - INFO - [lwr/degraded] Figure saved as simulations\LWR\degraded/rarefactionwave.png
+2025-03-13 23:55:54,765 - INFO - [lwr/degraded] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:55:54,765 - INFO - [lwr/degraded] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:55:54,784 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario gapfilling --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:55:54,784 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario gapfilling --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Running lwr model with gapfilling scenario.
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Running lwr model with gapfilling scenario.
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Warning: Gap filling scenario requires multiclass model.
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Warning: Gap filling scenario requires multiclass model.
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Running RarefactionWave simulation...
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Running RarefactionWave simulation...
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Simulation completed in 12.15 seconds.
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Simulation completed in 12.15 seconds.
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Figure saved as simulations\LWR\gapfilling/rarefactionwave.png
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Figure saved as simulations\LWR\gapfilling/rarefactionwave.png
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:56:23,769 - INFO - [lwr/gapfilling] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:56:23,801 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario trafficjam --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:56:23,801 - INFO - Running: C:\Python312\python.exe main.py --model lwr --scenario trafficjam --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:56:51,330 - INFO - [lwr/trafficjam] Running lwr model with trafficjam scenario.
+2025-03-13 23:56:51,330 - INFO - [lwr/trafficjam] Running lwr model with trafficjam scenario.
+2025-03-13 23:56:51,330 - INFO - [lwr/trafficjam] Running TrafficJam simulation...
+2025-03-13 23:56:51,330 - INFO - [lwr/trafficjam] Running TrafficJam simulation...
+2025-03-13 23:56:51,333 - INFO - [lwr/trafficjam] Simulation completed in 12.21 seconds.
+2025-03-13 23:56:51,333 - INFO - [lwr/trafficjam] Simulation completed in 12.21 seconds.
+2025-03-13 23:56:51,333 - INFO - [lwr/trafficjam] Figure saved as simulations\LWR\trafficjam/trafficjam.png
+2025-03-13 23:56:51,333 - INFO - [lwr/trafficjam] Figure saved as simulations\LWR\trafficjam/trafficjam.png
+2025-03-13 23:56:51,333 - INFO - [lwr/trafficjam] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:56:51,333 - INFO - [lwr/trafficjam] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:56:51,358 - INFO - Running all scenarios for model: multiclass
+2025-03-13 23:56:51,358 - INFO - Running all scenarios for model: multiclass
+2025-03-13 23:56:51,364 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario rarefaction --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:56:51,364 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario rarefaction --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Running multiclass model with rarefaction scenario.
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Running multiclass model with rarefaction scenario.
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Running RarefactionWave simulation...
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Running RarefactionWave simulation...
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Simulation completed in 2.39 seconds.
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Simulation completed in 2.39 seconds.
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Figure saved as simulations\MULTICLASS\rarefaction/rarefactionwave.png
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Figure saved as simulations\MULTICLASS\rarefaction/rarefactionwave.png
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:57:15,551 - INFO - [multiclass/rarefaction] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:57:15,579 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario shock --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:57:15,579 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario shock --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Running multiclass model with shock scenario.
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Running multiclass model with shock scenario.
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Running ShockWave simulation...
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Running ShockWave simulation...
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Simulation completed in 2.63 seconds.
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Simulation completed in 2.63 seconds.
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Figure saved as simulations\MULTICLASS\shock/shockwave.png
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Figure saved as simulations\MULTICLASS\shock/shockwave.png
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:57:33,791 - INFO - [multiclass/shock] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:57:33,820 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario redlight --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:57:33,820 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario redlight --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Running multiclass model with redlight scenario.
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Running multiclass model with redlight scenario.
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Running MulticlassRedLight simulation...
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Running MulticlassRedLight simulation...
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Simulation completed in 2.82 seconds.
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Simulation completed in 2.82 seconds.
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Figure saved as simulations\MULTICLASS\redlight/multiclassredlight_(light_turns_green_at_t=0.05h).png
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Figure saved as simulations\MULTICLASS\redlight/multiclassredlight_(light_turns_green_at_t=0.05h).png
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:57:55,882 - INFO - [multiclass/redlight] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:57:55,911 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario degraded --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:57:55,911 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario degraded --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Running multiclass model with degraded scenario.
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Running multiclass model with degraded scenario.
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Running DegradedRoad simulation...
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Running DegradedRoad simulation...
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Simulation completed in 2.83 seconds.
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Simulation completed in 2.83 seconds.
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Figure saved as simulations\MULTICLASS\degraded/degradedroad.png
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Figure saved as simulations\MULTICLASS\degraded/degradedroad.png
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:58:13,513 - INFO - [multiclass/degraded] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:58:13,546 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario gapfilling --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:58:13,546 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario gapfilling --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Running multiclass model with gapfilling scenario.
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Running multiclass model with gapfilling scenario.
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Running GapFilling simulation...
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Running GapFilling simulation...
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Simulation completed in 3.00 seconds.
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Simulation completed in 3.00 seconds.
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Figure saved as simulations\MULTICLASS\gapfilling/gapfilling.png
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Figure saved as simulations\MULTICLASS\gapfilling/gapfilling.png
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:59:06,345 - INFO - [multiclass/gapfilling] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:59:06,377 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario trafficjam --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:59:06,377 - INFO - Running: C:\Python312\python.exe main.py --model multiclass --scenario trafficjam --domain 20.0 --time 1.0 --dx 0.1 --cfl 0.9 --vmax 100.0 --rhomax 180.0 --classes 2 --eta 0.3 --output simulations --plot all
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Running multiclass model with trafficjam scenario.
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Running multiclass model with trafficjam scenario.
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Running TrafficJam simulation...
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Running TrafficJam simulation...
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Simulation completed in 2.72 seconds.
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Simulation completed in 2.72 seconds.
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Figure saved as simulations\MULTICLASS\trafficjam/trafficjam.png
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Figure saved as simulations\MULTICLASS\trafficjam/trafficjam.png
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:59:28,644 - INFO - [multiclass/trafficjam] Results saved to D:\Projets\Alibi\Projet_tutore\traffic-simulation\simulations
+2025-03-13 23:59:28,680 - INFO - ==================================================
+2025-03-13 23:59:28,680 - INFO - ==================================================
+2025-03-13 23:59:28,680 - INFO - Simulation Batch Completed
+2025-03-13 23:59:28,680 - INFO - Simulation Batch Completed
+2025-03-13 23:59:28,680 - INFO - Total runtime: 0:19:11
+2025-03-13 23:59:28,680 - INFO - Total runtime: 0:19:11
+2025-03-13 23:59:28,680 - INFO - Success: 12/12 simulations
+2025-03-13 23:59:28,680 - INFO - Success: 12/12 simulations
+2025-03-13 23:59:28,680 - INFO - All simulations completed successfully
+2025-03-13 23:59:28,680 - INFO - All simulations completed successfully
+2025-03-13 23:59:28,680 - INFO - ALL SIMULATIONS COMPLETED SUCCESSFULLY
+2025-03-13 23:59:28,680 - INFO - ALL SIMULATIONS COMPLETED SUCCESSFULLY

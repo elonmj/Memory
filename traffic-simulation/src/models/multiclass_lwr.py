@@ -9,6 +9,11 @@ Le modèle implémente le système d'équations couplées :
 
 avec la relation vitesse-densité étendue :
     vᵢ(ρ,ρₘ) = λᵢ⋅vᵢ_max⋅(1 - ρ/ρ_max)⋅fᵢ(ρₘ)
+
+NOTE IMPORTANTE: Cette implémentation est une version simplifiée du modèle multi-classes.
+Pour une implémentation plus complète et robuste avec davantage de fonctionnalités,
+il est recommandé d'utiliser plutôt la classe MulticlassLWRModel du module 
+multiclass_lwr_model.py.
 """
 
 import numpy as np

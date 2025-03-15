@@ -133,7 +133,7 @@ class LWRModel:
     
     def calculate_dt(self, rho, dx, cfl_factor=0.9):
         """
-        Calculate time step based on CFL condition.
+        Calculate time step based on CFL condition using maximum wave speed.
         
         Args:
             rho: Current density array
@@ -143,8 +143,26 @@ class LWRModel:
         Returns:
             Time step (h)
         """
-        max_wave_speed = self.v_max
+        # Calculate the maximum wave speed as max|dq/dρ| across the domain
+        # For the Greenshields model, the derivative of the flux function is:
+        # dq/dρ = v_max*(1 - 2*ρ/ρ_max)
+        # This reaches its maximum absolute value at either ρ=0 or ρ=ρ_max
+        
+        # Convert input to array for consistent handling
+        rho_array = np.asarray(rho)
+        
+        # Calculate wave speeds at each point
+        wave_speed = self.v_max * (1 - 2 * rho_array / self.rho_max)
+        
+        # Maximum absolute wave speed across the domain
+        max_wave_speed = max(
+            self.v_max,  # Wave speed at ρ=0
+            abs(np.min(wave_speed))  # Maximum negative wave speed
+        )
+        
+        # Apply CFL condition: dt ≤ dx / max_wave_speed
         dt = cfl_factor * dx / max_wave_speed
+        
         return float(dt)  # Ensure scalar output
     
     def simulate(self, initial_density, domain_length, simulation_time, dx, dt=None, 

@@ -9,7 +9,7 @@ Le modèle macroscopique de trafic routier développé indépendamment par Light
 
 \begin{itemize}
     \item Le \textbf{principe de conservation de la masse}  : Ce principe stipule que le nombre de véhicules est conservé, c'est-à-dire qu'il n'y a ni création ni disparition de véhicules sur le tronçon de route considéré. Mathématiquement, cela se traduit par une équation de continuité reliant la densité du trafic et le flux de véhicules.
-    \item L'\textbf{hypothèse d'une relation fonctionnelle entre le flux et la concentration}  : Le modèle LWR repose sur l'hypothèse fondamentale qu'il existe une relation unique et déterministe entre le flux de trafic (le nombre de véhicules passant un point donné par unité de temps) et la concentration (la densité de véhicules sur la route). Cette relation est généralement représentée par un diagramme fondamental, qui peut varier en fonction des conditions de la route [4].
+    \item L'\textbf{hypothèse d'une relation fonctionnelle entre le flux et la concentration}  : Le modèle LWR repose sur l'hypothèse fondamentale qu'il existe une relation unique et déterministe entre le flux de trafic (le nombre de véhicules passant un point donné par unité de temps) et la concentration (la densité de véhicules sur la route). Cette relation est généralement représentée par un diagramme fondamental, qui peut varier en fonction des conditions de la route.
     \item Le \textbf{principe de l'écoulement continu} : Ce principe considère le trafic comme un fluide continu, ce qui permet d'appliquer les équations de la dynamique des fluides pour décrire son comportement macroscopique. Cette approche est valide lorsque le nombre de véhicules est suffisamment élevé pour que les fluctuations individuelles soient négligeables.
 \end{itemize}
 
@@ -20,11 +20,11 @@ Le modèle macroscopique de trafic routier développé indépendamment par Light
     Le modèle LWR repose sur plusieurs hypothèses simplificatrices :
     
     \begin{itemize}
-        \item \textbf{Le trafic est homogène} : Cette hypothèse suppose que les caractéristiques de la route (nombre de voies, largeur, etc.) et le comportement des conducteurs sont uniformes sur le tronçon considéré [1].
-        \item \textbf{Il existe une relation unique entre la densité et le flux} : Le modèle LWR postule une relation déterministe et statique entre la densité du trafic et le flux, généralement représentée par le diagramme fondamental [2, 3].
-        \item \textbf{Les effets d'inertie et de relaxation sont négligeables} : Le modèle suppose que les conducteurs réagissent instantanément aux changements de densité, sans délai ni inertie [4].
-        \item \textbf{Il n'y a ni entrées ni sorties intermédiaires} : Le modèle de base considère un tronçon de route sans jonctions, entrées ou sorties intermédiaires, où les véhicules entrent à une extrémité et sortent à l'autre [1].
-        \item \textbf{La vitesse est une fonction de la seule densité} : le modèle suppose que la vitesse des véhicules ne dépend que de la densité locale et non d'autres facteurs tels que l'historique du trafic ou les conditions en aval [5].
+        \item \textbf{Le trafic est homogène} : Cette hypothèse suppose que les caractéristiques de la route (nombre de voies, largeur, etc.) et le comportement des conducteurs sont uniformes sur le tronçon considéré.
+        \item \textbf{Il existe une relation unique entre la densité et le flux} : Le modèle LWR postule une relation déterministe et statique entre la densité du trafic et le flux, généralement représentée par le diagramme fondamental.
+        \item \textbf{Les effets d'inertie et de relaxation sont négligeables} : Le modèle suppose que les conducteurs réagissent instantanément aux changements de densité, sans délai ni inertie.
+        \item \textbf{Il n'y a ni entrées ni sorties intermédiaires} : Le modèle de base considère un tronçon de route sans jonctions, entrées ou sorties intermédiaires, où les véhicules entrent à une extrémité et sortent à l'autre.
+        \item \textbf{La vitesse est une fonction de la seule densité} : le modèle suppose que la vitesse des véhicules ne dépend que de la densité locale et non d'autres facteurs tels que l'historique du trafic ou les conditions en aval.
     \end{itemize}
 
 Ces hypothèses, bien que restrictives, permettent d'obtenir un modèle mathématiquement tractable qui capture les phénomènes essentiels du trafic, notamment la formation et la propagation des congestions.
@@ -45,14 +45,15 @@ Le modèle LWR s'articule autour de trois variables macroscopiques fondamentales
 L'équation fondamentale du modèle LWR est l'équation de conservation, issue du principe de conservation des véhicules :
 
 \begin{empheq}[box=\colorbox{lightblue!15}]{align}
-\pd{\dens}{t} + \pd{(\dens \vel)}{x} = 0 \quad \text{ou} \quad \pd{\dens}{t} + \pd{\flow}{x} = 0.
+\pd{\dens}{t} + \pd{(\dens \vel)}{x} &= 0 \notag \\
+\text{ou} \quad \pd{\dens}{t} + \pd{\flow}{x} &= 0
 \label{eq:conservation_lwr}
 \end{empheq}
 
 Cette équation stipule que la variation temporelle de la densité (terme $\pd{\dens}{t}$) additionnée à la variation spatiale du flux (terme $\pd{\flow}{x}$ ou $\pd{(\dens \vel)}{x}$) doit être nulle en l'absence de sources ou de puits. **Elle exprime la conservation du nombre de véhicules : tout changement de densité en un point est dû à une différence de flux entre ce qui entre et ce qui sort de ce point.**
 
 \begin{remark}
-L'équation de conservation est une équation aux dérivées partielles (EDP) du premier ordre, de type hyperbolique. Cette nature hyperbolique est responsable de la formation d'ondes de choc dans le trafic, correspondant aux fronts de congestion. **Ces ondes de choc se produisent lorsque le trafic de faible densité rattrape un trafic plus dense et plus lent en aval** [1, 2].
+L'équation de conservation est une équation aux dérivées partielles (EDP) du premier ordre, de type hyperbolique. Cette nature hyperbolique est responsable de la formation d'ondes de choc dans le trafic, correspondant aux fronts de congestion. **Ces ondes de choc se produisent lorsque le trafic de faible densité rattrape un trafic plus dense et plus lent en aval**.
 \end{remark}
 
 \section{Diagramme Fondamental et Relation Vitesse-Densité}
@@ -60,14 +61,7 @@ L'équation de conservation est une équation aux dérivées partielles (EDP) du
 
 Pour résoudre l'équation de conservation du modèle LWR, il est nécessaire de spécifier la relation entre le flux $\flow$ (ou la vitesse $\vel$) et la densité $\dens$, connue sous le nom de \textit{relation fondamentale du trafic} ou \textit{diagramme fondamental}.
 
-Le diagramme fondamental établit la relation entre la densité et le flux (ou la vitesse) du trafic. Cette relation est essentielle pour fermer le système d'équations et rendre l'équation de conservation soluble. **Il représente une simplification de la réalité, car il suppose une relation statique et déterministe entre ces variables macroscopiques** [1].
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{simulations/LWR/diagrams/diagramme_fondamental}
-\caption{Diagrammes fondamentaux du modèle LWR selon Greenshields : (a) relation vitesse-densité montrant la décroissance linéaire de la vitesse avec la densité, (b) relation flux-densité montrant la forme parabolique caractéristique avec le point critique à $\rho_c = \rho_{\max}/2$, et (c) relation flux-vitesse.}
-\label{fig:diagramme_fondamental}
-\end{figure}
+Le diagramme fondamental établit la relation entre la densité et le flux (ou la vitesse) du trafic. Cette relation est essentielle pour fermer le système d'équations et rendre l'équation de conservation soluble. **Il représente une simplification de la réalité, car il suppose une relation statique et déterministe entre ces variables macroscopiques**.
 
 \subsection{Le Modèle de Greenshields}
 \label{subsec:greenshields}
@@ -86,7 +80,7 @@ $$\flow(\dens) = \dens \cdot \vel(\dens)$$
 
 En substituant l'équation de vitesse de Greenshields, on obtient :
 \begin{align}
-\flow(\dens) &= \dens \cdot \maxvel \left(1 - \frac{\dens}{\maxdens}\right) \notag \\
+\flow(\dens) &= \dens \cdot \maxvel \left(1 - \frac{\dens}{\maxdens}\right) \\
 &= \maxvel \dens - \frac{\maxvel}{\maxdens} \dens^2
 \label{eq:greenshields_flux}
 \end{align}
@@ -95,8 +89,8 @@ Cette équation révèle une relation parabolique entre le flux et la densité. 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{simulations/LWR/diagrams/diagramme_fondamental}
-\caption{Diagrammes fondamentaux du modèle LWR selon Greenshields : (a) relation vitesse-densité montrant la décroissance linéaire de la vitesse avec la densité, (b) relation flux-densité montrant la forme parabolique caractéristique avec le point critique à $\rho_c = \rho_{\max}/2$, et (c) relation flux-vitesse.}
+\includegraphics[width=1.0\textwidth]{simulations/LWR/diagrams/lwr_fundamental_diagrams}
+\caption{Diagrammes fondamentaux du modèle LWR selon Greenshields : (a) relation vitesse-densité montrant la décroissance linéaire de la vitesse avec la densité, (b) relation flux-densité montrant la forme parabolique caractéristique avec le point critique à $\rho_c = \rho_{\text{max}}/2$, et (c) relation flux-vitesse.}
 \label{fig:diagramme_fondamental}
 \end{figure}
 
@@ -252,24 +246,23 @@ Le modèle de transmission cellulaire de Daganzo \cite{daganzo1995cell} est une 
 \section{Illustration Numérique du Modèle LWR}
 \label{sec:illustration_numerique}
 
-Pour compléter notre étude théorique et visualiser concrètement les phénomènes décrits précédemment (ondes de choc, raréfactions), nous avons implémenté une résolution numérique du modèle LWR. Les simulations présentées ci-dessous utilisent le schéma de Godunov, choisi pour sa capacité à préserver la nature conservative de l'équation et sa robustesse face aux discontinuités inhérentes aux problèmes de trafic. Contrairement à d'autres méthodes numériques, ce schéma évite l'apparition d'oscillations non physiques au voisinage des chocs tout en maintenant une précision satisfaisante. Les fondements mathématiques et détails d'implémentation de cette méthode sont présentés dans l'Annexe \ref{annexe:schemas_numeriques}.
-
+Pour compléter notre étude théorique et visualiser concrètement les phénomènes décrits précédemment (ondes de choc, raréfactions), nous avons implémenté une résolution numérique du modèle LWR. Les simulations présentées ci-dessous utilisent le schéma de Godunov, choisi pour sa capacité à préserver la nature conservative de l'équation et sa robustesse face aux discontinuités inhérentes aux problèmes de trafic. Contrairement à d'autres méthodes numériques, ce schéma évite l'apparition d'oscillations non physiques au voisinage des chocs tout en maintenant une précision satisfaisante. Les fondements mathématiques et détails d'implémentation de cette méthode sont présentés dans l'Annexe.
 \subsection{Schéma Numérique de Godunov}
 \label{subsec:godunov}
 
 Pour résoudre numériquement l'équation de conservation \eqref{eq:conservation_lwr}, nous discrétisons le domaine spatial en cellules de longueur $\Delta x$ et le temps en pas $\Delta t$. Le schéma de Godunov \cite{godunov1959finite,leveque1992numerical} se présente alors sous la forme :
 
 \begin{equation}
-\rho_i^{n+1} = \rho_i^n - \frac{\Delta t}{\Delta x}(F_{i+\frac{1}{2}} - F_{i-\frac{1}{2}})
+\rho_i^{n+1} = \rho_i^n - \frac{\Delta t}{\Delta x}(F_{i+\frac{1}{2}}^n - F_{i-\frac{1}{2}}^n)
 \end{equation}
 
-où $\rho_i^n$ représente la densité moyenne dans la cellule $i$ au temps $n\Delta t$, et $F_{i\pm\frac{1}{2}} sont les flux numériques aux interfaces entre les cellules. Ces flux sont déterminés en résolvant localement un problème de Riemann :
+où $\rho_i^n$ représente la densité moyenne dans la cellule $i$ au temps $n$\Delta$ t$, et $F_{i\pm\frac{1}{2}}^n$ sont les flux numériques aux interfaces. Ces flux sont déterminés en résolvant localement un problème de Riemann :
 
 \begin{equation}
-    F_{i+\frac{1}{2}} = \mathcal{F}(\rho_i^n, \rho_{i+1}^n)
+F_{i+\frac{1}{2}} = \mathcal{F}(\rho_i^n, \rho_{i+1}^n)
 \end{equation}
     
-où $\mathcal{F}$ est la fonction de flux numérique de Godunov. Nous avons choisi ce schéma numérique car il est particulièrement adapté aux lois de conservation hyperboliques et permet de capturer précisément les discontinuités (ondes de choc) sans introduire d'oscillations parasites \cite{toro2013riemann}. Les détails complets concernant l'implémentation du schéma, les calculs des flux numériques et les preuves de convergence sont présentés dans l'Annexe \ref{annex:schemas_numeriques}.
+Nous avons choisi ce schéma numérique car il est particulièrement adapté aux lois de conservation hyperboliques et permet de capturer précisément les discontinuités (ondes de choc) sans introduire d'oscillations parasites \cite{toro2013riemann}. Les détails complets concernant l'implémentation du schéma, les calculs des flux numériques et les preuves de convergence sont présentés dans l'Annexe \ref{annex:schemas_numeriques}.
     
 \subsection{Scénarios de Simulation}
 \label{subsec:scenarios}
@@ -285,7 +278,7 @@ Nous présentons ici trois scénarios caractéristiques qui illustrent les phén
 \subsubsection{Feu Rouge}
 \label{subsubsec:feu_rouge}
 
-Considérons une route de 10 km où le trafic circule initialement à densité modérée ($\rho = 0,2\rho_{\max}$), mais avec un arrêt complet (densité proche de $\rho_{\max}$) au niveau d'un feu rouge situé à 5 km du début de la route. La Figure \ref{fig:feu_rouge} illustre l'évolution spatio-temporelle de la densité, de la vitesse et du flux après le passage du feu au vert.
+Considérons une route de 10 km où le trafic circule initialement à densité modérée ($\rho = 0,2$\rho$_{\max}$), mais avec un arrêt complet (densité proche de $\rho_{\max}$) au niveau d'un feu rouge situé à 5 km du début de la route. La Figure \ref{fig:feu_rouge} illustre l'évolution spatio-temporelle de la densité, de la vitesse et du flux après le passage du feu au vert.
 
 \begin{figure}[htbp]
 \centering
@@ -299,7 +292,7 @@ On observe clairement la formation d'une onde de choc qui se propage en amont du
 \subsubsection{Onde de Choc}
 \label{subsubsec:onde_choc_sim}
 
-Dans ce scénario, nous simulons une route de 20 km avec un trafic fluide ($\rho = 0,1\rho_{\max}$) en amont et un trafic dense ($\rho = 0,7\rho_{\max}$) en aval. La Figure \ref{fig:sim_onde_choc} montre la formation et la propagation d'une onde de choc à l'interface entre ces deux régimes.
+Dans ce scénario, nous simulons une route de 20 km avec un trafic fluide ($\rho = 0,1$\rho$_{\max}$) en amont et un trafic dense ($\rho = 0,7$\rho$_{\max}$) en aval. La Figure \ref{fig:sim_onde_choc} montre la formation et la propagation d'une onde de choc à l'interface entre ces deux régimes.
 
 \begin{figure}[htbp]
 \centering
@@ -308,12 +301,13 @@ Dans ce scénario, nous simulons une route de 20 km avec un trafic fluide ($\rho
 \label{fig:sim_onde_choc}
 \end{figure}
 
+
 On observe que l'onde de choc se propage en amont avec une vitesse négative constante, conformément à la théorie. Les véhicules doivent ralentir brusquement en atteignant le front de l'onde, ce qui correspond à une discontinuité dans le profil de vitesse.
 
 \subsubsection{Onde de Raréfaction}
 \label{subsubsec:rarefaction_sim}
 
-Ce scénario illustre la dissipation progressive d'un embouteillage, représentée par une onde de raréfaction. Nous considérons une route de 20 km avec un trafic dense ($\rho = 0,7\rho_{\max}$) en amont et un trafic fluide ($\rho = 0,1\rho_{\max}$) en aval. La Figure \ref{fig:sim_rarefaction} montre l'évolution de cette situation.
+Ce scénario illustre la dissipation progressive d'un embouteillage, représentée par une onde de raréfaction. Nous considérons une route de 20 km avec un trafic dense ($\rho = 0,7$\rho$_{\max}$) en amont et un trafic fluide ($\rho = 0,1$\rho$_{\max}$) en aval. La Figure \ref{fig:sim_rarefaction} montre l'évolution de cette situation.
 
 \begin{figure}[htbp]
 \centering
@@ -337,14 +331,14 @@ Ces simulations, bien qu'illustrant correctement certains phénomènes de trafic
     \item \textbf{Effets de l'état des routes} : Les simulations ne tiennent pas compte de l'état variable des infrastructures routières, un facteur crucial au Bénin où la qualité du revêtement influe significativement sur les vitesses pratiquées.
 \end{itemize}
 
-Ces limitations, mises en évidence par la confrontation des simulations avec les observations de terrain, justifient pleinement la nécessité de développer une extension du modèle LWR adaptée aux spécificités du trafic routier béninois. Les fondements mathématiques rigoureux et les démonstrations formelles qui sous-tendent cette extension sont détaillés dans l'Annexe \ref{annexe:demonstrations}.
+% Ces limitations, mises en évidence par la confrontation des simulations avec les observations de terrain, justifient pleinement la nécessité de développer une extension du modèle LWR adaptée aux spécificités du trafic routier béninois. Les fondements mathématiques rigoureux et les démonstrations formelles qui sous-tendent cette extension sont détaillés dans l'Annexe \ref{annexe:demonstrations}.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{simulations/LWR/comparisons/flux_reel_vs_simule}
-\caption{Comparaison entre le flux simulé par le modèle LWR standard et des observations réelles dans une rue typique de Cotonou. Les différences significatives soulignent la nécessité d'adapter le modèle au contexte béninois.}
-\label{fig:comparaison_flux}
-\end{figure}
+% \begin{figure}[htbp]
+% \centering
+% \includegraphics[width=0.8\textwidth]{simulations/LWR/comparisons/flux_reel_vs_simule}
+% \caption{Comparaison entre le flux simulé par le modèle LWR standard et des observations réelles dans une rue typique de Cotonou. Les différences significatives soulignent la nécessité d'adapter le modèle au contexte béninois.}
+% \label{fig:comparaison_flux}
+% \end{figure}
 
 \section{Vers une Extension Adaptée au Contexte Béninois}
 \label{sec:vers_extension}

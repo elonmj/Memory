@@ -1,26 +1,11 @@
-\ProvidesPackage{benintraffic}[2023/10/01 Beautiful style for Benin traffic document]
-
-% Load required packages
-\RequirePackage{fontspec}
-\RequirePackage{xcolor}
-\RequirePackage{titlesec}
-\RequirePackage{fancyhdr}
-\RequirePackage{geometry}
-\RequirePackage{setspace}
-\RequirePackage{booktabs}
-\RequirePackage{thmtools}
-\RequirePackage{mathtools}
-\RequirePackage{pgfplots}
-\RequirePackage{enumitem}
-\RequirePackage{empheq}
-\RequirePackage{mdframed}
-\RequirePackage{etoolbox}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{benintraffic}[2023/11/02 BéninTraffic custom macros]
 
 % Define traffic-related color scheme
 \definecolor{roadgray}{RGB}{80,80,80}
 \definecolor{darkblue}{RGB}{0,43,112}
-\definecolor{midblue}{RGB}{0,90,170}
-\definecolor{lightblue}{RGB}{135,206,250}
+\definecolor{midblue}{rgb}{0.3,0.5,0.8}
+\definecolor{lightblue}{RGB}{173,216,230}
 \definecolor{trafficred}{RGB}{200,30,15}
 \definecolor{trafficyellow}{RGB}{240,200,0}
 \definecolor{trafficgreen}{RGB}{0,128,0}
@@ -34,13 +19,6 @@
 \setstretch{1.15}
 
 % Beautiful chapter and section styling
-\titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries\color{darkblue}}
-  {\flushright\normalsize\color{midgray}CHAPITRE\\\Huge\thechapter}
-  {20pt}
-  {\titlerule[0.5pt]\vspace{6pt}\huge}
-  [\vspace{.5ex}\titlerule[0.5pt]]
-
 \titleformat{\section}
   {\normalfont\Large\bfseries\color{darkblue}}
   {\thesection}
@@ -64,7 +42,7 @@
 \fancyhead[LO]{\textit{\rightmark}}
 \fancyfoot[C]{\small Modélisation du Trafic Routier au Bénin}
 \fancyheadoffset{0.5cm}
-\setlength{\headheight}{15pt}
+\setlength{\headheight}{30pt}  % Increased to avoid warning
 
 % Enhanced lists
 \setlist[itemize]{leftmargin=*,label=\textcolor{darkblue}{$\blacktriangleright$}}
@@ -110,24 +88,41 @@
 \newcommand{\highlight}[1]{%
 \colorbox{lightblue!15}{$\displaystyle#1$}}
 
-% Custom traffic modeling commands
-\newcommand{\dens}{\rho}                  % Traffic density
-\newcommand{\vel}{v}                      % Traffic velocity
-\newcommand{\flow}{q}                     % Traffic flow
-\newcommand{\densi}[1]{\rho_{#1}}         % Density of class i
-\newcommand{\veli}[1]{v_{#1}}             % Velocity of class i
-\newcommand{\flowi}[1]{q_{#1}}            % Flow of class i
-\newcommand{\densM}{\rho_{\text{M}}}      % Motorcycle density
-\newcommand{\velM}{v_{\text{M}}}          % Motorcycle velocity
-\newcommand{\flowM}{q_{\text{M}}}         % Motorcycle flow
-\newcommand{\maxdens}{\rho_{\text{max}}}  % Maximum density
-\newcommand{\maxvel}{v_{\text{max}}}      % Maximum velocity
-\newcommand{\maxdensM}{\rho_{\text{M,max}}} % Maximum motorcycle density
-\newcommand{\maxveli}[1]{v_{{#1},\text{max}}^0} % Free flow speed for class i
-\newcommand{\matcoef}[1]{\lambda_{\text{mat},{#1}}} % Material coefficient for class i
-\newcommand{\modM}[1]{f_{\text{M},{#1}}} % Motorcycle modulation function
-\newcommand{\etaM}{\eta_{\text{M}}}      % Gap-filling coefficient
-\newcommand{\mui}[1]{\mu_{#1}}           % Interweaving coefficient
+% Custom traffic modeling commands - FIXED to avoid double subscripts
+\newcommand{\dens}{\rho} % Density
+\newcommand{\vel}{v} % Velocity
+\newcommand{\flow}{q} % Flow
+\newcommand{\maxdens}{\rho_{\max}} % Maximum density
+\newcommand{\maxvel}{v_{\max}} % Maximum velocity
+
+% Variables with indices for multiclass model
+\newcommand{\densi}[1]{\rho_{#1}} % Density of class i
+\newcommand{\veli}[1]{v_{#1}} % Velocity of class i
+\newcommand{\flowi}[1]{q_{#1}} % Flow of class i
+\newcommand{\maxveli}[1]{v_{#1,\max}} % Maximum velocity of class i
+\newcommand{\maxdensi}[1]{\rho_{#1,\max}} % Maximum density of class i
+
+% Variables for motorcycle class
+\newcommand{\densM}{\rho_M} % Density of motorcycles
+\newcommand{\velM}{v_M} % Velocity of motorcycles
+\newcommand{\flowM}{q_M} % Flow of motorcycles
+\newcommand{\maxvelM}{v_{M,\max}} % Maximum velocity of motorcycles
+\newcommand{\maxdensM}{\rho_{M,\max}} % Maximum density of motorcycles
+
+% Symbols for the modification functions and coefficients
+\newcommand{\matcoef}[1]{\lambda_{#1}} % Material coefficient for class i
+\newcommand{\modM}[1]{f_{#1}} % Modification function for class i due to motorcycles
+\newcommand{\etaM}{\gamma} % Gap-filling coefficient for motorcycles
+\newcommand{\mui}[1]{\beta_{#1}} % Interweaving coefficient for class i
+
+% Special commands to handle indices in numerical schemes to avoid double subscripts
+\newcommand{\rhonij}[3]{\rho_{#1,#2}^{#3}} % Density with space-time indices
+\newcommand{\rhoni}[2]{\rho_{#1}^{#2}}     % Density with time index
+\newcommand{\rhoij}[2]{\rho_{#1,#2}}       % Density with space index
+\newcommand{\vnij}[3]{v_{#1,#2}^{#3}}      % Velocity with space-time indices
+\newcommand{\vni}[2]{v_{#1}^{#2}}          % Velocity with time index
+\newcommand{\vij}[2]{v_{#1,#2}}            % Velocity with space index
+\newcommand{\fnij}[3]{F_{#1,#2}^{#3}}      % Flux with space-time indices
 
 % Calculus operations
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} % Partial derivative
@@ -145,9 +140,6 @@
 \BeforeBeginEnvironment{definition}{\vspace{1ex}}
 \AfterEndEnvironment{definition}{\vspace{1ex}}
 
-% Algorithm styling
-\algnewcommand{\LeftComment}[1]{\hfill\(\triangleright\) #1}
-
 % Configure PGFPlots
 \pgfplotsset{
     compat=newest,
@@ -156,5 +148,9 @@
         tick style={color=midgray, line width=0.5pt}
     }
 }
+
+% Define other commonly used math operators
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 \endinput

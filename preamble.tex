@@ -1,0 +1,148 @@
+% Preamble for memoire.tex - Centralized package management
+% Organized by category for clarity
+
+% Document Class Configuration
+\documentclass[12pt, a4paper]{report} % Removed 'most' option (belongs to tcolorbox)
+\title{Modélisation du Trafic Routier au Bénin}
+\author{Votre Nom}
+\date{\today}
+
+
+% --- Input Encoding & Language ---
+\usepackage[utf8]{inputenc}   % Required for special characters (only if using pdfLaTeX)
+% \usepackage[T1]{fontenc}    % Removed - not needed with XeLaTeX/LuaLaTeX
+% Choose only one language system:
+% \usepackage[french]{babel}  % Commented out to avoid conflict
+\usepackage{polyglossia}      % Advanced multilingual support
+\setmainlanguage{french}      % Set default language
+
+% --- Mathematics Packages ---
+\usepackage{bm} % Bold Math
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath, amssymb, amsfonts} % AMS math packages
+\usepackage{amsthm}          % Required for thmtools
+\usepackage{mathtools}        % Extends amsmath
+\usepackage{thmtools}         % For theorem environments
+\usepackage{empheq}           % For boxed equations
+\usepackage{unicode-math}     % Unicode math support
+\setmathfont{TeX Gyre Pagella Math}
+
+% --- Layout & Formatting ---
+\usepackage{geometry}         % Page layout control
+\geometry{
+  top=2.5cm,
+  bottom=2.5cm,
+  left=2.5cm,
+  right=2.5cm,
+  marginparwidth=1.8cm,
+  marginparsep=0.3cm,
+  headsep=0.7cm,
+  footskip=1.2cm,
+  headheight=30pt  % Increased to fix warnings
+}
+\usepackage{setspace}         % Line spacing
+\usepackage{fancyhdr}         % Custom headers/footers
+\usepackage{titlesec}         % Section title formatting
+
+% --- Graphics & Figures ---
+\usepackage{graphicx}         % Include graphics
+\usepackage{subcaption}       % Sub-figures
+\usepackage{float}            % Improved figure positioning
+\graphicspath{{images/}{simulations/}} % Graphics path
+
+% --- Tables & Lists ---
+\usepackage{booktabs}         % Professional tables
+\usepackage{longtable}        % Multi-page tables
+\usepackage{colortbl}         % Colored table cells/rows
+\usepackage{multirow}        % Multi-row cells in tables
+\usepackage{array}            % Extended table functionality
+\usepackage{enumitem}         % Customizable lists
+
+% --- Code & Listings ---
+\usepackage{listings}         % Code listings (if needed)
+\usepackage{xcolor}           % Color support (used by listings, tcolorbox, etc.)
+\usepackage[most]{tcolorbox}  % Moved 'most' option here where it belongs
+% \tcbuselibrary{most}        % Removed as redundant with the option above
+
+% --- References & Citations ---
+\usepackage{hyperref}         % Hyperlinks in PDF
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue, % Changed to blue for consistency
+    filecolor=blue,      
+    urlcolor=blue,
+    citecolor=blue,
+    pdftitle={Modélisation du Trafic Routier au Bénin},
+    pdfauthor={Votre Nom},
+    pdfkeywords={trafic routier, Bénin, modèle LWR, motos, multiclasses},
+}
+\usepackage{cleveref}         % Intelligent cross-referencing
+\usepackage{nameref}          % Named references
+\usepackage{zref-abspage}     % Absolute page numbers
+\usepackage{rerunfilecheck}   % Check for outdated auxiliary files
+
+% --- Other Packages ---
+\usepackage{verbatim}         % Verbatim environment
+\usepackage{environ}          % Environment manipulation
+\usepackage{trimspaces}       % Trim spaces around tokens
+\usepackage{etoolbox}         % e-TeX tools
+\usepackage{mdframed}         % Framed environments
+\usepackage{kvoptions}        % Key-value options
+\usepackage{ltxcmds}          % LaTeX kernel commands
+\usepackage{kvsetkeys}        % Key-value parser
+\usepackage{infwarerr}        % Info/warning/error messages
+\usepackage{kvdefinekeys}     % Define keys
+\usepackage{pdftexcmds}       % Utility functions of pdfTeX
+\usepackage{etexcmds}         % Avoid name clashes with e-TeX commands
+\usepackage{auxhook}          % Hooks for auxiliary files
+\usepackage{needspace}        % Reserve vertical space
+\usepackage{pgfplots}         % Create plots
+\pgfplotsset{compat=1.18}     % Set PGFPlots compatibility level
+\usepackage{pgfplotstable}    % Table support for PGFPlots
+\usepackage{xkeyval}          % Key-value package
+\usepackage{adjustbox}        % Adjusting TeX boxes
+\usepackage{ifoddpage}        % Check for odd/even page
+\usepackage{varwidth}         % Variable-width minipages
+\usepackage{sidenotes}        % Rich text in the margin
+\usepackage{marginnote}       % Non-floating margin notes
+\usepackage{changepage}       % Change page layout
+\usepackage{csvsimple}        % CSV file processing
+
+% --- Simplified glossaries setup ---
+% Replace problematic glossaries setup with more compatible version
+\usepackage[acronym,nohypertypes={acronym,main}]{glossaries}
+% Option nohypertypes avoids issues with datatool
+
+% Load datatool with compatible options
+% \PassOptionsToPackage{math=fp}{datatool}
+%\PassOptionsToPackage{math=l3fp}{datatool}
+% The fp option is more compatible than l3fp
+
+\usepackage{mfirstuc}         % Uppercase first letter
+\usepackage{xfor}             % Extended for loops
+\usepackage{tracklang}        % Track languages
+\usepackage{imakeidx}         % Index generation
+\usepackage{multicol}         % Multicolumn formatting
+\usepackage{bookmark}         % PDF bookmarks
+
+% --- Font Configuration ---
+\setmainfont{TeX Gyre Pagella}[
+  Numbers=OldStyle,
+  Ligatures=TeX
+]
+\setsansfont{TeX Gyre Heros}[Scale=0.9]
+\setmonofont{Fira Mono}[Scale=0.85]
+
+% --- Fix for fix-cm ---
+% \usepackage{fix-cm}  % Not needed with XeLaTeX/LuaLaTeX
+
+% --- Load custom commands and styles ---
+% Check if this file exists before uncommenting:
+% \usepackage{styles/benintraffic}
+
+% --- Glossary ---
+\makeglossaries
+
+% Comment this line if this is being included in another document:
+\endinput

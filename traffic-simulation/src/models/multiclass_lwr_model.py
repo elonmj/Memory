@@ -14,15 +14,29 @@ class VehicleClass:
     
     def __init__(self, name, v_max, rho_max, eta=0.0, beta=0.0, lambda_min=0.6):
         """
-        Initialize a vehicle class.
+        Initialize a vehicle class with its specific traffic behavior parameters.
         
         Args:
-            name: Name of the vehicle class (e.g., 'car', 'moto')
-            v_max: Maximum velocity in free flow (km/h)
-            rho_max: Maximum density (vehicles/km)
-            eta: Gap-filling coefficient (0-1, only for motorcycles)
-            beta: Sensitivity coefficient to motorcycles (0-1)
+            name: Name of the vehicle class (e.g., 'car', 'moto', 'bus', 'truck')
+            v_max: Maximum velocity in free flow conditions (km/h)
+                   Typical values: 80-120 for cars, 90-110 for motorcycles,
+                   60-90 for trucks/buses
+            rho_max: Maximum density of this vehicle class (vehicles/km)
+                    Typical values: 180-220 for cars, 200-300 for motorcycles,
+                    120-150 for trucks/buses
+            eta: Gap-filling coefficient (0-1)
+                 Only relevant for motorcycles (typically 0.2-0.4)
+                 Higher values represent more aggressive gap-filling behavior
+                 where motorcycles can better utilize spaces between vehicles
+            beta: Sensitivity coefficient to motorcycle presence (0-1)
+                  How much this vehicle class is negatively affected by motorcycles
+                  Typical values: 0.2-0.4 for cars, 0.3-0.5 for larger vehicles
+                  Higher values mean more sensitivity to motorcycle interference
             lambda_min: Minimum road quality coefficient (0-1)
+                      The minimum multiplier applied to velocity on the worst roads
+                      Lower values make this vehicle class more sensitive to poor roads
+                      Typical values: 0.8-0.9 for motorcycles, 0.5-0.7 for cars,
+                      0.4-0.6 for larger vehicles
         """
         self.name = name
         self.v_max = v_max
@@ -42,11 +56,38 @@ class MulticlassLWRModel:
     
     def __init__(self, vehicle_classes=None, n_classes=2):
         """
-        Initialize the multiclass LWR model.
+        Initialize the multiclass LWR traffic model with specific vehicle classes.
+        
+        This model extends the classic LWR framework to handle multiple vehicle classes
+        with different characteristics and inter-class interactions. It is particularly
+        designed to model the unique traffic dynamics in West African contexts where
+        motorcycles interact with cars and other vehicles.
         
         Args:
-            vehicle_classes: List of dictionaries or VehicleClass objects defining each class
-            n_classes: Number of vehicle classes (default: 2 - motorcycles and cars)
+            vehicle_classes: List of dictionaries or VehicleClass objects defining each class.
+                           If None, default classes (motorcycles and cars) will be created.
+                           Each dictionary should contain parameters for VehicleClass.
+                           
+            n_classes: Number of vehicle classes to model (default: 2 - motorcycles and cars)
+        
+        Examples:
+            # Create a model with default classes (motorcycles and cars)
+            model = MulticlassLWRModel()
+            
+            # Create a model with custom vehicle classes
+            classes = [
+                VehicleClass("moto", v_max=100, rho_max=250, eta=0.35, beta=0, lambda_min=0.85),
+                VehicleClass("car", v_max=90, rho_max=180, eta=0, beta=0.25, lambda_min=0.6),
+                VehicleClass("truck", v_max=70, rho_max=120, eta=0, beta=0.4, lambda_min=0.5)
+            ]
+            model = MulticlassLWRModel(vehicle_classes=classes, n_classes=3)
+            
+            # Create a model with dictionaries
+            classes = [
+                {"name": "moto", "v_max": 100, "rho_max": 250, "eta": 0.35},
+                {"name": "car", "v_max": 90, "rho_max": 180, "beta": 0.25}
+            ]
+            model = MulticlassLWRModel(vehicle_classes=classes)
         """
         self.n_classes = n_classes
         
@@ -205,19 +246,53 @@ class MulticlassLWRModel:
         Returns:
             Time step (h)
         """
-        max_wave_speed = 0
-        
         # Calculate total density
         total_density = np.sum(rho_array, axis=0)
         
         # Motorcycle density (class 0)
         motorcycle_density = rho_array[0]
         
+        # Initialize maximum wave speed
+        max_wave_speed = 0
+        
         for i in range(self.n_classes):
-            # Max wave speed is the maximum derivative of the flow function
             vc = self.vehicle_classes[i]
-            class_max_speed = vc.v_max  # Simple approximation for wave speed
-            max_wave_speed = max(max_wave_speed, class_max_speed)
+            
+            # For each position in the domain
+            for j in range(total_density.shape[0]):
+                # Current densities at this position
+                rho_total = total_density[j]
+                rho_moto = motorcycle_density[j]
+                
+                # Base flux derivative for class i
+                base_derivative = vc.v_max * (1 - 2 * rho_total / vc.rho_max)
+                
+                # Additional modulation effects (for both gap-filling and interweaving)
+                if i == 0:  # Motorcycle class
+                    # Gap-filling effect modifies wave speed
+                    modulation = 1 + vc.eta * (rho_moto / vc.rho_max)
+                    wave_speed = base_derivative * modulation
+                    
+                    # Additional wave speed component from gap-filling function derivative
+                    if rho_total > 0:
+                        gap_filling_derivative = vc.v_max * vc.eta * (1 - rho_total / vc.rho_max) / vc.rho_max
+                        wave_speed += rho_moto * gap_filling_derivative
+                else:
+                    # Interweaving effect for other vehicle classes
+                    modulation = 1 - vc.beta * (rho_moto / vc.rho_max)
+                    wave_speed = base_derivative * modulation
+                    
+                    # Additional wave speed component from interweaving function derivative
+                    if rho_total > 0:
+                        interweaving_derivative = -vc.v_max * vc.beta * (1 - rho_total / vc.rho_max) / vc.rho_max
+                        wave_speed += rho_array[i, j] * interweaving_derivative
+                
+                # Update maximum wave speed
+                max_wave_speed = max(max_wave_speed, abs(wave_speed))
+        
+        # Ensure we don't miss the free-flow wave speed
+        for i in range(self.n_classes):
+            max_wave_speed = max(max_wave_speed, self.vehicle_classes[i].v_max)
         
         # CFL condition: dt ≤ dx / max_wave_speed
         dt = cfl_factor * dx / max_wave_speed
