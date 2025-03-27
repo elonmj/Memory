@@ -144,7 +144,9 @@ class MulticlassPlotter(SimulationPlotter):
             filename = f"class_comparison_t{time_idx:03d}"
             if title:
                 filename = title.replace(" ", "_").lower()
-            plt.savefig(f'{self.output_dir}/{filename}.png', bbox_inches='tight', dpi=300)
+            filepath = f'{self.output_dir}/{filename}.png'
+            plt.savefig(filepath, bbox_inches='tight', dpi=300)
+            print(f"Figure saved as {os.path.abspath(filepath)}")
         
         if show:
             plt.show()
@@ -194,8 +196,10 @@ class MulticlassPlotter(SimulationPlotter):
         ax.legend()
         
         if save:
-            plt.savefig(f'{self.output_dir}/flow_density_relationship.png', 
+            filepath = f'{self.output_dir}/flow_density_relationship.png'
+            plt.savefig(filepath,
                        bbox_inches='tight', dpi=300)
+            print(f"Figure saved as {os.path.abspath(filepath)}")
         
         if show:
             plt.show()
@@ -264,6 +268,10 @@ class MulticlassPlotter(SimulationPlotter):
         )
         
         plt.tight_layout()
+        if save:
+            filename = f'{self.output_dir}/multiclass_animation.png'
+            plt.savefig(filename, bbox_inches='tight', dpi=300)
+            print(f"Figure saved as {os.path.abspath(filename)}")
         return fig, ani
     
     def plot_spacetime_class_comparison(self, densities, x_grid, t_grid, time_indices=None, title=None, show=True, save=True):
@@ -363,8 +371,9 @@ class MulticlassPlotter(SimulationPlotter):
             save_title = title if title else f'{self.model_name}_spacetime_class_comparison'
             filename = f"{self.output_dir}/{save_title.replace(' ', '_').lower()}.png"
             try:
-                plt.savefig(filename)
-                print(f"Figure saved as {filename}")
+                filepath = filename
+                plt.savefig(filepath)
+                print(f"Figure saved as {os.path.abspath(filepath)}")
             except Exception as e:
                 print(f"Error saving figure: {e}")
         
@@ -572,8 +581,9 @@ class MulticlassPlotter(SimulationPlotter):
             save_title = title if title else f'{self.model_name}_traffic_dashboard'
             filename = f"{self.output_dir}/{save_title.replace(' ', '_').lower()}.png"
             try:
-                plt.savefig(filename, dpi=150)
-                print(f"Dashboard saved as {filename}")
+                filepath = filename
+                plt.savefig(filepath, dpi=150)
+                print(f"Dashboard saved as {os.path.abspath(filepath)}")
             except Exception as e:
                 print(f"Error saving dashboard: {e}")
         

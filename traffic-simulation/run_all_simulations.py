@@ -66,7 +66,7 @@ def parse_arguments():
                             help=f"Override default value for {param} (default: {default})")
     
     parser.add_argument("--plot", type=str, choices=["none", "basic", "all"], default="all",
-                        help="Plotting level (default: all)")
+                            help="Plotting level (default: none to avoid showing plots)")
     parser.add_argument("--log-file", type=str, default="simulation_run.log",
                         help="Log file path")
     parser.add_argument("--sequential", action="store_true", 
@@ -79,6 +79,7 @@ def run_simulation(model, scenario, params):
     """
     Run a single simulation with given model and scenario.
     
+    
     Args:
         model: Model type (e.g., "lwr")
         scenario: Scenario type (e.g., "rarefaction")
@@ -87,12 +88,22 @@ def run_simulation(model, scenario, params):
     Returns:
         bool: True if simulation succeeded, False otherwise
     """
+    logger.info(f"Plot value: {params.get('plot')}")
     cmd = [sys.executable, str(main_script), "--model", model, "--scenario", scenario]
     
     # Add all parameters
     for param, value in params.items():
         if param not in ["models", "scenarios", "log_file", "sequential"]:
-            cmd.extend([f"--{param}", str(value)])
+            # Ensure plot parameter is set to not show figures
+            if param == "plot":
+                # Keep the original value (which should default to "none")
+                cmd.extend([f"--{param}", str(value)])
+            else:
+                cmd.extend([f"--{param}", str(value)])
+    
+    # Ensure the plot parameter is always included
+    if not any(arg.startswith("--plot") for arg in cmd):
+        cmd.extend(["--plot", "none"])
     
     # Create output directory using project root
     output_dir = os.path.join(str(project_root), params["output"], model.upper(), scenario)
@@ -108,14 +119,18 @@ def run_simulation(model, scenario, params):
         # Log output
         if result.stdout:
             for line in result.stdout.splitlines():
-                logger.info(f"[{model}/{scenario}] {line}")
-        
-        logger.info(f"✓ {model}/{scenario} completed successfully in {end_time - start_time:.2f} seconds")
+                if line.startswith("Figure saved as"):
+                    logger.info(f"[{model}/{scenario}] {line}")
+                else:
+                    logger.info(f"[{model}/{scenario}] {line}")
+        # Replace Unicode checkmark with ASCII-compatible text
+        logger.info(f"[SUCCESS] {model}/{scenario} completed successfully in {end_time - start_time:.2f} seconds")
         return True
     
     except subprocess.CalledProcessError as e:
         end_time = time.time()
-        logger.error(f"✗ {model}/{scenario} failed in {end_time - start_time:.2f} seconds")
+        # Replace Unicode "x" with ASCII-compatible text
+        logger.error(f"[FAILED] {model}/{scenario} failed in {end_time - start_time:.2f} seconds")
         
         # Log error output
         if e.stdout:
@@ -130,7 +145,7 @@ def run_simulation(model, scenario, params):
     
     except Exception as e:
         end_time = time.time()
-        logger.error(f"✗ {model}/{scenario} failed with unexpected error: {str(e)}")
+        logger.error(f"[ERROR] {model}/{scenario} failed with unexpected error: {str(e)}")
         return False
 
 

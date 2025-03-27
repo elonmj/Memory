@@ -89,7 +89,7 @@ Cette équation révèle une relation parabolique entre le flux et la densité. 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{simulations/LWR/diagrams/lwr_fundamental_diagrams}
+\includegraphics[width=1.0\textwidth]{simulations/lwr_fundamental_diagrams}
 \caption{Diagrammes fondamentaux du modèle LWR selon Greenshields : (a) relation vitesse-densité montrant la décroissance linéaire de la vitesse avec la densité, (b) relation flux-densité montrant la forme parabolique caractéristique avec le point critique à $\rho_c = \rho_{\text{max}}/2$, et (c) relation flux-vitesse.}
 \label{fig:diagramme_fondamental}
 \end{figure}
@@ -262,7 +262,7 @@ où $\rho_i^n$ représente la densité moyenne dans la cellule $i$ au temps $n$\
 F_{i+\frac{1}{2}} = \mathcal{F}(\rho_i^n, \rho_{i+1}^n)
 \end{equation}
     
-Nous avons choisi ce schéma numérique car il est particulièrement adapté aux lois de conservation hyperboliques et permet de capturer précisément les discontinuités (ondes de choc) sans introduire d'oscillations parasites \cite{toro2013riemann}. Les détails complets concernant l'implémentation du schéma, les calculs des flux numériques et les preuves de convergence sont présentés dans l'Annexe \ref{annex:schemas_numeriques}.
+Nous avons choisi ce schéma numérique car il est particulièrement adapté aux lois de conservation hyperboliques et permet de capturer précisément les discontinuités (ondes de choc) sans introduire d'oscillations parasites \cite{toro2013riemann}. Les détails complets concernant l'implémentation du schéma, les calculs des flux numériques et les preuves de convergence sont présentés dans le chapitre \ref{chap:schemas_numeriques}.
     
 \subsection{Scénarios de Simulation}
 \label{subsec:scenarios}
@@ -273,6 +273,7 @@ Nous présentons ici trois scénarios caractéristiques qui illustrent les phén
     \item \textbf{Feu rouge} : formation d'une congestion en amont d'un feu rouge et sa dissipation après le passage au vert.
     \item \textbf{Onde de choc} : rencontre d'un trafic rapide et d'un trafic lent créant une onde de choc se propageant en amont.
     \item \textbf{Onde de raréfaction} : accélération progressive d'un trafic initialement congestionné.
+    \item \textbf{Embouteillage (Traffic Jam)} : dynamique d'un embouteillage avec transition entre une zone de forte densité et une zone de faible densité.
 \end{enumerate}
 
 \subsubsection{Feu Rouge}
@@ -282,8 +283,8 @@ Considérons une route de 10 km où le trafic circule initialement à densité m
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{simulations/LWR/redlight/RedLight_combined}
-\caption{Simulation de la dissipation d'un embouteillage après le passage d'un feu au vert. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux.}
+\includegraphics[width=1.0\textwidth]{simulations/LWR/redlight/redlight_(light_turns_green_at_t=0.05h).png}La région rouge dans le graphique de densité indique la zone de congestion qui se dissipe progressivement après l'ouverture du feu.
+\caption{Simulation de la dissipation d'un embouteillage après le passage d'un feu au vert. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux. La discontinuité à $t=0,05h$ correspond au moment où le feu passe au vert, générant une onde de raréfaction qui se propage vers l'amont.}
 \label{fig:feu_rouge}
 \end{figure}
 
@@ -296,52 +297,57 @@ Dans ce scénario, nous simulons une route de 20 km avec un trafic fluide ($\rho
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{simulations/LWR/shock/ShockWave_combined}
-\caption{Simulation de la formation et propagation d'une onde de choc. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux.}
+\includegraphics[width=1.0\textwidth]{simulations/LWR/shock/shockwave.png}On observe distinctement la propagation de l'onde de choc vers l'amont (de droite à gauche) avec une vitesse constante négative.
+\caption{Simulation de la formation et propagation d'une onde de choc. De haut en bas : (a) Évolution de la densité, montrant la discontinuité nette se propageant vers l'amont, (b) Évolution de la vitesse, avec une transition abrupte entre régimes de circulation, (c) Évolution du flux, révélant comment le débit est affecté par l'onde de choc.}
 \label{fig:sim_onde_choc}
 \end{figure}
-
-
 On observe que l'onde de choc se propage en amont avec une vitesse négative constante, conformément à la théorie. Les véhicules doivent ralentir brusquement en atteignant le front de l'onde, ce qui correspond à une discontinuité dans le profil de vitesse.
 
 \subsubsection{Onde de Raréfaction}
 \label{subsubsec:rarefaction_sim}
-
 Ce scénario illustre la dissipation progressive d'un embouteillage, représentée par une onde de raréfaction. Nous considérons une route de 20 km avec un trafic dense ($\rho = 0,7$\rho$_{\max}$) en amont et un trafic fluide ($\rho = 0,1$\rho$_{\max}$) en aval. La Figure \ref{fig:sim_rarefaction} montre l'évolution de cette situation.
+
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{simulations/LWR/rarefaction/RarefactionWave_combined}
-\caption{Simulation d'une onde de raréfaction. De haut en bas : (a) Évolution de la densité, (b) Évolution de la vitesse, (c) Évolution du flux.}
+\includegraphics[width=1.0\textwidth]{simulations/LWR/rarefaction/rarefactionwave.png}, (b) Évolution de la vitesse, (c) Évolution du flux. On observe la transition progressive (en éventail) caractéristique d'une onde de raréfaction, montrant la dissipation graduelle de la congestion.
+\caption{Simulation d'une onde de raréfaction. De haut en bas : (a) Évolution de la densité, avec une transition progressive qui s'élargit avec le temps, (b) Évolution de la vitesse, montrant l'accélération graduelle des véhicules, (c) Évolution du flux, illustrant la transition continue du débit entre les deux régimes de circulation.}
 \label{fig:sim_rarefaction}
 \end{figure}
 
 Contrairement à l'onde de choc, la transition est progressive : les véhicules accélèrent graduellement en sortant de la zone congestionnée, créant un éventail de caractéristiques dans le plan espace-temps.
 
+\subsubsection{Embouteillage (Traffic Jam)}
+\label{subsubsec:trafficjam_sim}
+Ce scénario présente la formation et l'évolution d'un embouteillage classique. Nous simulons une transition entre une zone de forte densité ($\rho = 0,7\rho_{\max}$) et une zone de faible densité ($\rho = 0,1\rho_{\max}$). La Figure \ref{fig:sim_trafficjam} illustre la dynamique de cet embouteillage.
+Ce scénario supplémentaire simule la dynamique d'un embouteillage avec une transition entre une zone de forte densité ($\rho = 0,7$\rho$_{\max}$) et une zone de faible densité ($\rho = 0,1$\rho$_{\max}$). La Figure \ref{fig:sim_trafficjam} présente l'évolution temporelle de ce phénomène.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{simulations/LWR/trafficjam/trafficjam.png}
+\caption{Simulation d'un embouteillage avec transition de densité. On observe (a) l'évolution de la densité montrant la propagation de la congestion, (b) les profils de vitesse correspondants avec ralentissement progressif, et (c) la variation du flux à travers la zone congestionnée.}
+\label{fig:sim_trafficjam}{figure}
+\end{figure}
+Cette simulation met en évidence comment un embouteillage persiste et évolue dans le temps, avec la formation de structures d'ondes complexes où les véhicules passent progressivement d'un état congestionné à un état de circulation fluide.
+
 \subsection{Limitations Révélées par les Simulations}
 \label{subsec:limitations_sim}
-
 Ces simulations, bien qu'illustrant correctement certains phénomènes de trafic, mettent en évidence plusieurs limitations du modèle LWR standard face aux spécificités du contexte béninois :
 
 \begin{itemize}
     \item \textbf{Homogénéité des véhicules} : Les simulations supposent un flux homogène de véhicules identiques, ce qui ne reflète pas la diversité du parc automobile béninois dominé par les motos (zémidjans). La Figure \ref{fig:comparaison_flux} montre la différence entre un flux simulé homogène et des observations réelles à Cotonou, où la présence de motos crée des comportements de trafic distincts.
-    
     \item \textbf{Comportement aux intersections} : Le modèle LWR standard ne peut pas simuler correctement les comportements spécifiques aux intersections non régulées fréquentes dans les villes béninoises, où les motos s'infiltrent entre les voitures et ne respectent pas nécessairement les files d'attente traditionnelles.
-    
     \item \textbf{Effets de l'état des routes} : Les simulations ne tiennent pas compte de l'état variable des infrastructures routières, un facteur crucial au Bénin où la qualité du revêtement influe significativement sur les vitesses pratiquées.
 \end{itemize}
-
 % Ces limitations, mises en évidence par la confrontation des simulations avec les observations de terrain, justifient pleinement la nécessité de développer une extension du modèle LWR adaptée aux spécificités du trafic routier béninois. Les fondements mathématiques rigoureux et les démonstrations formelles qui sous-tendent cette extension sont détaillés dans l'Annexe \ref{annexe:demonstrations}.
 
 % \begin{figure}[htbp]
-% \centering
-% \includegraphics[width=0.8\textwidth]{simulations/LWR/comparisons/flux_reel_vs_simule}
-% \caption{Comparaison entre le flux simulé par le modèle LWR standard et des observations réelles dans une rue typique de Cotonou. Les différences significatives soulignent la nécessité d'adapter le modèle au contexte béninois.}
-% \label{fig:comparaison_flux}
+% \centeringeel_vs_simule}
+% \includegraphics[width=0.8\textwidth]{simulations/LWR/comparisons/flux_reel_vs_simule}rd et des observations réelles dans une rue typique de Cotonou. Les différences significatives soulignent la nécessité d'adapter le modèle au contexte béninois.}
+% \caption{Comparaison entre le flux simulé par le modèle LWR standard et des observations réelles dans une rue typique de Cotonou. Les différences significatives soulignent la nécessité d'adapter le modèle au contexte béninois.}comparaison_flux}
+% \label{fig:comparaison_flux}% \end{figure}
 % \end{figure}
-
 \section{Vers une Extension Adaptée au Contexte Béninois}
-\label{sec:vers_extension}
 
 L'extension que nous proposons vise à adapter le modèle LWR au contexte béninois en combinant et enrichissant plusieurs approches existantes :
 

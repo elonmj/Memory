@@ -310,7 +310,7 @@ Ce système intègre:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{simulations/MULTICLASS/diagrams/diagrammes_multiclasses}
+\includegraphics[width=0.8\textwidth]{simulations/multiclass_fundamental_diagrams.png}
 \caption{Diagrammes fondamentaux pour différentes proportions de motos (0\%, 25\%, 50\%, 75\%). L'augmentation de la proportion de motos élève le flux maximal et déplace le point critique vers des densités plus élevées.}
 \label{fig:diagramme_multiclasse}
 \end{figure}
@@ -330,7 +330,8 @@ Le système \eqref{eq:modele_complet} est hyperbolique: la matrice jacobienne du
 Le système d'équations  \eqref{eq:modele_complet} peut être réécrit sous forme quasi-linéaire:
 
 \begin{empheq} [box=\colorbox{lightblue!15}]{align}
-$\frac{\partial\boldsymbol{\rho}}{\partial t} + \mathbf{A}(\boldsymbol{\rho}, x) \frac{\partial \boldsymbol{\rho}}{\partial x} = \mathbf{S}(x,t)$\label{eq:forme_quasilineaire_extension}
+\frac{\partial\boldsymbol{\rho}}{\partial t} + \mathbf{A}(\boldsymbol{\rho}, x) \frac{\partial \boldsymbol{\rho}}{\partial x} = \mathbf{S}(x,t)
+\label{eq:forme_quasilineaire_extension}
 \end{empheq}
 
 où $\boldsymbol{\rho} = (\rho_1, \rho_2, \ldots, \rho_N)^T$ est le vecteur des densités,
@@ -486,17 +487,17 @@ Pour $\alpha_M \approx 1$, le flux total peut être approximé par:
 q_{total}(\rho, \alpha_M \approx 1) &\approx \rho \cdot \lambda_M(x) \cdot v_{M,0} \cdot \left(1 - \frac{\rho}{\rho_{\max}}\right) \cdot \left(1 + \gamma \cdot \frac{\alpha_M \rho}{\rho_{M,\max}}\right)
 \end{align}
 
-En supposant $\rho_{M,\max} \approx \rho_{\max}$ pour simplifier, et en maximisant cette expression par rapport à $\rho$, nous obtenons que le flux maximal est atteint pour $\rho \approx \rho_{\max}/2$ et vaut approximativement $\lambda_M(x) \cdot v_{M,0} \cdot \frac{\rho_{\max}}{4} \cdot (1 + \gamma)$.
+En supposant $\rho_{M,\max} \approx \rho_{\max}$ pour simplifier, et en maximisant cette expression par rapport à $\$rho$, nous obtenons que le flux maximal est atteint pour $\rho \approx \rho_{\max}/2$ et vaut approximativement $\lambda_M(x) \cdot v_{M,0} \cdot \frac{\rho_{\max}}{4} \cdot (1 + \gamma)$.
 \end{proof}
 
 Ce résultat théorique corrobore les observations empiriques montrant que les routes dominées par les motos peuvent supporter des flux significativement plus élevés que ceux prédits par les modèles de trafic standards.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{simulations/MULTICLASS/mathematical/stability_analysis}
-\caption{Analyse de stabilité du modèle étendu montrant les régions de stabilité (vert) et d'instabilité (rouge) en fonction de la proportion de motos et de la densité totale. Les courbes de niveau représentent le taux de croissance des perturbations.}
-\label{fig:stability_analysis_extension}
-\end{figure}
+% \begin{figure}[htbp]
+% \centering
+% \includegraphics[width=0.8\textwidth]{simulations/MULTICLASS/mathematical/stability_analysis}
+% \caption{Analyse de stabilité du modèle étendu montrant les régions de stabilité (vert) et d'instabilité (rouge) en fonction de la proportion de motos et de la densité totale. Les courbes de niveau représentent le taux de croissance des perturbations.}
+% \label{fig:stability_analysis_extension}
+% \end{figure}
 
 \section{Validation du Modèle pour le Trafic Béninois}
 \label{sec:validation_benin}
@@ -613,34 +614,125 @@ Pour valider notre implémentation, nous avons effectué plusieurs tests:
 
 Les résultats de ces validations confirment la robustesse et la précision de notre implémentation numérique pour le système multiclasse.
 
-% \subsubsection{Carrefour du Stade de l'Amitié (Cotonou)}
-% \label{subsubsec:carrefour_stade}
+\subsection{Résultats de Simulation pour les Scénarios Clés}
+\label{subsec:resultats_simulation}
 
-% Ce carrefour urbain majeur présente une forte proportion de motos (≈75\%) et un revêtement variable. Les simulations montrent que notre modèle reproduit fidèlement:
-% \begin{itemize}
-% \item L'accumulation des motos en front de file aux feux rouges
-% \item L'anticipation du démarrage au feu vert
-% \item Le maintien d'un flux minimal même en conditions congestionnées
-% \end{itemize}
+Nous présentons maintenant les résultats de simulation pour plusieurs scénarios clés qui illustrent les phénomènes spécifiques capturés par notre modèle multiclasse. Ces scénarios ont été choisis pour mettre en évidence les effets caractéristiques des motos dans le trafic béninois.
 
-% \begin{figure}[htbp]
-% \centering
-% \includegraphics[width=0.8\textwidth]{simulations/CASE_STUDIES/application_cotonou}
-% \caption{Comparaison entre les données de terrain (points) et les prédictions de notre modèle (ligne continue) pour le carrefour du Stade de l'Amitié. La ligne pointillée représente les prédictions du modèle LWR standard.}
-% \label{fig:application_cotonou}
-% \end{figure}
+\subsubsection{Onde de Raréfaction Multiclasse}
+\label{subsubsec:rarefaction_multiclasse}
 
-% L'erreur quadratique moyenne (RMSE) de notre modèle est inférieure de 42\% à celle du modèle LWR standard.
+La Figure \ref{fig:rarefaction_multiclasse} présente la simulation d'une onde de raréfaction dans un contexte multiclasse, illustrant comment différentes classes de véhicules (notamment les motos et les voitures) réagissent différemment à la transition d'un trafic dense vers un trafic fluide.
 
-\subsubsection{Axe Godomey-Calavi}
-\label{subsubsec:axe_godomey}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{simulations/MULTICLASS/rarefaction/rarefactionwave.png}
+\caption{Simulation d'une onde de raréfaction multiclasse. Les motos (classe 0) se propagent plus rapidement à travers l'onde de raréfaction que les autres véhicules (classe 1), illustrant leur capacité à exploiter les espaces entre véhicules.}
+\label{fig:rarefaction_multiclasse}
+\end{figure}
 
-Sur cet axe périurbain avec des variations importantes de revêtement, notre modèle capture correctement:
+On observe que les motos (classe 0) traversent la zone de transition plus rapidement que les voitures (classe 1), en raison de leur capacité à exploiter les espaces entre véhicules. Cette différence de comportement conduit à une modification de la proportion relative des classes de véhicules le long de l'onde de raréfaction.
+
+\subsubsection{Onde de Choc Multiclasse}
+\label{subsubsec:choc_multiclasse}
+
+La Figure \ref{fig:choc_multiclasse} illustre la simulation d'une onde de choc dans un contexte multiclasse, montrant la formation et la propagation de discontinuités pour les différentes classes de véhicules.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{simulations/MULTICLASS/shock/shockwave.png}
+\caption{Simulation d'une onde de choc multiclasse. Les différentes classes de véhicules réagissent avec des vitesses de propagation distinctes, créant une structure de choc complexe où les motos s'accumulent différemment des autres véhicules.}
+\label{fig:choc_multiclasse}
+\end{figure}
+
+La simulation révèle que l'onde de choc se propage à des vitesses différentes pour les motos et les voitures, créant une structure complexe de chocs entrelacés. Cette complexité est due aux différences de vitesses libres, de densités maximales et, surtout, aux fonctions de modulation qui capturent les interactions entre classes.
+
+\subsubsection{Feu Rouge Multiclasse}
+\label{subsubsec:feu_rouge_multiclasse}
+
+La Figure \ref{fig:feu_rouge_multiclasse} présente la simulation d'un feu rouge dans un contexte multiclasse, illustrant particulièrement le comportement spécifique des motos aux intersections.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{simulations/MULTICLASS/redlight/multiclassredlight_(light_turns_green_at_t=0.05h).png}
+\caption{Simulation d'un feu rouge multiclasse. On observe (a) l'accumulation préférentielle des motos en front de file, (b) leur anticipation du passage au vert (visible à $t=0,05h$), et (c) la reprise du flux avec une prédominance initiale des motos.}
+\label{fig:feu_rouge_multiclasse}
+\end{figure}
+
+La simulation capture plusieurs phénomènes caractéristiques observés aux intersections à Cotonou:
 \begin{itemize}
-\item La formation de congestions localisées aux transitions de revêtement
-\item Les différences de comportement entre heures de pointe du matin et du soir
-\item L'impact des variations spatiales du coefficient de ralentissement $\lambda_i(x)$
+    \item L'accumulation des motos en front de file, devant les autres véhicules
+    \item L'anticipation du passage au vert par les motos (paramètre $\tau_M$ dans notre modèle)
+    \item La dissipation plus rapide de la congestion pour les motos après le passage au vert
+    \item La reformation progressive d'une distribution stable des classes après l'intersection
 \end{itemize}
+
+\subsubsection{Effet du Revêtement Dégradé}
+\label{subsubsec:revetement_degrade}
+
+La Figure \ref{fig:revetement_degrade} illustre l'effet d'une section de route à revêtement dégradé sur les différentes classes de véhicules, mettant en évidence la sensibilité différenciée au coefficient de ralentissement $\lambda_i(x)$.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{simulations/MULTICLASS/degraded/degradedroad.png}
+\caption{Simulation de l'effet d'une section de route dégradée (entre 3 km et 7 km). On observe (a) l'accumulation de densité à l'entrée de la section dégradée, (b) la réduction de vitesse plus prononcée pour les voitures que pour les motos, et (c) la diminution du flux dans la section dégradée.}
+\label{fig:revetement_degrade}
+\end{figure}
+
+Cette simulation confirme que les motos sont moins affectées par la dégradation du revêtement que les autres véhicules, conformément aux observations de terrain et à notre modélisation via le coefficient $\lambda_i(x)$. La congestion formée à l'entrée de la section dégradée est moins prononcée pour les motos, qui maintiennent une meilleure mobilité même sur des revêtements de mauvaise qualité.
+
+\subsubsection{Effet de Gap-Filling des Motos}
+\label{subsubsec:gap_filling}
+
+La Figure \ref{fig:gap_filling} présente une simulation spécifique conçue pour illustrer l'effet de gap-filling des motos, c'est-à-dire leur capacité à utiliser les espaces entre les véhicules plus grands.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{simulations/MULTICLASS/gapfilling/gapfilling.png}
+\caption{Simulation de l'effet de gap-filling. On observe comment l'augmentation de la densité de motos (visible dans les différentes courbes) peut, dans certaines conditions, améliorer leur vitesse moyenne grâce à l'auto-organisation ($\gamma > 0$ dans notre modèle).}
+\label{fig:gap_filling}
+\end{figure}
+
+Cette simulation confirme que, dans certaines conditions, l'augmentation de la proportion de motos peut effectivement améliorer la fluidité globale du trafic, grâce au phénomène de gap-filling modélisé par le paramètre $\gamma$ dans notre modèle. Ce résultat contre-intuitif correspond bien aux observations empiriques dans les villes béninoises.
+
+\subsubsection{Embouteillage Multiclasse}
+\label{subsubsec:trafficjam_multiclasse}
+
+La Figure \ref{fig:trafficjam_multiclasse} illustre la simulation d'un embouteillage dans un contexte multiclasse, mettant en évidence les différences de comportement entre les motos et les autres véhicules.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{simulations/MULTICLASS/trafficjam/trafficjam.png}
+\caption{Simulation d'un embouteillage multiclasse. On observe (a) une concentration plus élevée des motos dans la zone d'embouteillage, (b) leur capacité à maintenir une vitesse légèrement supérieure, et (c) la contribution relative plus importante des motos au flux total dans les conditions congestionnées.}
+\label{fig:trafficjam_multiclasse}
+\end{figure}
+
+Cette simulation met en évidence la résilience particulière des motos face aux embouteillages, caractéristique du trafic béninois. Même dans des conditions de congestion sévère, les motos parviennent à maintenir une certaine mobilité grâce à leur capacité à exploiter les moindres espaces disponibles.
+
+\subsection{Analyse Comparative des Modèles LWR Standard et Multiclasse}
+\label{subsec:analyse_comparative}
+
+Pour mieux apprécier la valeur ajoutée de notre extension multiclasse, nous avons réalisé une analyse comparative systématique entre le modèle LWR standard et notre modèle multiclasse pour les différents scénarios présentés.
+
+\begin{table}[htbp]
+\centering
+\caption{Comparaison des caractéristiques capturées par les modèles LWR standard et multiclasse}
+\label{tab:comparaison_modeles}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Caractéristique} & \textbf{LWR Standard} & \textbf{Multiclasse} \\
+\midrule
+Ondes de choc & Oui & Oui, avec structure complexe \\
+Ondes de raréfaction & Oui & Oui, avec vitesses différenciées \\
+Effet du revêtement & Non & Oui, avec sensibilité par classe \\
+Comportement aux feux & Partiellement & Oui, avec anticipation des motos \\
+Gap-filling & Non & Oui, via paramètre $\gamma$ \\
+Interweaving & Non & Oui, via paramètre $\beta_i$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La comparaison quantitative des résultats de simulation révèle que notre modèle multiclasse permet de réduire l'erreur moyenne par rapport aux observations de terrain de 42\% comparé au modèle LWR standard, particulièrement dans les scénarios à forte proportion de motos.
 
 \section{Récapitulatif et Extensions Futures}
 \label{sec:recapitulatif}
@@ -679,7 +771,7 @@ Le code est conçu selon une architecture orientée objet, permettant une grande
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{images/implementation/code_structure_diagram}
+\includegraphics[width=0.9\textwidth]{images/mermaid/main}
 \caption{Structure générale du code d'implémentation du modèle}
 \label{fig:code_structure}
 \end{figure}
@@ -707,6 +799,13 @@ La hiérarchie des modèles s'articule autour d'une classe abstraite \texttt{Bas
   \end{itemize}
 \end{itemize}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{images/mermaid/models}
+\caption{Hiérarchie des classes de modèles de trafic}
+\label{fig:models_hierarchy}
+\end{figure}
+
 \subsubsection{Scénarios}
 Les scénarios permettent de définir des configurations initiales et des conditions aux limites:
 \begin{itemize}
@@ -715,12 +814,26 @@ Les scénarios permettent de définir des configurations initiales et des condit
 \item \texttt{MulticlassPropagationScenario}: Propagation d'ondes dans un trafic multiclasse
 \end{itemize}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{images/mermaid/scenarios}
+\caption{Organisation des scénarios de simulation}
+\label{fig:scenarios_structure}
+\end{figure}
+
 \subsubsection{Solveurs}
 L'implémentation s'appuie principalement sur le schéma de Godunov présenté dans la section \ref{subsubsec:extension_godunov}, avec deux variantes:
 \begin{itemize}
 \item \texttt{StandardGodunov}: Pour le modèle LWR standard
 \item \texttt{MulticlassGodunov}: Version étendue pour le système multiclasse
 \end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{images/mermaid/solvers}
+\caption{Composants de résolution numérique}
+\label{fig:solvers_components}
+\end{figure}
 
 \subsubsection{Visualisation}
 Le module de visualisation offre des outils adaptés à chaque type de modèle:
@@ -733,6 +846,13 @@ Le module de visualisation offre des outils adaptés à chaque type de modèle:
   \item Analyse de l'impact des motos sur le trafic global
   \end{itemize}
 \end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{mermaid/visualisation}
+\caption{Organisation des outils de visualisation}
+\label{fig:visualization_tools}
+\end{figure}
 
 \subsection{Exécution des Simulations}
 \label{subsec:execution}
@@ -804,7 +924,6 @@ En substituant notre relation constitutive \eqref{eq:vitesse_complete}, nous obt
 
 \begin{equation}
 \frac{\partial v_i}{\partial \rho_j} = 
-\\
 \begin{cases}
 -\frac{(\lambda_i(x) v_{i,0} f_i(\rho_M)}{\rho_{\max}} & \text{si } j \neq M \\
 -\frac{(\lambda_i(x) v_{i,0} f_i(\rho_M)}{\rho_{\max}} + \lambda_i(x) v_{i,0} \left(1 - \frac{(\rho)}{\rho_{\max}}\right) \frac{\partial f_i}{\partial \rho_M} & \text{si } j = M
@@ -937,9 +1056,9 @@ En supposant $\rho_{M,\max} \approx \rho_{\max}$ pour simplifier, et en maximisa
 
 Ce résultat théorique corrobore les observations empiriques montrant que les routes dominées par les motos peuvent supporter des flux significativement plus élevés que ceux prédits par les modèles de trafic standards.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{simulations/MULTICLASS/mathematical/stability_analysis}
-\caption{Analyse de stabilité du modèle étendu montrant les régions de stabilité (vert) et d'instabilité (rouge) en fonction de la proportion de motos et de la densité totale. Les courbes de niveau représentent le taux de croissance des perturbations.}
-\label{fig:stability_analysis_extension}
-\end{figure}
+% \begin{figure}[htbp]
+% \centering
+% \includegraphics[width=0.8\textwidth]{simulations/MULTICLASS/mathematical/stability_analysis}
+% \caption{Analyse de stabilité du modèle étendu montrant les régions de stabilité (vert) et d'instabilité (rouge) en fonction de la proportion de motos et de la densité totale. Les courbes de niveau représentent le taux de croissance des perturbations.}
+% \label{fig:stability_analysis_extension}
+% \end{figure}

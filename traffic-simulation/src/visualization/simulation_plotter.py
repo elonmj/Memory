@@ -64,7 +64,9 @@ class SimulationPlotter:
         
         if save:
             filename = title.replace(" ", "_").lower() if title else "density_evolution"
-            plt.savefig(f'{self.output_dir}/{filename}.png', bbox_inches='tight', dpi=300)
+            filepath = f'{self.output_dir}/{filename}.png'
+            plt.savefig(filepath, bbox_inches='tight', dpi=300)
+            print(f"Figure saved as {os.path.abspath(filepath)}")
         
         if show:
             plt.show()
@@ -110,7 +112,9 @@ class SimulationPlotter:
         
         if save:
             filename = title.replace(" ", "_").lower() if title else "velocity_evolution"
-            plt.savefig(f'{self.output_dir}/{filename}.png', bbox_inches='tight', dpi=300)
+            filepath = f'{self.output_dir}/{filename}.png'
+            plt.savefig(filepath, bbox_inches='tight', dpi=300)
+            print(f"Figure saved as {os.path.abspath(filepath)}")
         
         if show:
             plt.show()
@@ -156,7 +160,9 @@ class SimulationPlotter:
         
         if save:
             filename = title.replace(" ", "_").lower() if title else "flow_evolution"
-            plt.savefig(f'{self.output_dir}/{filename}.png', bbox_inches='tight', dpi=300)
+            filepath = f'{self.output_dir}/{filename}.png'
+            plt.savefig(filepath, bbox_inches='tight', dpi=300)
+            print(f"Figure saved as {os.path.abspath(filepath)}")
         
         if show:
             plt.show()
@@ -313,7 +319,9 @@ class SimulationPlotter:
         
         if save:
             filename = title.replace(" ", "_").lower() if title else "multiclass_comparison"
-            plt.savefig(f'{self.output_dir}/{filename}.png', bbox_inches='tight', dpi=300)
+            filepath = f'{self.output_dir}/{filename}.png'
+            plt.savefig(filepath, bbox_inches='tight', dpi=300)
+            print(f"Figure saved as {os.path.abspath(filepath)}")
         
         if show:
             plt.show()
@@ -393,10 +401,10 @@ class SimulationPlotter:
         # Save figure if requested
         if save:
             save_title = title if title else f'{self.model_name}_combined_evolution'
-            filename = f"{self.output_dir}/{save_title.replace(' ', '_').lower()}.png"
+            filepath = f"{self.output_dir}/{save_title.replace(' ', '_').lower()}.png"
             try:
-                plt.savefig(filename)
-                print(f"Figure saved as {filename}")
+                plt.savefig(filepath)
+                print(f"Figure saved as {os.path.abspath(filepath)}")
             except Exception as e:
                 print(f"Error saving figure: {e}")
         

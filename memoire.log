@@ -1,10 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.3.15)  15 MAR 2025 11:08
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.3.15)  16 MAR 2025 15:16
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Projets/Alibi/Projet_tutore/memoire.tex
-(d:/Projets/Alibi/Projet_tutore/memoire.tex
+**./memoire.tex
+(memoire.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (preamble.tex (C:\Program Files\MiKTeX\tex/latex/base\report.cls
@@ -2132,7 +2131,68 @@ Package: thmdef-mdframed 2023/05/04 v0.76
 
 
 Writing index file memoire.idx
-No file memoire.aux.
+(memoire.aux (pages_preliminaires/titlepage.aux)
+(pages_preliminaires/dedicace.aux) (pages_preliminaires/remerciements.aux)
+(pages_preliminaires/resume_francais.aux)
+(pages_preliminaires/resume_anglais.aux) (pages_preliminaires/abreviations.aux)
+(chapitres/introduction.aux) (chapitres/fondements_theoriques.aux)
+(chapitres/specificites_benin.aux
+
+LaTeX Warning: Label `chap:specificites_benin' multiply defined.
+
+
+LaTeX Warning: Label `chap:specificites_benin@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:types_routes' multiply defined.
+
+
+LaTeX Warning: Label `fig:types_routes@cref' multiply defined.
+
+) (chapitres/extension_modele.aux
+
+LaTeX Warning: Label `subsubsec:gap_filling' multiply defined.
+
+
+LaTeX Warning: Label `subsubsec:gap_filling@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:gap_filling' multiply defined.
+
+
+LaTeX Warning: Label `fig:gap_filling@cref' multiply defined.
+
+
+LaTeX Warning: Label `subsec:riemann_multiclasse' multiply defined.
+
+
+LaTeX Warning: Label `subsec:riemann_multiclasse@cref' multiply defined.
+
+
+LaTeX Warning: Label `eq:probleme_riemann' multiply defined.
+
+
+LaTeX Warning: Label `eq:probleme_riemann@cref' multiply defined.
+
+
+LaTeX Warning: Label `subsec:stabilite_lineaire' multiply defined.
+
+
+LaTeX Warning: Label `subsec:stabilite_lineaire@cref' multiply defined.
+
+
+LaTeX Warning: Label `subsec:traitement_discontinuites' multiply defined.
+
+
+LaTeX Warning: Label `subsec:traitement_discontinuites@cref' multiply defined.
+
+
+LaTeX Warning: Label `subsec:analyse_asymptotique' multiply defined.
+
+
+LaTeX Warning: Label `subsec:analyse_asymptotique@cref' multiply defined.
+
+) (chapitres/discussion.aux) (chapitres/conclusion.aux))
 \openout1 = `memoire.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -2155,6 +2215,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
+
 
 Package unicode-math Warning: Using \overbracket and \underbracket from
 (unicode-math)                `mathtools' package.
@@ -2221,9 +2282,6 @@ Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count458
 Package hyperref Info: Link coloring ON on input line 36.
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
 
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
@@ -2345,35 +2403,47 @@ we incorporate the variable influence
 
 
 
-]
-No file memoire.toc.
-\tf@toc=\write9
-\openout9 = `memoire.toc'.
-
-
+] (memoire.toc
 
 [5
 
 
 
 ]
-No file memoire.lof.
+
+[6])
+\tf@toc=\write9
+\openout9 = `memoire.toc'.
+
+
+
+[7] (memoire.lof
+
+[8
+
+]
+Overfull \hbox (1.25597pt too wide) in paragraph at lines 13--13
+ \TU/TeXGyrePagella(0)/m/n/12 filling entre voitures; (b) regroupement aux inte
+rsections; (c) trajectoires 
+ []
+
+
+
+[9])
 \tf@lof=\write10
 \openout10 = `memoire.lof'.
 
 
 
-[6
-
-]
-No file memoire.lot.
+[10] (memoire.lot)
 \tf@lot=\write11
 \openout11 = `memoire.lot'.
+
 
 No file memoire.gls.
 
 
-[7
+[11
 
 ]
 \openout2 = `pages_preliminaires/abreviations.aux'.
@@ -2385,12 +2455,12 @@ Overfull \hbox (20.98793pt too wide) in paragraph at lines 5--31
 
 )
 
-[8
+[12
 
 
 ]
 
-[9]
+[13]
 \openout2 = `chapitres/introduction.aux'.
 
  (chapitres/introduction.tex
@@ -2432,38 +2502,9 @@ Overfull \hbox (0.2999pt too wide) in paragraph at lines 95--96
 ePagella(0)/m/n/12 permettant d’identifier les paramètres les plus
  []
 
-
-LaTeX Warning: Reference `chap:fondements_theoriques' on page 4 undefined on in
-put line 107.
-
-
-LaTeX Warning: Reference `chap:specificites_benin' on page 4 undefined on input
- line 109.
-
-
-LaTeX Warning: Reference `chap:extension_modele' on page 4 undefined on input l
-ine 111.
-
-
-LaTeX Warning: Reference `chap:analyse_sensibilite' on page 4 undefined on inpu
-t line 115.
-
-
-LaTeX Warning: Reference `chap:intersections' on page 4 undefined on input line
- 117.
-
-
-LaTeX Warning: Reference `chap:discussion' on page 4 undefined on input line 12
-1.
-
-
+)
 
 [4]
-
-LaTeX Warning: Reference `chap:conclusion' on page 5 undefined on input line 12
-3.
-
-)
 
 [5]
 \openout2 = `chapitres/fondements_theoriques.aux'.
@@ -2471,12 +2512,10 @@ LaTeX Warning: Reference `chap:conclusion' on page 5 undefined on input line 12
  (chapitres/fondements_theoriques.tex
 Chapitre 2.
 
-LaTeX Warning: Citation `lighthill1955kinematic' on page 6 undefined on input l
-ine 8.
-
-
-LaTeX Warning: Citation `richards1956shock' on page 6 undefined on input line 8
-.
+Overfull \hbox (6.73694pt too wide) in paragraph at lines 8--9
+\TU/TeXGyrePagella(0)/m/n/12 thill et Whitham [[]] et Richards [[]], communémen
+t appelé modèle LWR, consti-
+ []
 
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
 nput line 16.
@@ -2494,15 +2533,9 @@ Package hyperref Info: bookmark level for unknown remark defaults to 0 on input
  line 56.
 
 
-LaTeX Warning: Citation `greenshields1935study' on page 8 undefined on input li
-ne 69.
-
-
-
 [8]
-File: simulations/LWR/diagrams/lwr_fundamental_diagrams.png Graphic file (type 
-bmp)
-<simulations/LWR/diagrams/lwr_fundamental_diagrams.png>
+File: simulations/lwr_fundamental_diagrams.png Graphic file (type bmp)
+<simulations/lwr_fundamental_diagrams.png>
 
 
 [9]
@@ -2521,124 +2554,99 @@ utions est essentielle pour la concep-
 
 
 [12]
-
-LaTeX Warning: Citation `wong2002multi' on page 13 undefined on input line 225.
-
+Overfull \hbox (13.18192pt too wide) in paragraph at lines 225--226
+[]\TU/TeXGyrePagella(1)/m/n/12 Les modèles multiclasses, comme ceux proposés pa
+r Wong et Wong [[]], étendent
+ []
 
 Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
 t line 227.
 
-LaTeX Warning: Citation `zhang2003non' on page 13 undefined on input line 239.
-
-
-LaTeX Warning: Citation `daganzo1995cell' on page 13 undefined on input line 24
-4.
-
-
 
 [13]
-
-LaTeX Warning: Reference `eq:conservation_lwr' on page 14 undefined on input li
-ne 253.
-
-
-LaTeX Warning: Citation `godunov1959finite' on page 14 undefined on input line 
-253.
-
-
-LaTeX Warning: Citation `leveque1992numerical' on page 14 undefined on input li
-ne 253.
-
 Missing character: There is no 𝛥 in font TeXGyrePagella-Regular/OT:script=latn;
 language=dflt;+onum;mapping=tex-text;!
 
-LaTeX Warning: Citation `toro2013riemann' on page 14 undefined on input line 26
-5.
-
-
-LaTeX Warning: Reference `annex:schemas_numeriques' on page 14 undefined on inp
-ut line 265.
-
-Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
-language=dflt;+onum;mapping=tex-text;!
-
-LaTeX Warning: Reference `fig:feu_rouge' on page 14 undefined on input line 281
-.
+LaTeX Warning: Reference `chap:schemas_numeriques' on page 14 undefined on inpu
+t line 265.
 
 
 
 [14]
-File: simulations/LWR/redlight/RedLight_combined.png Graphic file (type bmp)
-<simulations/LWR/redlight/RedLight_combined.png>
+Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
+language=dflt;+onum;mapping=tex-text;!
+File: simulations/LWR/redlight/redlight_(light_turns_green_at_t=0.05h).png Grap
+hic file (type bmp)
+<simulations/LWR/redlight/redlight_(light_turns_green_at_t=0.05h).png>
+
+Overfull \hbox (13.332pt too wide) in paragraph at lines 286--287
+ [][]\TU/TeXGyrePagella(1)/m/n/12 La 
+ []
 
 Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
 language=dflt;+onum;mapping=tex-text;!
 Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
 language=dflt;+onum;mapping=tex-text;!
+File: simulations/LWR/shock/shockwave.png Graphic file (type bmp)
+<simulations/LWR/shock/shockwave.png>
 
-LaTeX Warning: Reference `fig:sim_onde_choc' on page 15 undefined on input line
- 295.
+Overfull \hbox (16.416pt too wide) in paragraph at lines 300--301
+ [][]\TU/TeXGyrePagella(1)/m/n/12 On 
+ []
 
-File: simulations/LWR/shock/ShockWave_combined.png Graphic file (type bmp)
-<simulations/LWR/shock/ShockWave_combined.png>
 
-Overfull \hbox (16.2999pt too wide) in paragraph at lines 305--306
+Overfull \hbox (16.2999pt too wide) in paragraph at lines 304--305
 []\TU/TeXGyrePagella(1)/m/n/12 On observe que l’onde de choc se propage en amon
 t avec une vitesse négative constante,
  []
 
+Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
+language=dflt;+onum;mapping=tex-text;!
+Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
+language=dflt;+onum;mapping=tex-text;!
+File: simulations/LWR/rarefaction/rarefactionwave.png Graphic file (type bmp)
+<simulations/LWR/rarefaction/rarefactionwave.png>
+
+Overfull \hbox (3.0pt too wide) in paragraph at lines 313--314
+ [][]\TU/TeXGyrePagella(1)/m/n/12 , 
+ []
+
+Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
+language=dflt;+onum;mapping=tex-text;!
+Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
+language=dflt;+onum;mapping=tex-text;!
+File: simulations/LWR/trafficjam/trafficjam.png Graphic file (type bmp)
+<simulations/LWR/trafficjam/trafficjam.png>
 
 
 [15]
 
 [16]
-Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
-language=dflt;+onum;mapping=tex-text;!
-Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
-language=dflt;+onum;mapping=tex-text;!
-
-LaTeX Warning: Reference `fig:sim_rarefaction' on page 17 undefined on input li
-ne 310.
-
-File: simulations/LWR/rarefaction/RarefactionWave_combined.png Graphic file (ty
-pe bmp)
-<simulations/LWR/rarefaction/RarefactionWave_combined.png>
-
-Overfull \hbox (14.9179pt too wide) in paragraph at lines 324--325
-[]\TU/TeXGyrePagella(1)/m/n/12 Ces simulations, bien qu’illustrant correctement
- certains phénomènes de trafic, mettent
- []
-
-
-LaTeX Warning: Reference `fig:comparaison_flux' on page 17 undefined on input l
-ine 327.
-
-
-LaTeX Warning: Reference `chap:extension_modele' on page 17 undefined on input 
-line 355.
-
-
-LaTeX Warning: Reference `chap:specificites_benin' on page 17 undefined on inpu
-t line 355.
-
-)
 
 [17]
 
 [18]
 
 [19]
+Overfull \hbox (14.9179pt too wide) in paragraph at lines 335--336
+[]\TU/TeXGyrePagella(1)/m/n/12 Ces simulations, bien qu’illustrant correctement
+ certains phénomènes de trafic, mettent
+ []
+
+
+LaTeX Warning: Reference `fig:comparaison_flux' on page 20 undefined on input l
+ine 338.
+
+)
+
+[20]
 \openout2 = `chapitres/specificites_benin.aux'.
 
  (chapitres/specificites_benin.tex
 Chapitre 3.
 
-LaTeX Warning: Citation `worldbank2019benin' on page 20 undefined on input line
- 12.
 
-
-
-[20
+[21
 
 
 
@@ -2648,11 +2656,7 @@ File: images/reseau_benin/types_routes.png Graphic file (type bmp)
 <images/reseau_benin/types_routes.png>
 
 
-[21]
-
-LaTeX Warning: Citation `loggoh2019traffic' on page 22 undefined on input line 
-56.
-
+[22]
 File: images/reseau_benin/intersections.png Graphic file (type bmp)
 <images/reseau_benin/intersections.png>
 Package mdframed Info: mdframed detected package amsthm 
@@ -2660,850 +2664,139 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 72.
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
 t line 72.
-chapitres/specificites_benin.tex:76: Missing } inserted.
-<inserted text> 
-                }
-l.76 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:76: Missing $ inserted.
-<inserted text> 
-                $
-l.76 \end{align}
-                
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:76: Missing { inserted.
-<inserted text> 
-                {
-l.76 \end{align}
-                
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-chapitres/specificites_benin.tex:76: Extra }, or forgotten $.
-<recently read> }
-                 
-l.76 \end{align}
-                
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/specificites_benin.tex:76: Missing $ inserted.
-<inserted text> 
-                $
-l.76 \end{align}
-                
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:76: Missing } inserted.
-<inserted text> 
-                }
-l.76 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:76: Missing } inserted.
-<inserted text> 
-                }
-l.76 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:76: Missing $ inserted.
-<inserted text> 
-                $
-l.76 \end{align}
-                
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:76: Extra }, or forgotten $.
-<recently read> }
-                 
-l.76 \end{align}
-                
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/specificites_benin.tex:76: Missing $ inserted.
-<inserted text> 
-                $
-l.76 \end{align}
-                
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:76: Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.76 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:76: Missing } inserted.
-<inserted text> 
-                }
-l.76 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:76: Missing $ inserted.
-<inserted text> 
-                $
-l.76 \end{align}
-                
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:76: Missing } inserted.
-<inserted text> 
-                }
-l.76 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:76: Missing } inserted.
-<inserted text> 
-                }
-l.76 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:76: Missing \cr inserted.
-<inserted text> 
-                \cr 
-l.76 \end{align}
-                
-I'm guessing that you meant to end an alignment here.
-
-chapitres/specificites_benin.tex:76: Missing { inserted.
-<inserted text> 
-                {
-l.76 \end{align}
-                
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-chapitres/specificites_benin.tex:76: Missing { inserted.
-<inserted text> 
-                {
-l.76 \end{align}
-                
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-chapitres/specificites_benin.tex:76: Extra }, or forgotten $.
-<recently read> }
-                 
-l.76 \end{align}
-                
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/specificites_benin.tex:76: Missing $ inserted.
-<inserted text> 
-                $
-l.76 \end{align}
-                
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:76: Missing } inserted.
-<inserted text> 
-                }
-l.76 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:76: Missing $$ inserted.
-<to be read again> 
-                   \vskip 
-l.76 \end{align}
-                
-Displays can use special alignments (like \eqalignno)
-only if nothing but the alignment itself is between $$'s.
-
-chapitres/specificites_benin.tex:76: Misplaced \omit.
-<recently read> \omit 
-                      
-l.76 \end{align}
-                
-I expect to see \omit only after tab marks or the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-chapitres/specificites_benin.tex:76: Misplaced \cr.
-\math@cr@@@ ...wtrue \fi \global \lineht@ \z@ \cr 
-                                                  
-l.76 \end{align}
-                
-I can't figure out why you would want to use a tab mark
-or \cr or \span just now. If something like a right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-chapitres/specificites_benin.tex:76: Misplaced \noalign.
-\math@cr@@ ... \iffalse }\fi \math@cr@@@ \noalign 
-                                                  {\vskip #1\relax }
-l.76 \end{align}
-                
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-chapitres/specificites_benin.tex:76: Misplaced \noalign.
-\black@ #1->\noalign 
-                     {\ifdim #1>\displaywidth \dimen@ \prevdepth \nointerlin...
-l.76 \end{align}
-                
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-chapitres/specificites_benin.tex:76: Extra }, or forgotten \endgroup.
-\endalign ->\math@cr \black@ \totwidth@ \egroup 
-                                                \ifingather@ \restorealignst...
-l.76 \end{align}
-                
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/specificites_benin.tex:76: Missing $ inserted.
-<inserted text> 
-                $
-l.76 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:76: Display math should end with $$.
-<to be read again> 
-                   \endgroup 
-l.76 \end{align}
-                
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
 
 
+[23]
+Package mdframed Info: Not enough space on this page on input line 80.
 
-[22]
-Package mdframed Info: Not enough space on this page on input line 79.
-
-Overfull \hbox (17.2239pt too wide) in paragraph at lines 84--85
+Overfull \hbox (17.2239pt too wide) in paragraph at lines 85--86
 []\TU/TeXGyrePagella(1)/m/n/12 La modélisation précise du trafic béninois néces
 site des données spécifiques au contexte
  []
 
 
-LaTeX Warning: Citation `loggoh2019traffic' on page 23 undefined on input line 
-102.
 
-
-LaTeX Warning: Citation `aerc2019taxi' on page 23 undefined on input line 102.
-
-
-
-[23]
-Overfull \hbox (2.57591pt too wide) in paragraph at lines 119--120
+[24]
+Overfull \hbox (2.57591pt too wide) in paragraph at lines 120--121
 []\TU/TeXGyrePagella(0)/b/n/12 Extraction systématique des données de Google Ma
 ps \TU/TeXGyrePagella(1)/m/n/12 à intervalles réguliers (toutes
  []
-
-
-LaTeX Warning: Citation `aerc2019taxi' on page 24 undefined on input line 136.
-
-
-LaTeX Warning: Citation `aerc2019taxi' on page 24 undefined on input line 139.
-
-
-LaTeX Warning: Citation `loggoh2019traffic' on page 24 undefined on input line 
-173.
-
-
-LaTeX Warning: Citation `aerc2019taxi' on page 24 undefined on input line 173.
-
-
-
-[24]
-
-LaTeX Warning: Citation `kumar2018motorcycle' on page 25 undefined on input lin
-e 176.
-
-
-LaTeX Warning: Citation `karthik2019estimation' on page 25 undefined on input l
-ine 182.
-
-
-LaTeX Warning: Citation `fan2013heterogeneous' on page 25 undefined on input li
-ne 186.
-
-
-LaTeX Warning: Citation `kumar2018motorcycle' on page 25 undefined on input lin
-e 190.
-
-File: images/reseau_benin/comportement_motos.png Graphic file (type bmp)
-<images/reseau_benin/comportement_motos.png>
-
-LaTeX Warning: Citation `wong2002multi' on page 25 undefined on input line 205.
-
-
-
-LaTeX Warning: Citation `fan2013heterogeneous' on page 25 undefined on input li
-ne 205.
 
 
 
 [25]
 
 [26]
-
-LaTeX Warning: Citation `chanut2005modeles' on page 27 undefined on input line 
-208.
-
-
-LaTeX Warning: Citation `greenshields1935study' on page 27 undefined on input l
-ine 210.
+File: images/reseau_benin/comportement_motos.png Graphic file (type bmp)
+<images/reseau_benin/comportement_motos.png>
 
 
-LaTeX Warning: Citation `akcelik2003relationship' on page 27 undefined on input
- line 212.
-
+[27]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 218.
+(mdframed)              on input line 219.
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on 
-input line 218.
+input line 219.
 
-LaTeX Warning: Citation `greenshields1935study' on page 27 undefined on input l
-ine 218.
-
-chapitres/specificites_benin.tex:221: Missing } inserted.
-<inserted text> 
-                }
-l.221 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Missing character: There is no 𝜌 in font TeXGyrePagella-Italic/OT:script=latn;l
-anguage=dflt;+onum;mapping=tex-text;!
-Missing character: There is no 𝜌 in font TeXGyrePagella-Italic/OT:script=latn;l
-anguage=dflt;+onum;mapping=tex-text;!
-chapitres/specificites_benin.tex:221: Missing $ inserted.
-<inserted text> 
-                $
-l.221 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:221: Missing { inserted.
-<inserted text> 
-                {
-l.221 \end{align}
-                 
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-chapitres/specificites_benin.tex:221: Extra }, or forgotten $.
-<recently read> }
-                 
-l.221 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/specificites_benin.tex:221: Missing $ inserted.
-<inserted text> 
-                $
-l.221 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:221: Missing } inserted.
-<inserted text> 
-                }
-l.221 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:221: Missing } inserted.
-<inserted text> 
-                }
-l.221 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Missing character: There is no 𝜌 in font TeXGyrePagella-Italic/OT:script=latn;l
-anguage=dflt;+onum;mapping=tex-text;!
-Missing character: There is no 𝜌 in font TeXGyrePagella-Italic/OT:script=latn;l
-anguage=dflt;+onum;mapping=tex-text;!
-chapitres/specificites_benin.tex:221: Missing $ inserted.
-<inserted text> 
-                $
-l.221 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:221: Extra }, or forgotten $.
-<recently read> }
-                 
-l.221 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/specificites_benin.tex:221: Missing $ inserted.
-<inserted text> 
-                $
-l.221 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:221: Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.221 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:221: Missing } inserted.
-<inserted text> 
-                }
-l.221 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:221: Missing $ inserted.
-<inserted text> 
-                $
-l.221 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:221: Missing } inserted.
-<inserted text> 
-                }
-l.221 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:221: Missing } inserted.
-<inserted text> 
-                }
-l.221 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:221: Missing \cr inserted.
-<inserted text> 
-                \cr 
-l.221 \end{align}
-                 
-I'm guessing that you meant to end an alignment here.
-
-chapitres/specificites_benin.tex:221: Missing { inserted.
-<inserted text> 
-                {
-l.221 \end{align}
-                 
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-chapitres/specificites_benin.tex:221: Missing { inserted.
-<inserted text> 
-                {
-l.221 \end{align}
-                 
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-chapitres/specificites_benin.tex:221: Extra }, or forgotten $.
-<recently read> }
-                 
-l.221 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/specificites_benin.tex:221: Missing $ inserted.
-<inserted text> 
-                $
-l.221 \end{align}
-                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/specificites_benin.tex:221: Missing } inserted.
-<inserted text> 
-                }
-l.221 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:221: Missing $$ inserted.
-<to be read again> 
-                   \vskip 
-l.221 \end{align}
-                 
-Displays can use special alignments (like \eqalignno)
-only if nothing but the alignment itself is between $$'s.
-
-chapitres/specificites_benin.tex:221: Misplaced \omit.
-<recently read> \omit 
-                      
-l.221 \end{align}
-                 
-I expect to see \omit only after tab marks or the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-chapitres/specificites_benin.tex:221: Misplaced \cr.
-\math@cr@@@ ...wtrue \fi \global \lineht@ \z@ \cr 
-                                                  
-l.221 \end{align}
-                 
-I can't figure out why you would want to use a tab mark
-or \cr or \span just now. If something like a right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-chapitres/specificites_benin.tex:221: Misplaced \noalign.
-\math@cr@@ ... \iffalse }\fi \math@cr@@@ \noalign 
-                                                  {\vskip #1\relax }
-l.221 \end{align}
-                 
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-chapitres/specificites_benin.tex:221: Misplaced \noalign.
-\black@ #1->\noalign 
-                     {\ifdim #1>\displaywidth \dimen@ \prevdepth \nointerlin...
-l.221 \end{align}
-                 
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-chapitres/specificites_benin.tex:221: Extra }, or forgotten \endgroup.
-\endalign ->\math@cr \black@ \totwidth@ \egroup 
-                                                \ifingather@ \restorealignst...
-l.221 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/specificites_benin.tex:221: Missing $ inserted.
-<inserted text> 
-                $
-l.221 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/specificites_benin.tex:221: Display math should end with $$.
-<to be read again> 
-                   \endgroup 
-l.221 \end{align}
-                 
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-
-LaTeX Warning: Citation `lighthill1955kinematic' on page 27 undefined on input 
-line 228.
-
-
-LaTeX Warning: Citation `richards1956shock' on page 27 undefined on input line 
-228.
-
-
-Overfull \hbox (0.35591pt too wide) in paragraph at lines 231--232
+Overfull \hbox (0.35591pt too wide) in paragraph at lines 232--233
 []\TU/TeXGyrePagella(1)/m/n/12 La \TU/TeXGyrePagella(0)/b/n/12 diversité des in
 frastructures \TU/TeXGyrePagella(1)/m/n/12 exige l’introduction de facteurs spé
 cifiques à chaque
  []
 
 
-LaTeX Warning: Citation `wong2002multi' on page 27 undefined on input line 233.
-
-
-
-LaTeX Warning: Citation `zhang2003non' on page 27 undefined on input line 235.
-
-
-LaTeX Warning: Citation `daganzo1995cell' on page 27 undefined on input line 23
-7.
-
-
-Overfull \hbox (8.15993pt too wide) in paragraph at lines 237--238
+Overfull \hbox (8.15993pt too wide) in paragraph at lines 238--239
 []\TU/TeXGyrePagella(1)/m/n/12 La \TU/TeXGyrePagella(0)/b/n/12 gestion particul
 ière des intersections \TU/TeXGyrePagella(1)/m/n/12 nécessite un traitement mat
 hématique adap-
  []
 
 
+Overfull \hbox (8.79689pt too wide) in paragraph at lines 238--239
+\TU/TeXGyrePagella(1)/m/n/12 té des conditions aux limites et des termes source
+s/puits, comme suggéré par [[]]. 
+ []
 
-[27]
+
+
+[28]
+
+[29]
 Chapitre 4.
 
-LaTeX Warning: Citation `worldbank2019benin' on page 28 undefined on input line
- 250.
-
-
-Overfull \hbox (3.0729pt too wide) in paragraph at lines 256--257
+Overfull \hbox (3.0729pt too wide) in paragraph at lines 257--258
 []\TU/TeXGyrePagella(1)/m/n/12 Une \TU/TeXGyrePagella(0)/b/n/12 gestion urbaine
  limitée\TU/TeXGyrePagella(1)/m/n/12 , avec peu de planification intégrée trans
 port-urbanisme. 
  []
 
 
-LaTeX Warning: Citation `aerc2019taxi' on page 28 undefined on input line 267.
 
-
-
-[28
+[30
 
 ]
-
-chapitres/specificites_benin.tex:294: LaTeX Error: File `images/specificites_be
-nin/composition_parc' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.294 ...ages/specificites_benin/composition_parc}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.PDF,.ai,.AI,.png,.PNG,.jpg,.JPG,.jpeg,.JPEG,.jp2,.JP2,.jpf,.JPF,.bmp,.BMP
-,.ps,.PS,.eps,.EPS,.mps,.MPS
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+File: images/specificites_benin/composition_parc.png Graphic file (type bmp)
+<images/specificites_benin/composition_parc.png>
 
 
-
-[29]
-
-chapitres/specificites_benin.tex:318: LaTeX Error: File `images/specificites_be
-nin/types_routes' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.318 ...]{images/specificites_benin/types_routes}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.PDF,.ai,.AI,.png,.PNG,.jpg,.JPG,.jpeg,.JPEG,.jp2,.JP2,.jpf,.JPF,.bmp,.BMP
-,.ps,.PS,.eps,.EPS,.mps,.MPS
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+[31]
+File: images/specificites_benin/types_routes.png Graphic file (type bmp)
+<images/specificites_benin/types_routes.png>
 
 
-Overfull \hbox (6.2769pt too wide) in paragraph at lines 331--332
+[32]
+Overfull \hbox (6.2769pt too wide) in paragraph at lines 332--333
 []\TU/TeXGyrePagella(0)/b/n/12 Présence d’agents de circulation \TU/TeXGyrePage
 lla(1)/m/n/12 aux carrefours majeurs, particulièrement aux heures
  []
 
 
-Overfull \hbox (5.12492pt too wide) in paragraph at lines 348--349
+Overfull \hbox (5.12492pt too wide) in paragraph at lines 349--350
 \TU/TeXGyrePagella(1)/m/n/12 puissent paraître désordonnés au premier abord, ré
 vèlent une forme d’auto-organisation
  []
 
 
 
-[30]
-
-chapitres/specificites_benin.tex:366: LaTeX Error: File `images/specificites_be
-nin/gap_filling' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.366 ...h]{images/specificites_benin/gap_filling}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.PDF,.ai,.AI,.png,.PNG,.jpg,.JPG,.jpeg,.JPEG,.jp2,.JP2,.jpf,.JPF,.bmp,.BMP
-,.ps,.PS,.eps,.EPS,.mps,.MPS
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+[33]
+File: images/specificites_benin/gap_filling.png Graphic file (type bmp)
+<images/specificites_benin/gap_filling.png>
 
 
-
-[31]
+[34]
 File: images/specificites_benin/placeholder.jpg Graphic file (type bmp)
 <images/specificites_benin/placeholder.jpg>
 
 
-[32]
-Overfull \hbox (1.29291pt too wide) in paragraph at lines 446--447
+[35]
+Overfull \hbox (1.29291pt too wide) in paragraph at lines 447--448
 []\TU/TeXGyrePagella(1)/m/n/12 Ces effets sont particulièrement significatifs a
 ux feux de circulation, mais s’observent
  []
 
 
 
-[33]
+[36]
 
-LaTeX Warning: Citation `wong2002multi' on page 34 undefined on input line 461.
+[37])
 
-
-
-LaTeX Warning: Citation `chanut2005modeles' on page 34 undefined on input line 
-461.
-
-
-
-[34])
-
-[35]
+[38]
 \openout2 = `chapitres/extension_modele.aux'.
 
  (chapitres/extension_modele.tex
 Chapitre 5.
 
-LaTeX Warning: Reference `chap:specificites_benin' on page 36 undefined on inpu
-t line 28.
 
-
-
-[36
+[39
 
 
 
 
 ]
 
-LaTeX Warning: Citation `wong2002multi' on page 37 undefined on input line 30.
+[40]
 
-
-LaTeX Warning: Citation `zhang2003non' on page 37 undefined on input line 30.
-
-
-LaTeX Warning: Citation `loggoh2019traffic' on page 37 undefined on input line 
-30.
-
-
-
-[37]
-
-LaTeX Warning: Reference `chap:specificites_benin' on page 38 undefined on inpu
-t line 76.
-
-
-LaTeX Warning: Reference `tab:valeurs_lambda' on page 38 undefined on input lin
-e 95.
-
-
-
-[38]
+[41]
 
 LaTeX Font Warning: Font shape `TU/TeXGyrePagellaMath(1)/b/n' undefined
 (Font)              using `TU/TeXGyrePagellaMath(1)/m/n' instead on input line 
@@ -3533,7 +2826,7 @@ LaTeX Font Info:    Font shape `TU/TeXGyrePagellaMath(3)/b/n' will be
 (Font)              scaled to size 11.99872pt on input line 148.
 
 
-[39]
+[42]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 170.
@@ -3541,717 +2834,218 @@ Package mdframed Info: mdframed detected package amsthm
 Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
 language=dflt;+onum;mapping=tex-text;!
 
-LaTeX Warning: Citation `kumar2018motorcycle' on page 40 undefined on input lin
-e 188.
-
-
-LaTeX Warning: Citation `fan2013heterogeneous' on page 40 undefined on input li
-ne 188.
+Overfull \hbox (4.6479pt too wide) in paragraph at lines 188--189
+\TU/TeXGyrePagella(1)/m/n/12 maintiennent leur mobilité même dans des condition
+s de densité élevée [[], []]. 
+ []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 202.
 
 
-[40]
-
-LaTeX Warning: Reference `eq:conservation_multiclasse' on page 41 undefined on 
-input line 232.
-
-
-
-[41]
-File: simulations/MULTICLASS/diagrams/diagrammes_multiclasses.png Graphic file 
-(type bmp)
-<simulations/MULTICLASS/diagrams/diagrammes_multiclasses.png>
-
-
-[42]
-
-LaTeX Warning: Reference `eq:modele_complet' on page 43 undefined on input line
- 321.
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 323.
-
-LaTeX Warning: Reference `eq:modele_complet' on page 43 undefined on input line
- 324.
-
-
-LaTeX Warning: Reference `eq:modele_complet' on page 43 undefined on input line
- 330.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-\math@atom #1#2->\binrel@ {#1}\binrel@@ {#2}
-                                            
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-\frac  #1#2->{\begingroup #1\endgroup \@@over #2}
-                                                 
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-<recently read> }
-                 
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-\math@atom #1#2->\binrel@ {#1}\binrel@@ {#2}
-                                            
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-\frac  #1#2->{\begingroup #1\endgroup \@@over #2}
-                                                 
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-<recently read> }
-                 
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-\math@atom #1#2->\binrel@ {#1}\binrel@@ {#2}
-                                            
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-\frac  #1#2->{\begingroup #1\endgroup \@@over #2}
-                                                 
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-<recently read> }
-                 
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-\math@atom #1#2->\binrel@ {#1}\binrel@@ {#2}
-                                            
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-\frac  #1#2->{\begingroup #1\endgroup \@@over #2}
-                                                 
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Extra }, or forgotten $.
-<recently read> }
-                 
-l.334 \end{empheq}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-chapitres/extension_modele.tex:334: Missing $ inserted.
-<inserted text> 
-                $
-l.334 \end{empheq}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-chapitres/extension_modele.tex:334: Missing } inserted.
-<inserted text> 
-                }
-l.334 \end{empheq}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
-
 [43]
 
-LaTeX Warning: Reference `eq:vitesse_complete' on page 44 undefined on input li
-ne 360.
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 376.
-
-LaTeX Warning: Reference `eq:forme_quasilineaire_extension' on page 44 undefine
-d on input line 377.
-
-
-LaTeX Warning: Reference `eq:vitesse_complete' on page 44 undefined on input li
-ne 377.
-
-
-LaTeX Warning: Reference `eq:fonction_gap_filling' on page 44 undefined on inpu
-t line 377.
-
-
-LaTeX Warning: Reference `eq:fonction_interweaving' on page 44 undefined on inp
-ut line 377.
-
-
-LaTeX Warning: Reference `annexe:demonstrations' on page 44 undefined on input 
-line 384.
-
-
-LaTeX Warning: Reference `sec:preuve_valeurs_propres' on page 44 undefined on i
-nput line 384.
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 390.
-Package hyperref Info: bookmark level for unknown corollary defaults to 0 on in
-put line 390.
-
-
 [44]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 412.
-
-
-LaTeX Warning: Reference `eq:probleme_riemann' on page 45 undefined on input li
-ne 413.
-
-
-LaTeX Warning: Reference `eq:forme_quasilineaire_extension' on page 45 undefine
-d on input line 435.
-
+File: simulations/multiclass_fundamental_diagrams.png Graphic file (type bmp)
+<simulations/multiclass_fundamental_diagrams.png>
 
 
 [45]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 450.
+(mdframed)              on input line 323.
+
+
+[46]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 460.
+(mdframed)              on input line 377.
 
-Overfull \hbox (1.55592pt too wide) in paragraph at lines 468--469
+
+LaTeX Warning: Reference `annexe:demonstrations' on page 47 undefined on input 
+line 385.
+
+
+LaTeX Warning: Reference `sec:preuve_valeurs_propres' on page 47 undefined on i
+nput line 385.
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 391.
+Package hyperref Info: bookmark level for unknown corollary defaults to 0 on in
+put line 391.
+
+
+[47]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 413.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 451.
+
+
+[48]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 461.
+
+Overfull \hbox (1.55592pt too wide) in paragraph at lines 469--470
 []\TU/TeXGyrePagella(1)/m/n/12 Cette formulation mathématique explique quantita
 tivement pourquoi les transitions
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 475.
+(mdframed)              on input line 476.
 
 
-[46]
-File: simulations/MULTICLASS/mathematical/stability_analysis.png Graphic file (
-type bmp)
-<simulations/MULTICLASS/mathematical/stability_analysis.png>
-
-
-LaTeX Warning: Reference `eq:modele_complet' on page 47 undefined on input line
- 507.
-
-
-
-[47]
+[49]
 Missing character: There is no 𝜌 in font TeXGyrePagella-Regular/OT:script=latn;
 language=dflt;+onum;mapping=tex-text;!
 
 
-[48]
-
-LaTeX Warning: Reference `eq:conservation_flux_transition' on page 49 undefined
- on input line 558.
-
-
-Overfull \hbox (0.95493pt too wide) in paragraph at lines 565--566
+[50]
+Overfull \hbox (0.95493pt too wide) in paragraph at lines 566--567
 []\TU/TeXGyrePagella(1)/m/n/12 La condition de stabilité de Courant-Friedrichs-
 Lewy (CFL) pour notre schéma mul-
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 579.
-
-LaTeX Warning: Reference `eq:vitesse_complete' on page 49 undefined on input li
-ne 589.
-
-
-LaTeX Warning: Reference `eq:schema_godunov_multiclasse' on page 49 undefined o
-n input line 591.
-
+put line 580.
 LaTeX Font Info:    Font shape `TU/FiraMono(0)/m/n' will be
-(Font)              scaled to size 10.20007pt on input line 599.
-
-
-[49]
-
-LaTeX Warning: Citation `marbach2009stochastic' on page 50 undefined on input l
-ine 663.
-
-
-LaTeX Warning: Citation `ceylan2014traffic' on page 50 undefined on input line 
-664.
-
-
-LaTeX Warning: Citation `zhang2003non' on page 50 undefined on input line 665.
-
-
-
-[50]
-
-chapitres/extension_modele.tex:682: LaTeX Error: File `images/implementation/co
-de_structure_diagram' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.682 ...es/implementation/code_structure_diagram}
-                                                  
-I could not locate the file with any of these extensions:
-.pdf,.PDF,.ai,.AI,.png,.PNG,.jpg,.JPG,.jpeg,.JPEG,.jp2,.JP2,.jpf,.JPF,.bmp,.BMP
-,.ps,.PS,.eps,.EPS,.mps,.MPS
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+(Font)              scaled to size 10.20007pt on input line 600.
 
 
 [51]
+File: simulations/MULTICLASS/rarefaction/rarefactionwave.png Graphic file (type
+ bmp)
+<simulations/MULTICLASS/rarefaction/rarefactionwave.png>
 
-LaTeX Warning: Reference `subsubsec:extension_godunov' on page 52 undefined on 
-input line 719.
+
+[52]
+
+[53]
+File: simulations/MULTICLASS/shock/shockwave.png Graphic file (type bmp)
+<simulations/MULTICLASS/shock/shockwave.png>
 
 
-Overfull \hbox (0.25194pt too wide) in paragraph at lines 719--721
+[54]
+File: simulations/MULTICLASS/redlight/multiclassredlight_(light_turns_green_at_
+t=0.05h).png Graphic file (type bmp)
+<simulations/MULTICLASS/redlight/multiclassredlight_(light_turns_green_at_t=0.0
+5h).png>
+
+
+[55]
+File: simulations/MULTICLASS/degraded/degradedroad.png Graphic file (type bmp)
+<simulations/MULTICLASS/degraded/degradedroad.png>
+File: simulations/MULTICLASS/gapfilling/gapfilling.png Graphic file (type bmp)
+<simulations/MULTICLASS/gapfilling/gapfilling.png>
+File: simulations/MULTICLASS/trafficjam/trafficjam.png Graphic file (type bmp)
+<simulations/MULTICLASS/trafficjam/trafficjam.png>
+
+
+[56]
+
+[57]
+
+[58]
+
+[59]
+
+[60]
+File: images/mermaid/main.jpeg Graphic file (type bmp)
+<images/mermaid/main.jpeg>
+
+
+[61]
+File: images/mermaid/models.jpeg Graphic file (type bmp)
+<images/mermaid/models.jpeg>
+
+
+[62]
+File: images/mermaid/scenarios.jpeg Graphic file (type bmp)
+<images/mermaid/scenarios.jpeg>
+
+Overfull \hbox (0.25194pt too wide) in paragraph at lines 825--827
 []\TU/TeXGyrePagella(1)/m/n/12 L’implémentation s’appuie principalement sur le 
 schéma de Godunov présenté dans
  []
 
+File: images/mermaid/solvers.jpeg Graphic file (type bmp)
+<images/mermaid/solvers.jpeg>
+File: images/mermaid/visualisation.jpeg Graphic file (type bmp)
+<images/mermaid/visualisation.jpeg>
 
-Overfull \hbox (9.11787pt too wide) in paragraph at lines 755--756
+
+[63]
+
+[64]
+Overfull \hbox (9.11787pt too wide) in paragraph at lines 875--876
 []\TU/TeXGyrePagella(1)/m/n/12 Pour une exécution par lots de multiples scénari
 os, un script \TU/FiraMono(0)/m/n/12 run_all_simulations.py
  []
 
 
-
-[52]
-
-LaTeX Warning: Reference `fig:diagramme_multiclasse' on page 53 undefined on in
-put line 763.
-
-
-LaTeX Warning: Reference `fig:stability_analysis_extension' on page 53 undefine
-d on input line 765.
-
-
-LaTeX Warning: Reference `eq:modele_complet' on page 53 undefined on input line
- 774.
-
-
-LaTeX Warning: Reference `eq:vitesse_complete' on page 53 undefined on input li
-ne 803.
+LaTeX Warning: Reference `fig:stability_analysis_extension' on page 65 undefine
+d on input line 885.
 
 
 
-[53]
+[65]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 821.
+(mdframed)              on input line 940.
 
 
-LaTeX Warning: Reference `eq:forme_quasilineaire_extension_modele' on page 54 u
-ndefined on input line 822.
+LaTeX Warning: Reference `annexe:demonstrations' on page 66 undefined on input 
+line 949.
 
 
-LaTeX Warning: Reference `eq:vitesse_complete' on page 54 undefined on input li
-ne 822.
-
-
-LaTeX Warning: Reference `eq:fonction_gap_filling' on page 54 undefined on inpu
-t line 822.
-
-
-LaTeX Warning: Reference `eq:fonction_interweaving' on page 54 undefined on inp
-ut line 822.
-
-
-LaTeX Warning: Reference `annexe:demonstrations' on page 54 undefined on input 
-line 830.
-
-
-LaTeX Warning: Reference `sec:preuve_valeurs_propres' on page 54 undefined on i
-nput line 830.
+LaTeX Warning: Reference `sec:preuve_valeurs_propres' on page 66 undefined on i
+nput line 949.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 836.
+(mdframed)              on input line 955.
+
+
+[66]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 858.
-
-LaTeX Warning: Reference `eq:probleme_riemann' on page 54 undefined on input li
-ne 859.
+(mdframed)              on input line 977.
 
 
-
-[54]
-
-LaTeX Warning: Reference `eq:forme_quasilineaire_extension_modele' on page 55 u
-ndefined on input line 881.
-
+[67]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 896.
-
-
-[55]
+(mdframed)              on input line 1015.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 906.
-Package mdframed Info: Not enough space on this page on input line 912.
+(mdframed)              on input line 1025.
 
-Overfull \hbox (1.55592pt too wide) in paragraph at lines 914--915
+Overfull \hbox (1.55592pt too wide) in paragraph at lines 1033--1034
 []\TU/TeXGyrePagella(1)/m/n/12 Cette formulation mathématique explique quantita
 tivement pourquoi les transitions
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 921.
-File: simulations/MULTICLASS/mathematical/stability_analysis.png Graphic file (
-type bmp)
-<simulations/MULTICLASS/mathematical/stability_analysis.png>
-)
+(mdframed)              on input line 1040.
 
-[56]
 
-[57]
+[68])
+
+[69]
 \openout2 = `chapitres/discussion.aux'.
 
  (chapitres/discussion.tex
 Chapitre 6.
 )
 
-[58
+[70
 
 
 
@@ -4263,7 +3057,7 @@ Chapitre 6.
 Chapitre 7.
 )
 
-[59
+[71
 
 
 
@@ -4276,14 +3070,14 @@ a.  Motorcycle-
 
 
 
-[60
+[72
 
 
 
 
 ])
 
-[61]
+[73]
 runsystem(makeindex memoire.idx)...executed safely (allowed).
 
  (memoire.ind) (memoire.aux (pages_preliminaires/titlepage.aux)
@@ -4305,16 +3099,16 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 61579 strings out of 408640
- 1431121 string characters out of 5749145
+ 61654 strings out of 408640
+ 1429884 string characters out of 5749145
  2326127 words of memory out of 5000000
- 83649 multiletter control sequences out of 15000+600000
+ 83677 multiletter control sequences out of 15000+600000
  570450 words of font info for 143 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 103i,28n,110p,2401b,662s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,28n,110p,2372b,662s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on memoire.pdf (73 pages).
+Output written on memoire.pdf (89 pages).

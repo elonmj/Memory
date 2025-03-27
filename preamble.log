@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.3.15)  15 MAR 2025 07:37
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.3.27)  27 MAR 2025 19:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1284,7 +1284,7 @@ Package zref Info: New property: abspage on input line 67.
 Package: mdframed 2013/07/01 1.9b: mdframed
 
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/needspace\needspace.sty
-Package: needspace 2010/09/12 v1.3d reserve vertical space
+Package: needspace 2025/03/13 v1.3e reserve vertical space
 )
 \mdf@templength=\skip91
 \c@mdf@globalstyle@cnt=\count389
@@ -1577,7 +1577,7 @@ Package shellesc Info: Restricted shell escape enabled on input line 77.
 )
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/glossaries/base\glossaries.
 sty
-Package: glossaries 2025/03/03 v4.56 (NLCT)
+Package: glossaries 2025/03/19 v4.58 (NLCT)
  (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/mfirstuc\mfirstuc.sty
 Package: mfirstuc 2022/10/14 v2.08 (NLCT)
 \@glsmfirst=\toks68
@@ -1587,18 +1587,20 @@ Package: mfirstuc 2022/10/14 v2.08 (NLCT)
 Package: xfor 2009/02/05 v1.05 (NLCT)
 )
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/tracklang\tracklang.sty
-Package: tracklang 2025/01/26 v1.6.4 (NLCT) Track Languages
+Package: tracklang 2025/03/11 v1.6.6 (NLCT) Track Languages
 
-(C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/generic/tracklang\tracklang.tex))
-
+(C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/generic/tracklang\tracklang.tex)
+Package tracklang Info: Tracking dialect `france' (language `french') on input 
+line 264.
+)
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/glossaries-french\glossarie
 s-french.ldf
 File: glossaries-french.ldf 2016/12/12 v1.1
 ) (C:\Program Files\MiKTeX\tex/latex/datatool\datatool-base.sty
-Package: datatool-base 2025/03/05 v3.0.1 (NLCT)
+Package: datatool-base 2025/03/14 v3.2 (NLCT)
 
 (C:\Program Files\MiKTeX\tex/latex/datatool\datatool-l3fp.def
-File: datatool-l3fp.def 2025/03/05 v3.0.1 (NLCT)
+File: datatool-l3fp.def 2025/03/14 v3.2 (NLCT)
 )
 \@dtl@toks=\toks70
 \@dtl@tmpcount=\count413
@@ -1607,7 +1609,7 @@ File: datatool-l3fp.def 2025/03/05 v3.0.1 (NLCT)
 \dtl@sortresult=\count414
 
 (C:\Program Files\MiKTeX\tex/latex/datatool\datatool-utf8.ldf
-File: datatool-utf8.ldf 2025/03/05 v3.0.1 (NLCT)
+File: datatool-utf8.ldf 2025/03/14 v3.2 (NLCT)
 )
 \@dtl@datatype=\count415
 \l__datatool_tmpa_int=\count416
@@ -1634,8 +1636,12 @@ File: datatool-utf8.ldf 2025/03/05 v3.0.1 (NLCT)
 \@dtl@foreach@level=\count435
 
 
-Package tracklang Warning: No `datatool' support for dialect `french'  on input
- line 9897.
+Package tracklang Warning: No `datatool' support for dialect `france'  on input
+ line 9908.
+
+
+Package tracklang Warning: No `datatool' support for dialect `france'  on input
+ line 9908.
 
 \dtl@codeA=\count436
 \dtl@codeB=\count437
@@ -1650,22 +1656,22 @@ Package tracklang Warning: No `datatool' support for dialect `french'  on input
 
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/glossaries/styles\glossary-
 hypernav.sty
-Package: glossary-hypernav 2025/03/03 v4.56 (NLCT)
+Package: glossary-hypernav 2025/03/19 v4.58 (NLCT)
 )
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/glossaries/styles\glossary-
 list.sty
-Package: glossary-list 2025/03/03 v4.56 (NLCT)
+Package: glossary-list 2025/03/19 v4.58 (NLCT)
 \glslistdottedwidth=\skip160
 )
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/glossaries/styles\glossary-
 long.sty
-Package: glossary-long 2025/03/03 v4.56 (NLCT)
+Package: glossary-long 2025/03/19 v4.58 (NLCT)
 \glsdescwidth=\skip161
 \glspagelistwidth=\skip162
 )
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/glossaries/styles\glossary-
 super.sty
-Package: glossary-super 2025/03/03 v4.56 (NLCT)
+Package: glossary-super 2025/03/19 v4.58 (NLCT)
 
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/supertabular\supertabular.s
 ty
@@ -1688,7 +1694,7 @@ Package: supertabular 2024/07/20 v4.2c the supertabular environment
 ))
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/glossaries/styles\glossary-
 tree.sty
-Package: glossary-tree 2025/03/03 v4.56 (NLCT)
+Package: glossary-tree 2025/03/19 v4.58 (NLCT)
 \glstreeindent=\skip166
 ))
 (C:\Users\JOSAPHAT\AppData\Roaming\MiKTeX\tex/latex/imakeidx\imakeidx.sty
@@ -2097,10 +2103,10 @@ Package glossaries Info: Writing glossary file preamble.acn on input line 145.
 
  
 Here is how much of TeX's memory you used:
- 58384 strings out of 408640
- 1339073 string characters out of 5749145
- 2195330 words of memory out of 5000000
- 80632 multiletter control sequences out of 15000+600000
+ 58444 strings out of 408640
+ 1340615 string characters out of 5749145
+ 2196552 words of memory out of 5000000
+ 80692 multiletter control sequences out of 15000+600000
  559754 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,2n,107p,2385b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s

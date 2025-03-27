@@ -338,7 +338,11 @@ def main():
     # Visualize results
     visualize_results(results, args)
     
-    print(f"Results saved to {os.path.abspath(args.output)}")
+    # Correctly report the absolute path where results are saved
+    model_name = args.model.upper()
+    scenario_name = args.scenario
+    actual_output_dir = os.path.join(str(project_root), args.output, model_name, scenario_name)
+    print(f"Results saved to {os.path.abspath(actual_output_dir)}")
 
 
 if __name__ == "__main__":

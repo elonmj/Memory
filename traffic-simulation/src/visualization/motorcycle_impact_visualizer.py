@@ -159,7 +159,7 @@ class MotorcycleImpactVisualizer(MulticlassPlotter):
                 # Create directory if it doesn't exist
                 os.makedirs(os.path.dirname(filename), exist_ok=True)
                 plt.savefig(filename)
-                print(f"Figure saved as {filename}")
+                print(f"Figure saved as {os.path.abspath(filename)}")
             except Exception as e:
                 print(f"Error saving figure: {e}")
         
@@ -353,7 +353,7 @@ class MotorcycleImpactVisualizer(MulticlassPlotter):
                 # Create directory if it doesn't exist
                 os.makedirs(os.path.dirname(filename), exist_ok=True)
                 plt.savefig(filename)
-                print(f"Figure saved as {filename}")
+                print(f"Figure saved as {os.path.abspath(filename)}")
             except Exception as e:
                 print(f"Error saving figure: {e}")
         
@@ -607,7 +607,7 @@ class MotorcycleImpactVisualizer(MulticlassPlotter):
                 # Create directory if it doesn't exist
                 os.makedirs(os.path.dirname(filename), exist_ok=True)
                 plt.savefig(filename)
-                print(f"Figure saved as {filename}")
+                print(f"Figure saved as {os.path.abspath(filename)}")
             except Exception as e:
                 print(f"Error saving figure: {e}")
         
