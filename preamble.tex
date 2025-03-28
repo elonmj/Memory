@@ -1,11 +1,7 @@
 % Preamble for memoire.tex - Centralized package management
 % Organized by category for clarity
 
-% Document Class Configuration
-\documentclass[12pt, a4paper]{report} % Removed 'most' option (belongs to tcolorbox)
-\title{Modélisation du Trafic Routier au Bénin}
-\author{Votre Nom}
-\date{\today}
+
 
 
 % --- Input Encoding & Language ---
@@ -104,35 +100,35 @@
 \usepackage{adjustbox}        % Adjusting TeX boxes
 \usepackage{ifoddpage}        % Check for odd/even page
 \usepackage{varwidth}         % Variable-width minipages
-\usepackage{sidenotes}        % Rich text in the margin
+% \usepackage{sidenotes}        % Temporarily disabled for debugging
 \usepackage{marginnote}       % Non-floating margin notes
 \usepackage{changepage}       % Change page layout
-\usepackage{csvsimple}        % CSV file processing
+% \usepackage{csvsimple}        % Temporarily disabled for debugging
 
 % --- Simplified glossaries setup ---
-% Replace problematic glossaries setup with more compatible version
-\usepackage[acronym,nohypertypes={acronym,main}]{glossaries}
+% \PassOptionsToPackage{math=fp}{datatool} % Use fp math engine for datatool compatibility
+% \usepackage[acronym]{glossaries} % Temporarily disabled for debugging
 % Option nohypertypes avoids issues with datatool
 
-% Load datatool with compatible options
-% \PassOptionsToPackage{math=fp}{datatool}
-%\PassOptionsToPackage{math=l3fp}{datatool}
-% The fp option is more compatible than l3fp
+% Note: \PassOptionsToPackage for datatool moved above \usepackage{glossaries}
+% %\PassOptionsToPackage{math=l3fp}{datatool} % l3fp can sometimes cause issues
 
-\usepackage{mfirstuc}         % Uppercase first letter
-\usepackage{xfor}             % Extended for loops
-\usepackage{tracklang}        % Track languages
-\usepackage{imakeidx}         % Index generation
-\usepackage{multicol}         % Multicolumn formatting
-\usepackage{bookmark}         % PDF bookmarks
 
+
+% \usepackage{mfirstuc}         % Temporarily disabled for debugging
+% \usepackage{xfor}             % Temporarily disabled for debugging
+% \usepackage{tracklang}        % Temporarily disabled for debugging
+% \usepackage{imakeidx}         % Moved below bookmark
+% \usepackage{multicol}         % Temporarily disabled for debugging
+% \usepackage{bookmark}         % Moved below
+% \usepackage{imakeidx}         % Temporarily disabled for debugging
 % --- Font Configuration ---
-\setmainfont{TeX Gyre Pagella}[
-  Numbers=OldStyle,
-  Ligatures=TeX
-]
-\setsansfont{TeX Gyre Heros}[Scale=0.9]
-\setmonofont{Fira Mono}[Scale=0.85]
+% \setmainfont{TeX Gyre Pagella}[
+%   Numbers=OldStyle,
+%   Ligatures=TeX
+% ]
+% \setsansfont{TeX Gyre Heros}[Scale=0.9]
+% \setmonofont{Latin Modern Mono}[Scale=0.85] % Changed from Fira Mono for debugging
 
 % --- Fix for fix-cm ---
 % \usepackage{fix-cm}  % Not needed with XeLaTeX/LuaLaTeX
@@ -141,8 +137,9 @@
 % Check if this file exists before uncommenting:
 % \usepackage{styles/benintraffic}
 
+% \usepackage{bookmark}         % Temporarily disabled for debugging
 % --- Glossary ---
-\makeglossaries
+%\makeglossaries
 
 % Comment this line if this is being included in another document:
 \endinput
